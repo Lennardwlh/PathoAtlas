@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rückenmark & peripher · Lernübersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;--surface:#FBF8F2;--surface-2:#F3EDE2;--ink:#22251f;--ink-soft:#5c6056;--ink-faint:#8a8d82;
+  --line:#d9d0c1;--line-soft:#e6ddce;--pine:#1b3a5c;--pine-2:#274f78;--clay:#bd4a30;--clay-2:#a73d27;
+  --ochre:#b07d1e;--steel:#37607e;--plum:#834d63;--cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);--r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--pine);color:#f4efe4}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:22px}
+.brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.home-link{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface)}
+.home-link:hover{background:var(--surface-2);color:var(--ink);border-color:var(--ink-faint)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;white-space:nowrap}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a.active{background:var(--pine);color:#f0ebde}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+header.hero{background:radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.30),transparent 55%),radial-gradient(90% 80% at 6% 110%,rgba(55,96,126,.40),transparent 55%),linear-gradient(160deg,#23507e,#152d47 70%);color:#e9eef4;position:relative;overflow:hidden;border-bottom:1px solid #0e1f31}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+.hero-in{max-width:1180px;margin:0 auto;padding:74px 26px 78px;position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a9c2dc;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#a9c2dc;display:inline-block}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.4rem,5.2vw,4rem);line-height:1.03;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#e8a48c}
+.hero p.lead{margin-top:22px;font-size:1.08rem;max-width:32rem;color:#c4d4e4}
+.hero-meta{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;line-height:1;color:#eef3f8}
+.hero-meta span{font-size:.78rem;color:#9fb4c8;margin-top:4px;letter-spacing:.03em}
+section{padding:72px 0;border-bottom:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.sec-num{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--clay);border:1.5px solid var(--clay);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:-.02em;line-height:1.05}
+.sec-head p{color:var(--ink-soft);font-size:1rem;max-width:42rem;width:100%;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 21px 20px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s,border-color .22s;display:flex;flex-direction:column;min-height:172px}
+.pcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--c)}
+.pcard .ptag{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:auto}
+.pcard .pno{position:absolute;top:16px;right:18px;font-family:'Fraunces',serif;font-size:2.4rem;font-weight:500;color:var(--line);line-height:1}
+.pcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.28rem;letter-spacing:-.01em;margin:14px 0 5px;line-height:1.12}
+.pcard p{font-size:.86rem;color:var(--ink-soft);line-height:1.45}
+.pcard .arrow{margin-top:12px;font-size:.8rem;font-weight:700;color:var(--c);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.pcard:hover .arrow{gap:11px}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.legend span{font-size:.76rem;font-weight:600;color:var(--ink-soft);display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.legend i{width:10px;height:10px;border-radius:3px}
+.illo-wrap{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 30px;box-shadow:var(--shadow)}
+/* brain territory map */
+.brain-layout{display:grid;grid-template-columns:minmax(280px,440px) 1fr;gap:32px;align-items:start}
+.brain-stage{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow)}
+.brain-stage svg{width:100%;height:auto;display:block}
+.terr{cursor:pointer;transition:.18s}
+.terr path,.terr ellipse,.terr circle.area{transition:.18s}
+.terr:hover .area,.terr.sel .area{filter:brightness(.92) saturate(1.2)}
+.terr.sel .area{stroke:#22251f;stroke-width:2.5}
+.terr .lbl{fill:#fff;font-family:'Hanken Grotesk';font-weight:800;font-size:13px;text-anchor:middle;pointer-events:none}
+.brain-info{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:30px 30px 26px;box-shadow:var(--shadow);min-height:300px}
+.brain-info .bi-tag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+.brain-info h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;margin:8px 0 4px;line-height:1.12}
+.brain-info .bi-sub{font-size:.9rem;color:var(--ink-faint);font-weight:600;margin-bottom:16px}
+.brain-info .ul{list-style:none}
+.brain-info .ul li{font-size:.92rem;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:7px;line-height:1.45}
+.brain-info .ul li::before{content:"";position:absolute;left:1px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--clay);opacity:.7}
+.brain-hint{font-size:.85rem;color:var(--ink-faint);font-style:italic}
+/* timeline / verlaufsachse */
+.timeline{position:relative;margin-top:10px}
+.tl-track{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
+.tl-track::before{content:"";position:absolute;top:38px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,#2c7a4b,#b07d1e,#bd4a30);border-radius:2px;z-index:0}
+.tl-step{position:relative;z-index:1;text-align:center}
+.tl-dot{width:26px;height:26px;border-radius:50%;background:var(--c);margin:26px auto 14px;border:4px solid var(--paper);box-shadow:0 0 0 2px var(--c)}
+.tl-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow);text-align:left}
+.tl-card h4{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:600;color:var(--c);margin-bottom:4px}
+.tl-card .tl-rev{font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+.tl-card ul{list-style:none}
+.tl-card li{font-size:.84rem;color:var(--ink-soft);padding-left:16px;position:relative;margin-bottom:5px;line-height:1.4}
+.tl-card li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--c);opacity:.7}
+.window-box{margin-top:24px;background:#dfe8ef;border:1px solid var(--steel);border-left:4px solid var(--steel);border-radius:12px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
+.window-box svg{width:22px;height:22px;color:var(--steel);flex-shrink:0;margin-top:2px}
+.window-box b{color:var(--ink)}
+.window-box p{font-size:.9rem;color:var(--ink-soft);margin:0}
+.acc{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.item.open{box-shadow:var(--shadow-lg);border-color:var(--c)}
+.item-head{display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;user-select:none}
+.item-head .ino{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:#fff;background:var(--c);min-width:50px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;padding:0 6px}
+.item-head .ititle{flex:1}
+.item-head h3{font-family:'Fraunces',serif;font-size:1.32rem;font-weight:600;letter-spacing:-.01em;line-height:1.12}
+.item-head .isub{font-size:.84rem;color:var(--ink-faint);margin-top:2px}
+.item-head .icat{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--cbg);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.item-head .caret{width:24px;height:24px;flex-shrink:0;color:var(--ink-faint);transition:transform .25s}
+.item.open .caret{transform:rotate(180deg);color:var(--c)}
+.item-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.item-body-in{padding:4px 24px 26px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px 30px}
+.block{padding:16px 0;border-top:1px solid var(--line-soft)}
+.block.full{grid-column:1/-1}
+.block h5{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.block h5 svg{width:15px;height:15px}
+.pp{font-size:.92rem;color:var(--ink-soft)}
+.ul{list-style:none}
+.ul li{font-size:.9rem;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:6px;line-height:1.45}
+.ul li::before{content:"";position:absolute;left:1px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--c);opacity:.7}
+.ul li b{color:var(--ink);font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.split-col h6{font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:7px}
+.split-col.cons h6::before{content:"\25CF ";color:var(--steel)}
+.split-col.op h6::before{content:"\25CF ";color:var(--clay)}
+.merke{grid-column:1/-1;margin-top:14px;background:var(--cbg);border:1px solid var(--c);border-left:4px solid var(--c);border-radius:12px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start}
+.merke svg{width:20px;height:20px;color:var(--c);flex-shrink:0;margin-top:1px}
+.merke b{font-weight:700;color:var(--ink)}
+.merke p{font-size:.9rem;color:var(--ink-soft);margin:0}
+/* scale stages */
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.stages.four{grid-template-columns:repeat(4,1fr)}
+.stages.three{grid-template-columns:repeat(3,1fr)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 13px;text-align:center;box-shadow:var(--shadow)}
+.stage .sn{font-family:'Fraunces',serif;font-weight:600;color:var(--clay);font-size:1.5rem;line-height:1}
+.stage .sl{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:6px 0 6px}
+.stage p{font-size:.8rem;color:var(--ink-soft);line-height:1.34}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:680px;background:var(--surface);font-size:.88rem}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{background:var(--pine);color:#eee6d7;font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+td b{color:var(--ink);font-weight:700}
+.loc-pill{font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);white-space:nowrap}
+.lc-tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.lc-tab{font-family:'Hanken Grotesk';font-size:.9rem;font-weight:700;padding:11px 20px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);cursor:pointer;transition:.18s;display:flex;align-items:center;gap:8px}
+.lc-tab svg{width:17px;height:17px}
+.lc-tab:hover{border-color:var(--clay);color:var(--ink)}
+.lc-tab.active{background:var(--clay);color:#fff;border-color:var(--clay)}
+.lc-panel{display:none}
+.lc-panel.show{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.flip{perspective:1200px;height:210px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.flip.flipped .flip-in{transform:rotateY(180deg)}
+.fface{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.ffront{background:var(--surface);border:1px solid var(--line)}
+.fback{background:var(--pine);color:#eee6d7;transform:rotateY(180deg);border:1px solid var(--pine)}
+.fface .qlabel{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+.fback .qlabel{color:#a7c0d8}
+.ffront p{font-family:'Fraunces',serif;font-size:1.14rem;font-weight:500;line-height:1.28}
+.fback p{font-size:.93rem;line-height:1.45}
+.flip .tapn{position:absolute;bottom:14px;right:18px;font-size:.72rem;color:var(--ink-faint);font-weight:600}
+.fback .tapn{color:#8ba2bb}
+.quiz-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 34px 30px;box-shadow:var(--shadow-lg);max-width:720px}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.quiz-counter{font-size:.82rem;font-weight:700;color:var(--ink-faint);letter-spacing:.05em}
+.quiz-score{font-size:.82rem;font-weight:700;color:var(--clay)}
+.quiz-bar{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-bottom:22px}
+.quiz-bar i{display:block;height:100%;background:var(--clay);border-radius:99px;transition:width .4s}
+.quiz-q{font-family:'Fraunces',serif;font-size:1.34rem;font-weight:600;line-height:1.22;margin-bottom:22px}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{text-align:left;font-family:'Hanken Grotesk';font-size:.96rem;font-weight:600;padding:15px 18px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;transition:.16s;display:flex;align-items:center;gap:13px}
+.opt .ok{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem;font-weight:800;color:var(--ink-faint);transition:.16s}
+.opt:hover:not(.locked){border-color:var(--pine);transform:translateX(3px)}
+.opt.correct{border-color:#2c7a4b;background:#e7f3ea;color:#1c5232}
+.opt.correct .ok{background:#2c7a4b;border-color:#2c7a4b;color:#fff}
+.opt.wrong{border-color:var(--clay);background:#f8e6e0;color:var(--clay-2)}
+.opt.wrong .ok{background:var(--clay);border-color:var(--clay);color:#fff}
+.opt.locked{cursor:default}
+.opt.dim{opacity:.5}
+.explain{margin-top:18px;background:var(--surface-2);border-radius:13px;padding:15px 18px;font-size:.9rem;color:var(--ink-soft);display:none;border-left:4px solid var(--pine)}
+.explain.show{display:block;animation:fade .3s}
+.explain b{color:var(--ink)}
+.quiz-actions{margin-top:22px;display:flex;justify-content:flex-end}
+.btn{font-family:'Hanken Grotesk';font-size:.92rem;font-weight:700;padding:12px 26px;border-radius:12px;border:none;background:var(--pine);color:#eee6d7;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:9px}
+.btn:hover{background:var(--pine-2);transform:translateY(-2px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--pine);background:var(--surface-2)}
+.result{text-align:center;padding:20px 0}
+.result .rdonut{width:150px;height:150px;margin:0 auto 18px}
+.result h3{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;margin-bottom:6px}
+.result p{color:var(--ink-soft);margin-bottom:20px}
+.match-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.match-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+.mitem{padding:14px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);font-size:.86rem;font-weight:600;cursor:pointer;margin-bottom:10px;transition:.16s}
+.mitem:hover:not(.done){border-color:var(--pine);transform:translateX(3px)}
+.mitem.sel{border-color:var(--clay);background:#f8e6e0}
+.mitem.done{background:#e7f3ea;border-color:#2c7a4b;color:#1c5232;cursor:default;opacity:.85}
+.mitem.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.match-status{margin-top:18px;font-weight:700;color:var(--clay);min-height:24px}
+footer{padding:50px 26px 60px;text-align:center;background:var(--pine);color:#b7c6d6}
+footer .fbrand{font-family:'Fraunces',serif;color:#efe9dc;font-size:1.3rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.76rem;color:#8295a8;margin-top:18px;font-style:italic}
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr;gap:30px}
+  .brain-layout{grid-template-columns:1fr}
+  .tl-track{grid-template-columns:1fr;gap:14px}
+  .tl-track::before{display:none}
+  .tl-dot{margin-top:0}
+  .stages,.stages.four,.stages.three{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr}
+  .match-layout{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-brain{max-width:280px;margin:0 auto}
+}
+@media(max-width:520px){
+  .wrap,.nav-in{padding-left:18px;padding-right:18px}
+  .hero-in{padding-left:18px;padding-right:18px}
+  .quiz-card{padding:24px 20px}
+  .item-head{padding:16px;gap:12px}
+  .item-head .icat{display:none}
+  .stages,.stages.four,.stages.three{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav><div class="nav-in">
+  <a href="neuro.html" class="home-link" title="Zurück zur Neurologie-Startseite">← Neurologie</a>
+  <div class="brand"><span class="dot"></span> Rückenmark & peripher · Neurologie</div>
+  <div class="nav-links">
+    <a href="#ueberblick">Überblick</a>
+    <a href="#asia">ASIA-Skala</a>
+    <a href="#syndrome">Querschnitt-Syndrome</a>
+    <a href="#details">Krankheitsbilder</a>
+    <a href="#vergleich">Vergleich</a>
+    <a href="#lerncheck">Lerncheck</a>
+  </div>
+</div></nav>
+<header class="hero"><div class="hero-in">
+  <div>
+    <span class="eyebrow">Pathologie Neurologie · Kapitel 13, 14 &amp; 15</span>
+    <h1>Vom <em>Rückenmark</em> bis zum peripheren Nerv.</h1>
+    <p class="lead">Die Querschnittlähmung mit ihren Syndromen, die Polyneuropathie als bilaterale Nervenschädigung und das Guillain-Barré-Syndrom als aufsteigende Sonderform. Mit ASIA-Skala, Syndrom-Übersicht und interaktiven Lernchecks.</p>
+    <div class="hero-meta">
+      <div><b>3</b><span>Krankheitsbilder</span></div>
+      <div><b>5</b><span>Querschnitt-Syndrome</span></div>
+      <div><b>3</b><span>Lerncheck-Modi</span></div>
+    </div>
+  </div>
+  <div class="hero-brain">
+    <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <g stroke="#e8a48c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".92">
+        <path d="M100 20 C100 60 100 240 100 280"/>
+      </g>
+      <g fill="rgba(232,164,140,.13)" stroke="#f0c2af" stroke-width="1.8">
+        <rect x="84" y="34" width="32" height="17" rx="4"/><rect x="84" y="62" width="32" height="17" rx="4"/>
+        <rect x="84" y="90" width="32" height="17" rx="4"/><rect x="84" y="118" width="32" height="17" rx="4"/>
+        <rect x="84" y="146" width="32" height="17" rx="4"/><rect x="84" y="174" width="32" height="17" rx="4"/>
+        <rect x="84" y="202" width="32" height="17" rx="4"/><rect x="84" y="230" width="32" height="17" rx="4"/>
+      </g>
+      <circle cx="100" cy="150" r="3.4" fill="#e8a48c"/>
+    </svg>
+  </div>
+</div></header>
+
+<section id="ueberblick"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">01</span><div>
+    <h2>Überblick auf einen Blick</h2>
+    <p>Die drei Krankheitsbilder dieser Gruppe. Tippe auf eine Karte, um direkt zum Detailteil zu springen.</p>
+  </div></div>
+  <div class="grid" id="overviewGrid"></div>
+  <div class="legend">
+    <span><i style="background:#37607e"></i> Querschnittlähmung</span>
+    <span><i style="background:#b07d1e"></i> Polyneuropathie</span>
+    <span><i style="background:#bd4a30"></i> Guillain-Barré-Syndrom</span>
+  </div>
+</div></section>
+
+<section id="asia"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">02</span><div>
+    <h2>ASIA Impairment Scale</h2>
+    <p>Die Klassifikation der American Spinal Injury Association beschreibt das Ausmaß der Querschnittschädigung von komplett (A) bis normal (E).</p>
+  </div></div>
+  <div class="illo-wrap">
+    <div class="stages">
+      <div class="stage"><div class="sn">A</div><div class="sl">komplett</div><p>keine Motorik oder Sensibilität in S4–S5 und darunter</p></div>
+      <div class="stage"><div class="sn">B</div><div class="sl">inkomplett</div><p>nur Sensibilität in S4–S5 und darunter erhalten</p></div>
+      <div class="stage"><div class="sn">C</div><div class="sl">inkomplett</div><p>Motorik unterhalb erhalten, &gt;50 % der Kennmuskeln &lt; Grad 3</p></div>
+      <div class="stage"><div class="sn">D</div><div class="sl">inkomplett</div><p>Motorik unterhalb erhalten, &gt;50 % der Kennmuskeln ≥ Grad 3</p></div>
+      <div class="stage"><div class="sn">E</div><div class="sl">normal</div><p>Motorik und Sensibilität ohne Befund</p></div>
+    </div>
+    <div class="window-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+      <p><b>Spinaler Schock.</b> Bei abruptem Auftreten zunächst schlaffe Plegie mit Areflexie unterhalb der Läsion + sympathische Dysfunktion (für ca. 6 Wochen). Nach 4 Tagen bis 1 Monat kehren die Muskeleigenreflexe zurück, dann Hyperreflexie/Tonuszunahme. Nach ca. 6 Monaten ist das Vollbild ausgeprägt.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="syndrome"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">03</span><div>
+    <h2>Querschnitt-Syndrome</h2>
+    <p>Je nach Schädigungsmuster im Rückenmark entstehen charakteristische inkomplette Syndrome.</p>
+  </div></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Syndrom</th><th>Schädigung</th><th>Charakteristik</th></tr></thead>
+    <tbody>
+      <tr><td><b>Komplette Durchtrennung</b></td><td>gesamtes Rückenmark</td><td>vollständiger Ausfall von Motorik & Sensibilität unterhalb</td></tr>
+      <tr><td><b>Anterior-Cord-Syndrom</b></td><td>vordere & seitliche Bahnen, vordere graue Substanz</td><td>schlaffe Parese auf Läsionshöhe, darunter spastisch; <b>Propriozeption intakt</b>, Darm/Blase fehlen</td></tr>
+      <tr><td><b>Brown-Séquard-Syndrom</b></td><td>halbseitige Läsion</td><td>ipsilateral zentrale Parese ohne Propriozeption (sensorische Ataxie), kontralateral fehlende Temperatur-/Schmerzwahrnehmung</td></tr>
+      <tr><td><b>Central-Cord-Syndrom</b></td><td>zentrale Anteile, zervikal</td><td>Parese der oberen Extremität &gt; untere, Sensibilitätsstörung mit sakraler Aussparung</td></tr>
+      <tr><td><b>Conus-medullaris-Syndrom</b></td><td>Conus medullaris</td><td>Sensibilitätsstörung in „Reithosenform", reduzierte Sexualfunktion, Inkontinenz</td></tr>
+      <tr><td><b>Cauda-equina-Syndrom</b></td><td>Cauda equina</td><td>radikuläre Sensibilitätsstörungen, Schmerzen, schlaffe Paresen, evtl. Inkontinenz</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="details"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">04</span><div>
+    <h2>Die Krankheitsbilder im Detail</h2>
+    <p>Aufklappbar und einheitlich strukturiert: Definition → Ursache → Klinik → Diagnostik → Therapie. Jede Karte schließt mit einem <b>Merke</b>.</p>
+  </div></div>
+  <div class="acc" id="accordion"></div>
+</div></section>
+
+<section id="vergleich"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">05</span><div>
+    <h2>Schnellvergleich</h2>
+    <p>Die drei Krankheitsbilder nach Ursache, Verlauf und Schlüsselbefund.</p>
+  </div></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Erkrankung</th><th>Ursache / Mechanismus</th><th>Leitbild</th><th>Schlüssel</th></tr></thead>
+    <tbody>
+      <tr><td><b>Querschnittlähmung</b></td><td><span class="loc-pill">traumatisch / nicht-traum.</span></td><td>motorisch, sensibel, autonom unterhalb der Läsion</td><td>ASIA A–E; spinaler Schock</td></tr>
+      <tr><td><b>Polyneuropathie</b></td><td><span class="loc-pill">metabolisch/toxisch u.a.</span></td><td>bilateral-symmetrische, distal betonte Ausfälle</td><td>Diabetes/Alkohol; Strumpf-Handschuh</td></tr>
+      <tr><td><b>Guillain-Barré-Syndrom</b></td><td><span class="loc-pill">autoimmun</span></td><td>aufsteigende symmetrische schlaffe Paresen</td><td>zyto-albuminäre Dissoziation; AIDP</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="lerncheck" style="border-bottom:none"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">06</span><div>
+    <h2>Lerncheck</h2>
+    <p>Drei Modi zum aktiven Wiederholen. Erst raten, dann aufdecken — so bleibt es hängen.</p>
+  </div></div>
+  <div class="lc-tabs">
+    <button class="lc-tab active" data-panel="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Quiz</button>
+    <button class="lc-tab" data-panel="cards"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="14" rx="2"/><path d="M8 6V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg>Karteikarten</button>
+    <button class="lc-tab" data-panel="match"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 7h6M9 17h6M4 7h.01M4 12h.01M4 17h.01"/></svg>Zuordnung</button>
+  </div>
+  <div class="lc-panel show" id="panel-quiz"><div class="quiz-card" id="quizCard"></div></div>
+  <div class="lc-panel" id="panel-cards"><p style="color:var(--ink-soft);margin-bottom:18px;font-size:.92rem">Tippe eine Karte an, um die Antwort zu sehen.</p><div class="fc-grid" id="fcGrid"></div></div>
+  <div class="lc-panel" id="panel-match"><p style="color:var(--ink-soft);margin-bottom:18px;font-size:.92rem">Wähle links einen Befund, dann rechts die passende Zuordnung.</p><div class="match-layout"><div class="match-col"><h4>Befund</h4><div id="matchLeft"></div></div><div class="match-col"><h4>Zuordnung</h4><div id="matchRight"></div></div></div><div class="match-status" id="matchStatus"></div></div>
+</div></section>
+
+<footer>
+  <div class="fbrand">Rückenmark & peripher · Lernübersicht</div>
+  <p>Erstellt aus dem Skript „Pathologie und Pathophysiologie · Neurologie“ (Kap. 13 Querschnittlähmung, 14 Polyneuropathie, 15 Guillain-Barré-Syndrom) als strukturierte Lernhilfe für die physiotherapeutische Ausbildung.</p>
+  <p class="fnote">Lernzusammenfassung — ersetzt keine medizinische Diagnostik oder Behandlung. Im Zweifel immer das Originalskript prüfen.</p>
+</footer>
+
+<script>
+const CATS = {
+  quer:{label:'Querschnittlähmung',c:'#37607e',bg:'#dfe8ef'},
+  pnp:{label:'Polyneuropathie',c:'#b07d1e',bg:'#f4e9d2'},
+  gbs:{label:'Guillain-Barré',c:'#bd4a30',bg:'#f7e4dc'}
+};
+const icons = {
+  def:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>',
+  cause:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>',
+  epi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.1a4 4 0 0 1 0 7.8M21 21v-2a4 4 0 0 0-3-3.9"/></svg>',
+  clin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg>',
+  diag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  ther:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>',
+  path:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 7h4v4"/></svg>'
+};
+const P = [
+ {id:'querschnitt', no:'13', cat:'quer', title:'Querschnittlähmung', sub:'Schädigung des Rückenmarks',
+  short:'Vollständige oder anteilige Rückenmarksschädigung mit motorischen, sensiblen und autonomen Ausfällen.',
+  sections:[
+   {h:'Definition & Ursachen',ic:'def',blocks:[{type:'list',content:[
+     'vollständige oder anteilige Schädigung des Rückenmarks; akut oder chronisch-progredient','<b>traumatisch</b> (Trauma, pathologische Frakturen)','<b>nicht-traumatisch</b>: Bandscheibenvorfall, Neoplasien, Entzündung, Durchblutungsstörung','MS (43 % der nicht-traumatischen), Autoimmun (17 %), Strahlung']}]},
+   {h:'Epidemiologie',ic:'epi',blocks:[{type:'list',content:[
+     'traumatisch: 10–30 / 1.000.000 in Industrienationen','70 % der Betroffenen männlich, Unfallalter ~40 Jahre','nicht-traumatisch nimmt mit steigendem Alter zu']}]},
+   {h:'Klinik (3 Störungsebenen)',ic:'clin',blocks:[{type:'list',content:[
+     'häufigstes Frühzeichen: Schmerzsymptome','<b>motorisch</b>: initial schlaffe, dann spastische Para-/Tetraplegie','<b>sensibel</b>: unterhalb der Läsion Hyp-/Anästhesie, Hyp-/Analgesie','<b>autonom</b>: Blasen-, Darm-, Sexualfunktionsstörung, Herz-Kreislauf-Dysregulation']}]},
+   {h:'Spinaler Schock & ASIA',ic:'path',blocks:[{type:'list',content:[
+     'spinaler Schock: schlaffe Plegie + Areflexie unterhalb, sympathische Dysfunktion (~6 Wochen)','nach 4 Tagen–1 Monat: Rückkehr der Reflexe, dann Hyperreflexie/Tonuszunahme','Vollbild nach ca. 6 Monaten','Klassifikation nach <b>ASIA</b> (Impairment Scale A–E)']}]},
+   {h:'Höhenbezug',ic:'clin',blocks:[{type:'list',content:[
+     'Läsion oberhalb C5 (Pyramidenbahn): Tetraplegie möglich','zervikal/hochthorakal: Beatmungspflichtigkeit','oberhalb Th6: gestörte sympathische Herzinnervation','zervikale Myelopathie als Beispiel-Querschnittsyndrom']}]},
+   {h:'Diagnostik & Therapie',ic:'ther',blocks:[{type:'split',content:[
+     {h:'Diagnostik',cls:'cons',items:['klinisch nach ISNCSCI/ASIA-Protokoll (Reflexe, pathologische Reflexe)','CT/MRT für Kompression & Wirbelsäulenverletzung','neurophysiologisch: verbliebene Leitfähigkeit; ggf. Liquordiagnostik']},
+     {h:'Therapie',cls:'op',items:['initial intensivmedizinische Überwachung; alle 2–3 h en bloc umlagern','rekonstruktiv-operativ: Dekompression & Stabilisation, ggf. Sehnen-/Nerventransfer','Kortison bei Ödem; Antibiose bei Spondylitis/Abszess (≥ 3 Monate)']}]}]}
+  ],
+  merke:'Rückenmarksschädigung mit <b>motorischen, sensiblen und autonomen</b> Ausfällen unterhalb der Läsion. Akut <b>spinaler Schock</b> (schlaff → später spastisch). Einteilung nach <b>ASIA A–E</b>; Syndrome je nach Schädigungsmuster (Brown-Séquard, Central-/Anterior-Cord, Conus, Cauda).'},
+ {id:'polyneuropathie', no:'14', cat:'pnp', title:'Polyneuropathie (PNP)', sub:'Bilaterale Schädigung peripherer Nerven',
+  short:'Symmetrische, distal betonte Schädigung mehrerer peripherer Nerven — oft durch Diabetes oder Alkohol.',
+  sections:[
+   {h:'Definition & Ursachen',ic:'def',blocks:[{type:'list',content:[
+     'bilaterale, symmetrische axonale Schädigung mehrerer peripherer Nerven','akut (z.B. Alkoholismus) oder chronisch (z.B. Diabetes mellitus)','Ursachen: metabolisch (Diabetes), medikamentös (Chemo), toxisch (Blei), infektiös (Diphterie), autoimmun (GBS), mangelbedingt (Vit. B1)']}]},
+   {h:'Akute PNP (Alkohol)',ic:'clin',blocks:[{type:'list',content:[
+     'Phase 1: AZ-Verschlechterung, Reizbarkeit, Verlust von Hungergefühl → Gewichtsverlust; distale Parästhesien, nächtliche Schmerzen, unsicheres Gehen','Phase 2: periphere, symmetrische schlaffe Paresen, distale Sensibilitätsausfälle, zyanotische Akren, Hyperhidrose; Waller-Degeneration im EMG','Phase 3: schlechte Regeneration, neurovegetative/trophische Folgen','Komplikationen: Delirium tremens, Wernicke-, Korsakow-Syndrom']}]},
+   {h:'Chronische PNP (Diabetes)',ic:'clin',blocks:[{type:'list',content:[
+     'Sensibilitätsstörungen im Vordergrund','progredienter Verlust der Propriozeption → propriozeptive Gang-/Standataxie','ggf. motorische Symptome','ENG: reduzierte Leitgeschwindigkeit propriozeptiver (& motorischer) Fasern']}]},
+   {h:'Diagnostik & Therapie',ic:'ther',blocks:[{type:'split',content:[
+     {h:'Diagnostik',cls:'cons',items:['Anamnese (Verlauf, Nebendiagnosen)','Elektroneurografie (sensibel/motorisch)','Labor- und Liquordiagnostik']},
+     {h:'Therapie',cls:'op',items:['kausal soweit möglich: Vitaminmangel ausgleichen, Noxen meiden','sonst symptomorientiert','Fokus: Wiederherstellung posturaler Funktionen & Gestik']}]}]}
+  ],
+  merke:'<b>Bilateral-symmetrische</b>, distal betonte Schädigung peripherer Nerven. Häufigste Ursachen <b>Diabetes</b> (chronisch, sensibel/propriozeptiv) und <b>Alkohol</b> (akut, 3 Phasen). Im ENG reduzierte Leitgeschwindigkeit.'},
+ {id:'gbs', no:'15', cat:'gbs', title:'Guillain-Barré-Syndrom (GBS)', sub:'Akute autoimmune Polyradikuloneuropathie',
+  short:'Sonderform der PNP: aufsteigende, symmetrische schlaffe Paresen nach vorausgegangener Infektion.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[{type:'list',content:[
+     'autoimmune, akute Polyradikuloneuropathie mit motorischer, sensibler und vegetativer Beteiligung','zunächst Nervenwurzeln, später der gesamte Nervenverlauf betroffen','Sonderform der Polyneuropathie']}]},
+   {h:'Ätiologie & Epidemiologie',ic:'cause',blocks:[{type:'list',content:[
+     'Antikörper gegen Myelin/Ganglioside peripherer Nerven','meist nach viraler/bakterieller Infektion (EBV, Campylobacter jejuni/coli)','Altersgipfel 70–80 J; 4–5 / 100.000; Männer ~2:1','Varianten: AIDP (häufigste in Europa), AMAN, AMSAN, Miller-Fisher, CIDP']}]},
+   {h:'Klinik & Verlauf',ic:'clin',blocks:[{type:'list',content:[
+     'Beginn: Taubheit + schlaffe Paresen der Füße','Stunden bis Tage: symmetrisch aufsteigend, auch obere Extremität; Hypo-/Areflexie','Beteiligung von Rumpf-, Gesichts-, Schluck- und Atemmuskulatur; starke Schmerzen','Plateauphase ~1 Woche, Rückbildung in umgekehrter Reihenfolge über Wochen–Monate','Prognose gut; bei AIDP Motorik nach ~3 Monaten, axonale Varianten &gt; 1 Jahr']}]},
+   {h:'Diagnostik',ic:'diag',blocks:[{type:'list',content:[
+     'Liquor: <b>zyto-albuminäre Dissoziation</b> (Eiweiß↑ bei normaler Zellzahl)','ENG/EMG: verlangsamte Nervenleitgeschwindigkeit, Variantendifferenzierung','ggf. MRT','DD: Rückenmarksinfarkt, Poliomyelitis, Cauda-Kompression, Myasthenia gravis']}]},
+   {h:'Therapie',ic:'ther',blocks:[{type:'list',content:[
+     'keine kausale Therapie','Plateauphase: ggf. Intensivbehandlung (Beatmung, Ernährung, Monitoring)','Immunmodulation: Plasmapherese oder i.v. Immunglobuline (bei schwerem GBS hochdosiert 7S-Ig)','Analgetika bedarfsorientiert']}]}
+  ],
+  merke:'Autoimmune, <b>aufsteigende</b> symmetrische schlaffe Paresen nach Infektion (oft Campylobacter). Liquor: <b>zyto-albuminäre Dissoziation</b>. Häufigste Variante AIDP. Therapie: Plasmapherese oder i.v. Immunglobuline — gute, aber langsame Prognose.'}
+];
+
+const og=document.getElementById('overviewGrid');
+P.forEach(p=>{const cat=CATS[p.cat];const a=document.createElement('a');a.href='#'+p.id;a.className='pcard';a.style.setProperty('--c',cat.c);a.innerHTML='<span class="pno">'+p.no+'</span><span class="ptag">'+cat.label+'</span><h3>'+p.title+'</h3><p>'+p.short+'</p><span class="arrow">Zum Detail →</span>';a.addEventListener('click',e=>{e.preventDefault();openAndScroll(p.id);});og.appendChild(a);});
+const acc=document.getElementById('accordion');
+function renderBlocks(blocks){return blocks.map(b=>{if(b.type==='text')return '<p class="pp">'+b.content+'</p>';if(b.type==='list')return '<ul class="ul">'+b.content.map(i=>'<li>'+i+'</li>').join('')+'</ul>';if(b.type==='split')return '<div class="split">'+b.content.map(col=>'<div class="split-col '+col.cls+'"><h6>'+col.h+'</h6><ul class="ul">'+col.items.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>').join('')+'</div>';return '';}).join('');}
+P.forEach(p=>{const cat=CATS[p.cat];const item=document.createElement('div');item.className='item';item.id=p.id;item.style.setProperty('--c',cat.c);item.style.setProperty('--cbg',cat.bg);const body=p.sections.map(s=>'<div class="block"><h5 style="color:'+cat.c+'">'+(icons[s.ic]||'')+s.h+'</h5>'+renderBlocks(s.blocks)+'</div>').join('');item.innerHTML='<div class="item-head" role="button" tabindex="0"><span class="ino">'+p.no+'</span><div class="ititle"><h3>'+p.title+'</h3><div class="isub">'+p.sub+'</div></div><span class="icat">'+cat.label+'</span><svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div><div class="item-body"><div class="item-body-in"><div class="bgrid">'+body+'<div class="merke"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg><p><b>Merke.</b> '+p.merke+'</p></div></div></div></div>';acc.appendChild(item);const head=item.querySelector('.item-head');const bd=item.querySelector('.item-body');const toggle=()=>{const open=item.classList.toggle('open');bd.style.maxHeight=open?bd.scrollHeight+'px':'0';};head.addEventListener('click',toggle);head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});});
+function openAndScroll(id){const item=document.getElementById(id);if(item&&!item.classList.contains('open')){item.classList.add('open');const b=item.querySelector('.item-body');b.style.maxHeight=b.scrollHeight+'px';}setTimeout(()=>item.scrollIntoView({behavior:'smooth',block:'center'}),120);}
+window.addEventListener('resize',()=>{document.querySelectorAll('.item.open .item-body').forEach(b=>b.style.maxHeight=b.scrollHeight+'px');});
+
+document.querySelectorAll('.lc-tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.lc-tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.lc-panel').forEach(x=>x.classList.remove('show'));t.classList.add('active');document.getElementById('panel-'+t.dataset.panel).classList.add('show');});});
+
+const FC=[
+ ['Welche drei Störungsebenen treten bei der Querschnittlähmung auf?','Motorisch (schlaff→spastisch), sensibel (Anästhesie/Analgesie unterhalb) und autonom (Blase/Darm/Sexual/Kreislauf)'],
+ ['Was ist der spinale Schock?','Initial schlaffe Plegie mit Areflexie unterhalb + sympathische Dysfunktion für ca. 6 Wochen'],
+ ['Wofür steht die ASIA-Klassifikation A?','Komplett: keine Motorik oder Sensibilität in S4–S5 und darunter'],
+ ['Was kennzeichnet das Brown-Séquard-Syndrom?','Halbseitige Läsion: ipsilateral zentrale Parese ohne Propriozeption, kontralateral fehlende Temperatur-/Schmerzwahrnehmung'],
+ ['Was ist typisch für das Central-Cord-Syndrom?','Parese der oberen Extremität stärker als der unteren, mit sakraler Aussparung'],
+ ['Wodurch ist eine Polyneuropathie definiert?','Bilaterale, symmetrische axonale Schädigung mehrerer peripherer Nerven'],
+ ['Was sind die zwei häufigsten PNP-Ursachen?','Diabetes mellitus (chronisch) und Alkoholismus (akut)'],
+ ['Was steht bei der diabetischen PNP im Vordergrund?','Sensibilitätsstörungen mit Verlust der Propriozeption → propriozeptive Gang-/Standataxie'],
+ ['Was ist das Guillain-Barré-Syndrom?','Eine akute autoimmune Polyradikuloneuropathie mit aufsteigenden symmetrischen schlaffen Paresen'],
+ ['Welcher Liquorbefund ist typisch für das GBS?','Zyto-albuminäre Dissoziation: erhöhtes Eiweiß bei normaler Zellzahl'],
+ ['Welche Infektion geht dem GBS oft voraus?','Eine virale oder bakterielle Infektion, u.a. mit Campylobacter jejuni oder EBV'],
+ ['Wie wird das GBS behandelt?','Immunmodulation per Plasmapherese oder i.v. Immunglobulinen (keine kausale Therapie)']
+];
+const fcGrid=document.getElementById('fcGrid');
+FC.forEach(qa=>{const card=document.createElement('div');card.className='flip';card.innerHTML='<div class="flip-in"><div class="fface ffront"><div class="qlabel">Frage</div><p>'+qa[0]+'</p><span class="tapn">tippen ↻</span></div><div class="fface fback"><div class="qlabel">Antwort</div><p>'+qa[1]+'</p><span class="tapn">↻ zurück</span></div></div>';card.addEventListener('click',()=>card.classList.toggle('flipped'));fcGrid.appendChild(card);});
+
+const QUIZ=[
+ {q:'Welche drei Störungsebenen kennzeichnen die Querschnittlähmung?',o:[['nur motorisch',0],['motorisch, sensibel und autonom',1],['nur sensibel und autonom',0],['kognitiv, motorisch, visuell',0]],e:'Es treten motorische, sensible und autonome Störungen unterhalb der Läsion auf.'},
+ {q:'Was passiert im spinalen Schock?',o:[['sofortige Spastik',0],['schlaffe Plegie mit Areflexie unterhalb der Läsion',1],['ausschließlich Sensibilitätsverlust',0],['keine Ausfälle',0]],e:'Im spinalen Schock besteht zunächst eine schlaffe Plegie mit Areflexie + sympathische Dysfunktion für ca. 6 Wochen.'},
+ {q:'Was bedeutet ASIA A?',o:[['normal',0],['komplett — kein Motorik/Sensibilität in S4–S5',1],['nur Sensibilität erhalten',0],['Motorik > Grad 3',0]],e:'ASIA A ist die komplette Läsion ohne Motorik oder Sensibilität in S4–S5 und darunter.'},
+ {q:'Was kennzeichnet das Brown-Séquard-Syndrom?',o:[['komplette Durchtrennung',0],['halbseitige Läsion mit gekreuzter Symptomatik',1],['nur Cauda-Schädigung',0],['rein motorisch',0]],e:'Bei der halbseitigen Läsion (Brown-Séquard) sind ipsilateral Motorik/Propriozeption, kontralateral Temperatur/Schmerz betroffen.'},
+ {q:'Welches Syndrom zeigt obere Extremität stärker betroffen als untere?',o:[['Anterior-Cord-Syndrom',0],['Central-Cord-Syndrom',1],['Conus-Syndrom',0],['Cauda-Syndrom',0]],e:'Das Central-Cord-Syndrom (zervikal) betrifft die obere Extremität stärker, mit sakraler Aussparung.'},
+ {q:'Wie ist die Polyneuropathie definiert?',o:[['einseitige Nervenläsion',0],['bilaterale, symmetrische Schädigung mehrerer peripherer Nerven',1],['zentrale Demyelinisierung',0],['Schädigung nur motorischer Bahnen',0]],e:'Die PNP ist eine bilaterale, symmetrische axonale Schädigung mehrerer peripherer Nerven.'},
+ {q:'Was sind die zwei häufigsten Ursachen der PNP?',o:[['Diabetes und Alkohol',1],['Trauma und Tumor',0],['Virus und Bakterien',0],['Kälte und Hitze',0]],e:'Am häufigsten sind Diabetes mellitus (chronisch) und Alkoholismus (akut).'},
+ {q:'Was steht bei der diabetischen PNP im Vordergrund?',o:[['motorische Lähmungen',0],['Sensibilitätsstörungen mit propriozeptiver Ataxie',1],['Atemlähmung',0],['Aphasie',0]],e:'Bei der diabetischen PNP dominieren Sensibilitätsstörungen mit Verlust der Propriozeption.'},
+ {q:'Was beschreibt das Guillain-Barré-Syndrom am besten?',o:[['absteigende spastische Lähmung',0],['aufsteigende symmetrische schlaffe Paresen, autoimmun',1],['einseitige Gesichtslähmung',0],['zentrale Demyelinisierung',0]],e:'Das GBS ist eine akute autoimmune Polyradikuloneuropathie mit aufsteigenden, symmetrischen schlaffen Paresen.'},
+ {q:'Welcher Liquorbefund ist typisch für das GBS?',o:[['eitrig-trüb',0],['zyto-albuminäre Dissoziation',1],['oligoklonale Banden',0],['blutig',0]],e:'Typisch ist die zyto-albuminäre Dissoziation: erhöhtes Eiweiß bei normaler Zellzahl.'},
+ {q:'Was geht dem GBS häufig voraus?',o:[['ein Schlaganfall',0],['eine virale/bakterielle Infektion (z.B. Campylobacter)',1],['ein Trauma',0],['eine Impfung gegen Tetanus',0]],e:'Dem GBS geht oft eine Infektion voraus, u.a. mit Campylobacter jejuni oder dem Epstein-Barr-Virus.'},
+ {q:'Wie wird das GBS behandelt?',o:[['Antibiotika',0],['Plasmapherese oder i.v. Immunglobuline',1],['L-Dopa',0],['Lyse',0]],e:'Das GBS wird per Immunmodulation behandelt: Plasmapherese oder intravenöse Immunglobuline.'}
+];
+let qi=0,score=0,locked=false;
+const quizCard=document.getElementById('quizCard');
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function renderQ(){locked=false;const item=QUIZ[qi];const opts=shuffle(item.o.slice());const letters=['A','B','C','D'];quizCard.innerHTML='<div class="quiz-top"><span class="quiz-counter">Frage '+(qi+1)+' / '+QUIZ.length+'</span><span class="quiz-score">'+score+' richtig</span></div><div class="quiz-bar"><i style="width:'+((qi/QUIZ.length)*100)+'%"></i></div><div class="quiz-q">'+item.q+'</div><div class="opts">'+opts.map((o,i)=>'<button class="opt" data-correct="'+o[1]+'"><span class="ok">'+letters[i]+'</span><span>'+o[0]+'</span></button>').join('')+'</div><div class="explain" id="explain"><b>Erklärung.</b> '+item.e+'</div><div class="quiz-actions"><button class="btn" id="nextBtn" disabled>'+(qi===QUIZ.length-1?'Ergebnis ansehen':'Weiter')+' →</button></div>';quizCard.querySelectorAll('.opt').forEach(btn=>{btn.addEventListener('click',()=>{if(locked)return;locked=true;const correct=btn.dataset.correct==='1';if(correct){btn.classList.add('correct');score++;}else{btn.classList.add('wrong');quizCard.querySelectorAll('.opt').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct');});}quizCard.querySelectorAll('.opt').forEach(b=>{b.classList.add('locked');if(!b.classList.contains('correct')&&!b.classList.contains('wrong'))b.classList.add('dim');});document.getElementById('explain').classList.add('show');document.getElementById('nextBtn').disabled=false;quizCard.querySelector('.quiz-score').textContent=score+' richtig';});});document.getElementById('nextBtn').addEventListener('click',()=>{qi++;if(qi<QUIZ.length)renderQ();else renderResult();});}
+function renderResult(){const pct=Math.round(score/QUIZ.length*100);const circ=2*Math.PI*60;const off=circ-(pct/100)*circ;let msg=pct>=85?'Stark! Rückenmark & peripher sitzen. 🧠':pct>=60?'Solide Basis — ein paar Punkte nochmal ansehen.':'Guter Anfang — wiederhole die Detailkarten und versuch es erneut.';quizCard.innerHTML='<div class="result"><svg class="rdonut" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="#e8dfce" stroke-width="12"/><circle cx="70" cy="70" r="60" fill="none" stroke="#bd4a30" stroke-width="12" stroke-linecap="round" stroke-dasharray="'+circ+'" stroke-dashoffset="'+off+'" transform="rotate(-90 70 70)"/><text x="70" y="66" text-anchor="middle" font-family="Fraunces" font-size="30" font-weight="600" fill="#22251f">'+pct+'%</text><text x="70" y="88" text-anchor="middle" font-family="Hanken Grotesk" font-size="12" fill="#8a8d82">'+score+'/'+QUIZ.length+'</text></svg><h3>Quiz abgeschlossen</h3><p>'+msg+'</p><button class="btn ghost" id="restart">↺ Nochmal versuchen</button></div>';document.getElementById('restart').addEventListener('click',()=>{qi=0;score=0;renderQ();});}
+renderQ();
+
+const PAIRS=[
+ {l:'Schlaffe Plegie + Areflexie, ~6 Wochen',r:'Spinaler Schock'},
+ {l:'ASIA A',r:'Komplette Läsion'},
+ {l:'Halbseitig, gekreuzte Ausfälle',r:'Brown-Séquard-Syndrom'},
+ {l:'Bilateral-symmetrisch, Diabetes/Alkohol',r:'Polyneuropathie'},
+ {l:'Aufsteigende schlaffe Paresen, autoimmun',r:'Guillain-Barré-Syndrom'},
+ {l:'Zyto-albuminäre Dissoziation',r:'Liquorbefund beim GBS'}
+];
+const ml=document.getElementById('matchLeft'),mr=document.getElementById('matchRight'),ms=document.getElementById('matchStatus');
+let selLeft=null,solved=0;
+function buildMatch(){ml.innerHTML='';mr.innerHTML='';selLeft=null;solved=0;ms.textContent='';PAIRS.forEach((p,i)=>{const a=document.createElement('div');a.className='mitem';a.textContent=p.l;a.dataset.i=i;ml.appendChild(a);});shuffle(PAIRS.map((_,i)=>i)).forEach(i=>{const b=document.createElement('div');b.className='mitem';b.textContent=PAIRS[i].r;b.dataset.i=i;mr.appendChild(b);});ml.querySelectorAll('.mitem').forEach(el=>el.addEventListener('click',()=>{if(el.classList.contains('done'))return;ml.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');selLeft=el;}));mr.querySelectorAll('.mitem').forEach(el=>el.addEventListener('click',()=>{if(el.classList.contains('done')||!selLeft)return;if(el.dataset.i===selLeft.dataset.i){el.classList.add('done');selLeft.classList.add('done');selLeft.classList.remove('sel');selLeft=null;solved++;ms.style.color='#2c7a4b';ms.textContent=solved===PAIRS.length?'✓ Alle Zuordnungen korrekt! Sauber gemacht.':solved+' / '+PAIRS.length+' richtig zugeordnet';}else{el.classList.add('shake');setTimeout(()=>el.classList.remove('shake'),350);ms.style.color='#bd4a30';ms.textContent='Nicht ganz — versuch eine andere Zuordnung.';}}));}
+buildMatch();
+document.querySelector('[data-panel="match"]').addEventListener('click',buildMatch);
+
+const prog=document.getElementById('progress');
+const navLinks=Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+const secIds=navLinks.map(a=>a.getAttribute('href').slice(1));
+function onScroll(){const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';let cur=secIds[0];secIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<160)cur=id;});navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+</script>
+</body>
+</html>

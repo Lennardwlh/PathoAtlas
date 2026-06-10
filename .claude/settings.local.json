@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node /tmp/extract_paths.js)",
+      "Bash(which node *)",
+      "Bash(grep -oE \"id:'jumper'.{0,120}\" knie_lernuebersicht.html)",
+      "Bash(cd \"/Users/lennardwilhelms/Library/Mobile Documents/com~apple~CloudDocs/orthopädie Pathologien/\")",
+      "Bash(date +%Y%m%d_%H%M%S)",
+      "Bash(mkdir -p _backup___TRACKED_VAR__)",
+      "Bash(cp *.html _backup___TRACKED_VAR__/)",
+      "Bash(echo 'Backup erstellt in _backup___TRACKED_VAR__/:')",
+      "Bash(python3 /tmp/build_index.py)",
+      "Bash(cd \"/Users/lennardwilhelms/Library/Mobile Documents/com~apple~CloudDocs/orthopädie Pathologien/\" && mkdir -p .claude && ls -la .claude)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python3 /tmp/extract_paths.py)",
+      "Bash(cd \"/Users/lennardwilhelms/Library/Mobile Documents/com~apple~CloudDocs/orthopädie Pathologien\")",
+      "Bash(cp index.html *_lernuebersicht.html _backup___TRACKED_VAR__/)",
+      "Bash(echo 'Backup created: _backup___TRACKED_VAR__')",
+      "Bash(ls _backup___TRACKED_VAR__)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 /tmp/polish.py)",
+      "Bash(echo \"---exit $?---\")",
+      "Bash(grep -iE \"changelog|aenderung|änderung|notes|readme|\\\\.md$\")",
+      "Bash(python3 -)",
+      "Bash(python3 openandscroll_fix.py)",
+      "Bash(python3 brand_link_fix.py)",
+      "Bash(python3 neuro_section_brand.py)",
+      "Bash(python3 /tmp/navfix.py)",
+      "Bash(python3 /tmp/deeplink_clusters.py)",
+      "Bash(grep -vE \"\\\\.html$|^_backup\")",
+      "Bash(grep -cE \"color:'#[0-9a-f]{6}', bg:'#[0-9a-f]{6}', ready:true\" neuro.html)",
+      "Bash(python3 /tmp/pyramid.py)"
+    ]
+  }
+}

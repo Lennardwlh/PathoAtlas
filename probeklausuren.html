@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Probeklausuren · Pathologie-Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;--surface:#FBF8F2;--surface-2:#F3EDE2;--ink:#22251f;--ink-soft:#5c6056;--ink-faint:#8a8d82;
+  --line:#d9d0c1;--line-soft:#e6ddce;--clay:#bd4a30;--clay-2:#a73d27;--ochre:#b07d1e;--cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);--r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--clay);color:#fff}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.84);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1080px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:18px}
+.home-link{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);white-space:nowrap}
+.home-link:hover{background:var(--surface-2);color:var(--ink);border-color:var(--ink-faint)}
+.brand{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap;text-decoration:none;color:inherit;margin-left:auto}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+/* HERO */
+header.hero{background:radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.34),transparent 55%),radial-gradient(90% 80% at 6% 110%,rgba(176,125,30,.34),transparent 55%),linear-gradient(160deg,#6f4a22,#34230f 72%);color:#f3ece0;position:relative;overflow:hidden;border-bottom:1px solid #1d1206}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+.hero-in{max-width:1080px;margin:0 auto;padding:66px 26px 70px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#dcc59c;margin-bottom:20px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#dcc59c;display:inline-block}
+.hero h1{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:clamp(2.3rem,5.2vw,3.9rem);line-height:1.02;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#f0c98f}
+.hero p.lead{margin-top:20px;font-size:1.06rem;max-width:34rem;color:#e3d8c4}
+.hero-meta{margin-top:28px;display:flex;gap:28px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',ui-serif,Georgia,serif;font-size:1.8rem;font-weight:600;line-height:1;color:#f6efe3}
+.hero-meta span{font-size:.76rem;color:#cbb892;margin-top:4px;letter-spacing:.03em}
+/* SECTION + EXAM CARDS */
+section{padding:56px 0}
+.sec-head{margin-bottom:26px}
+.sec-head h2{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.02em}
+.sec-head p{color:var(--ink-soft);margin-top:6px;max-width:42rem}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.exam{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 24px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.exam::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--clay),var(--ochre))}
+.exam:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--ochre)}
+.exam .eno{font-family:'Fraunces',ui-serif,Georgia,serif;font-size:.95rem;font-weight:600;color:#fff;background:var(--clay);width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:16px}
+.exam h3{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:1.3rem;letter-spacing:-.01em;line-height:1.15}
+.exam .edesc{font-size:.92rem;color:var(--ink-soft);margin-top:8px}
+.exam .etags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.exam .etags span{font-size:.72rem;font-weight:600;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);padding:4px 9px;border-radius:999px}
+.exam .emeta{display:flex;gap:18px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
+.exam .emeta div{display:flex;flex-direction:column}
+.exam .emeta b{font-size:.92rem;font-weight:800;color:var(--ink)}
+.exam .emeta span{font-size:.7rem;color:var(--ink-faint);letter-spacing:.03em}
+.exam .ego{margin-top:18px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;color:#fff;background:var(--clay);padding:11px 20px;border-radius:11px;width:fit-content;transition:gap .2s,filter .2s}
+.exam:hover .ego{gap:13px;filter:brightness(1.05)}
+.exam .ego svg{width:16px;height:16px}
+.hint{margin-top:22px;display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--surface-2);border:1px dashed var(--line);border-radius:13px;color:var(--ink-soft);font-size:.9rem}
+.hint svg{width:20px;height:20px;color:var(--ochre);flex-shrink:0}
+/* FOOTER */
+footer{padding:48px 26px 56px;text-align:center;background:#34230f;color:#cbb892;margin-top:24px}
+footer .fbrand{font-family:'Fraunces',ui-serif,Georgia,serif;color:#f3ece0;font-size:1.25rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.76rem;color:#9a875f;margin-top:16px;font-style:italic}
+@media(max-width:560px){.wrap,.nav-in,.hero-in{padding-left:18px;padding-right:18px}}
+a:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav><div class="nav-in">
+  <a href="index.html" class="home-link" title="Zur Startseite">← Startseite</a>
+  <a class="brand" href="index.html"><span class="dot"></span> Probeklausuren</a>
+</div></nav>
+
+<header class="hero"><div class="hero-in">
+  <span class="eyebrow">Prüfungssimulation · Pathologie-Atlas</span>
+  <h1>Probe<em>klausuren</em> im echten Format.</h1>
+  <p class="lead">Übe unter realistischen Bedingungen: festes Zeitlimit, gemischte Aufgabentypen und Selbstkorrektur mit Punkten. Wähle eine Klausur und leg los.</p>
+  <div class="hero-meta">
+    <div><b id="examCount">1</b><span id="examCountLabel">Probeklausur</span></div>
+    <div><b>Timer</b><span>echtes Zeitlimit</span></div>
+    <div><b>Auto</b><span>Selbstkorrektur</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="sec-head">
+    <h2>Verfügbare Klausuren</h2>
+    <p>Jede Klausur läuft offline im Browser — dein Fortschritt bleibt lokal auf deinem Gerät.</p>
+  </div>
+  <div class="exam-grid" id="examGrid"></div>
+  <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg> Weitere Probeklausuren folgen — sie erscheinen hier automatisch, sobald sie ergänzt werden.</div>
+</div></section>
+
+<footer>
+  <div class="fbrand">Probeklausuren · Pathologie-Atlas</div>
+  <p>Prüfungssimulationen für die physiotherapeutische Ausbildung. Alle Inhalte dienen ausschließlich der Ausbildung.</p>
+  <p class="fnote">Kein Server · Keine Datenbank · Lokal im Browser · Fortschritt nur im eigenen Browser gespeichert.</p>
+</footer>
+
+<script>
+/* ============================================================
+   DATENGETRIEBEN — neue Probeklausur: ein Objekt ergänzen.
+   file -> relativer Pfad zur Klausur-HTML im Ordner Probeklausuren/
+   ============================================================ */
+const EXAMS = [
+  {
+    no:'01',
+    title:'Chronischer & akuter Schmerz',
+    file:'Probeklausuren/Klausur_Chronischer_und_akuter_Schmerz.html',
+    desc:'Chronische Erkrankungen, chronischer und akuter Schmerz. Bei jedem Start wird aus einem Pool von ~50 Fragen zufällig eine neue Variante gezogen (5 + 4 + 4 Aufgaben) — mit Selbstkorrektur.',
+    tags:['Chron. Erkrankungen','Chron. Schmerz','Akuter Schmerz'],
+    dauer:'60 Min', aufgaben:'13 Aufgaben', punkte:'~50'
+  }
+];
+
+const goIcon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+const grid=document.getElementById('examGrid');
+EXAMS.forEach(e=>{
+  const a=document.createElement('a');
+  a.className='exam'; a.href=e.file;
+  a.innerHTML='<span class="eno">'+e.no+'</span><h3>'+e.title+'</h3><p class="edesc">'+e.desc+'</p>'
+    +'<div class="etags">'+e.tags.map(t=>'<span>'+t+'</span>').join('')+'</div>'
+    +'<div class="emeta"><div><b>'+e.dauer+'</b><span>Dauer</span></div><div><b>'+e.aufgaben+'</b><span>Umfang</span></div><div><b>'+e.punkte+'</b><span>Fragenpool</span></div></div>'
+    +'<span class="ego">Klausur starten '+goIcon+'</span>';
+  grid.appendChild(a);
+});
+document.getElementById('examCount').textContent=EXAMS.length;
+document.getElementById('examCountLabel').textContent=EXAMS.length===1?'Probeklausur':'Probeklausuren';
+
+/* progress bar */
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';},{passive:true});
+</script>
+</body>
+</html>

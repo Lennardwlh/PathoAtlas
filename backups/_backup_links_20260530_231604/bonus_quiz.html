@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonus · Großes Abschlussquiz · Orthopädie Pathologien</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;--surface:#FBF8F2;--surface-2:#F3EDE2;
+  --ink:#22251f;--ink-soft:#5c6056;--ink-faint:#8a8d82;
+  --line:#d9d0c1;--line-soft:#e6ddce;
+  --pine:#1f3d33;--pine-2:#2c5446;--clay:#bd4a30;--clay-2:#a73d27;
+  --ochre:#b07d1e;--steel:#37607e;--plum:#834d63;--teal:#2a7a6e;--sage:#4a7a55;
+  --cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--pine);color:#f4efe4}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .25s linear}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1080px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:16px}
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--ink-soft);text-decoration:none;padding:8px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);transition:.16s;white-space:nowrap}
+.nav-back:hover{border-color:var(--pine);color:var(--ink);background:var(--surface-2)}
+.nav-back svg{width:15px;height:15px}
+.brand{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap;text-decoration:none;color:inherit}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16);flex-shrink:0}
+.best-chip{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:var(--ink-soft);background:var(--surface);border:1.5px solid var(--line);padding:8px 14px;border-radius:999px;white-space:nowrap}
+.best-chip svg{width:14px;height:14px;color:var(--ochre)}
+
+header.hero{
+  background:
+    radial-gradient(120% 120% at 90% -20%,rgba(189,74,48,.34),transparent 55%),
+    radial-gradient(90% 90% at 4% 120%,rgba(55,96,126,.28),transparent 55%),
+    linear-gradient(160deg,#234438,#19302a 70%);
+  color:#efe9dc;position:relative;overflow:hidden;border-bottom:1px solid #0f1f1a}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+.hero-in{max-width:1080px;margin:0 auto;padding:58px 26px 62px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9b69b;margin-bottom:18px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#c9b69b;display:inline-block}
+.hero h1{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.03;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#e8a48c}
+.hero p.lead{margin-top:18px;font-size:1.05rem;max-width:40rem;color:#d6cfbf;line-height:1.55}
+.hero-meta{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.7rem;font-weight:600;line-height:1;color:#f3eee2}
+.hero-meta span{font-size:.76rem;color:#b3a890;margin-top:4px;letter-spacing:.03em}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+section.quiz-sec{padding:56px 0 40px}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:30px;flex-wrap:wrap}
+.sec-num{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1rem;font-weight:600;color:var(--clay);border:1.5px solid var(--clay);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.sec-head h2{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(1.6rem,3.2vw,2.3rem);letter-spacing:-.02em;line-height:1.05}
+.sec-head p{color:var(--ink-soft);font-size:.96rem;max-width:44rem;margin-top:2px}
+
+.quiz-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 34px 30px;box-shadow:var(--shadow-lg);max-width:760px;margin:0 auto}
+.quiz-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:12px;flex-wrap:wrap}
+.quiz-tags{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.region-tag{font-size:.66rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:999px;border:1.5px solid currentColor}
+.qtype-badge{font-size:.66rem;font-weight:700;letter-spacing:.04em;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);padding:4px 11px;border-radius:999px}
+.quiz-score{font-size:.82rem;font-weight:800;color:var(--clay);white-space:nowrap}
+.quiz-counter{font-size:.78rem;font-weight:700;color:var(--ink-faint);letter-spacing:.04em;display:block;margin-bottom:8px}
+.quiz-bar{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-bottom:22px}
+.quiz-bar i{display:block;height:100%;background:var(--clay);border-radius:99px;transition:width .4s}
+.quiz-q{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.36rem;font-weight:600;line-height:1.25;margin-bottom:20px}
+.quiz-help{font-size:.85rem;color:var(--ink-soft);margin-bottom:16px;background:var(--surface-2);border-radius:10px;padding:10px 14px;border-left:3px solid var(--ink-faint)}
+
+.opts{display:flex;flex-direction:column;gap:11px}
+.opts.tf{flex-direction:row;gap:12px}
+.opts.tf .opt{flex:1;justify-content:center}
+.opt{text-align:left;font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.96rem;font-weight:600;padding:15px 18px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;transition:.16s;display:flex;align-items:center;gap:13px;width:100%}
+.opt .ok{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem;font-weight:800;color:var(--ink-faint);transition:.16s}
+.opt:hover:not(.locked){border-color:var(--pine);transform:translateX(3px)}
+.opt.selected{border-color:var(--pine);background:var(--surface-2)}
+.opt.selected .ok{background:var(--pine);border-color:var(--pine);color:#fff}
+.opt.correct{border-color:#2c7a4b;background:#e7f3ea;color:#1c5232}
+.opt.correct .ok{background:#2c7a4b;border-color:#2c7a4b;color:#fff}
+.opt.wrong{border-color:var(--clay);background:#f8e6e0;color:var(--clay-2)}
+.opt.wrong .ok{background:var(--clay);border-color:var(--clay);color:#fff}
+.opt.locked{cursor:default}
+.opt.dim{opacity:.5}
+
+.quiz-input{width:100%;padding:15px 18px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:1.02rem;color:var(--ink);outline:none;transition:.16s}
+.quiz-input:focus{border-color:var(--pine);box-shadow:0 0 0 3px rgba(31,61,51,.1)}
+.quiz-input.ok{border-color:#2c7a4b;background:#e7f3ea}
+.quiz-input.no{border-color:var(--clay);background:#f8e6e0}
+.quiz-text{width:100%;min-height:104px;padding:15px 18px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.98rem;color:var(--ink);outline:none;resize:vertical;line-height:1.5}
+.quiz-text:focus{border-color:var(--pine);box-shadow:0 0 0 3px rgba(31,61,51,.1)}
+
+.solution{display:none;margin-top:18px;background:#eef4ee;border:1px solid #cfe2d2;border-left:4px solid #2c7a4b;border-radius:13px;padding:16px 18px}
+.solution.show{display:block;animation:fade .3s}
+.sol-label{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#2c7a4b;margin-bottom:7px}
+.solution p{font-size:.93rem;color:var(--ink-soft);line-height:1.5}
+.solution .sol-ex{margin-top:8px;font-size:.87rem;color:var(--ink-faint)}
+.explain{margin-top:18px;background:var(--surface-2);border-radius:13px;padding:15px 18px;font-size:.9rem;color:var(--ink-soft);display:none;border-left:4px solid var(--pine)}
+.explain.show{display:block;animation:fade .3s}
+.explain b{color:var(--ink)}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.quiz-actions{margin-top:22px;display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;align-items:center}
+.assess-q{margin-right:auto;font-weight:700;color:var(--ink-soft);font-size:.9rem}
+.btn{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.92rem;font-weight:700;padding:12px 24px;border-radius:12px;border:none;background:var(--pine);color:#eee6d7;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.btn:hover{background:var(--pine-2);transform:translateY(-2px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--pine);background:var(--surface-2)}
+.btn.danger{background:transparent;border:1.5px solid var(--line);color:var(--clay)}
+.btn.danger:hover{border-color:var(--clay);background:#f8e6e0}
+
+.result{text-align:center;padding:14px 0}
+.result .rdonut{width:160px;height:160px;margin:0 auto 16px;display:block}
+.result h3{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.9rem;font-weight:600;margin-bottom:6px}
+.result p{color:var(--ink-soft);margin-bottom:14px}
+.result .best-line{font-size:.9rem;color:var(--ink-faint);margin-bottom:20px}
+.result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+footer{padding:46px 26px 56px;text-align:center;background:var(--pine);color:#cdc2ad;border-top:1px solid #162e26;margin-top:30px}
+footer .fbrand{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;color:#efe9dc;font-size:1.25rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.84rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.75rem;color:#9d927c;margin-top:16px;font-style:italic}
+
+@media(max-width:560px){
+  .wrap,.nav-in,.hero-in{padding-left:18px;padding-right:18px}
+  .quiz-card{padding:24px 20px}
+  .best-chip{display:none}
+  .nav-back span{display:none}
+}
+/* a11y-focus-polish */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2.5px solid var(--pine,#1f3d33);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="nav-back" title="Zurück zur Startseite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span>Startseite</span>
+    </a>
+    <a class="brand" href="index.html"><span class="dot"></span> Orthopädie Pathologien</a>
+    <span class="best-chip" id="bestChip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      Noch keine Bestleistung
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="eyebrow">Bonus · Wissen testen</span>
+    <h1>Großes <em>Abschlussquiz</em></h1>
+    <p class="lead">Alle sieben Regionen, alle Krankheitsbilder in einem Durchgang — mit gemischten Fragearten: Multiple Choice, Mehrfachauswahl, Wahr/Falsch, Freitext und „Beschreibe". Erst denken, dann aufdecken.</p>
+    <div class="hero-meta">
+      <div><b id="metaCount">30</b><span>Fragen</span></div>
+      <div><b>5</b><span>Fragearten</span></div>
+      <div><b>7</b><span>Körperregionen</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="quiz-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">★</span>
+      <div>
+        <h2>Abschlussquiz</h2>
+        <p>Pro Frage 1 Punkt. Bei Freitext- und Beschreibe-Fragen bewertest du dich selbst — sei ehrlich, dann lernst du am meisten. Dein Ergebnis bleibt nur in diesem Browser.</p>
+      </div>
+    </div>
+    <div class="quiz-card" id="quizCard"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">Orthopädie Pathologien · Bonus-Quiz</div>
+  <p>Lernzusammenfassung für die physiotherapeutische Ausbildung. Ersetzt keine medizinische Diagnostik oder Behandlung.</p>
+  <p class="fnote">Kein Server · Keine Datenbank · Fortschritt ausschließlich lokal im eigenen Browser gespeichert</p>
+</footer>
+
+<script>
+/* =================== QUIZ-DATEN =================== */
+const QUIZ = [
+/* ---- HÜFTE (Kap. 4) ---- */
+{region:'Hüfte',color:'teal',type:'mc',
+ q:'Wie groß ist der normale CCD-Winkel (Centrum-Collum-Diaphysen-Winkel) beim Erwachsenen?',
+ opts:[['ca. 90°',0],['ca. 110–115°',0],['ca. 120–130°',1],['ca. 150°',0]],
+ explain:'Norm ~125°. Coxa vara = verkleinerter Winkel (unter ~120°), Coxa valga = vergrößert (über ~130–140°).'},
+{region:'Hüfte',color:'teal',type:'tf',
+ q:'Bei der Coxa valga ist der CCD-Winkel vergrößert (steiler Schenkelhals).',
+ answer:true,
+ explain:'Coxa valga = vergrößerter CCD-Winkel; Coxa vara = verkleinert. Beides verändert die Belastung des Hüftkopfs.'},
+{region:'Hüfte',color:'teal',type:'text',
+ q:'Wie heißt die kindliche, idiopathische aseptische Hüftkopfnekrose (meist Jungen, ca. 4–8 Jahre)?',
+ accept:['perthes','morbus perthes','m perthes','legg calve perthes','legg-calve-perthes','legg calvé perthes'],
+ solution:'Morbus Perthes (Legg-Calvé-Perthes).',
+ explain:'Durchblutungsstörung des kindlichen Hüftkopfs mit stadienhaftem Verlauf (Kondensation → Fragmentation → Reparation → Ausheilung).'},
+{region:'Hüfte',color:'teal',type:'describe',
+ q:'Beschreibe den Pathomechanismus des femoroacetabulären Impingements (FAI) und nenne die zwei Haupttypen.',
+ solution:'Pathologisches Anschlagen zwischen Kopf-Hals-Übergang des Femurs und Pfannenrand bei Bewegung (v. a. Flexion + Innenrotation). Cam-Typ: knöcherne Taillierungsstörung am Kopf-Hals-Übergang (femoral). Pincer-Typ: zu starke Überdachung / zu tiefe Pfanne (acetabulär). Mischformen sind häufig; Folge sind Labrum- und Knorpelschäden bis hin zur Coxarthrose.'},
+{region:'Hüfte',color:'teal',type:'mc',
+ q:'Welche Bewegung ist bei der Coxarthrose typischerweise früh und stark eingeschränkt (Kapselmuster)?',
+ opts:[['Flexion zuerst',0],['Innenrotation und Extension',1],['nur Außenrotation',0],['Abduktion gar nicht betroffen',0]],
+ explain:'Kapselmuster der Hüfte: Innenrotation und Extension sind früh und am stärksten eingeschränkt.'},
+
+/* ---- KNIE (Kap. 5) ---- */
+{region:'Knie',color:'sage',type:'mc',
+ q:'Genu varum bezeichnet welche Beinachsenfehlstellung?',
+ opts:[['X-Bein',0],['O-Bein',1],['Überstreckung (Recurvatum)',0],['Knick nach innen am Sprunggelenk',0]],
+ explain:'Genu varum = O-Bein (mediale Mehrbelastung). Genu valgum = X-Bein, Genu recurvatum = Überstreckung.'},
+{region:'Knie',color:'sage',type:'tf',
+ q:'Bei der Chondropathia patellae / PFSS nimmt der vordere Knieschmerz typischerweise beim Treppabsteigen und langem Sitzen zu („Kinozeichen").',
+ answer:true,
+ explain:'Patellofemorales Schmerzsyndrom: belastungs- und beugeabhängiger retropatellarer Schmerz, klassisch das „Kinozeichen" bei langem Sitzen.'},
+{region:'Knie',color:'sage',type:'describe',
+ q:'Beschreibe Morbus Osgood-Schlatter: betroffene Struktur, typisches Alter und Klinik.',
+ solution:'Aseptische Osteonekrose / Apophysitis der Tuberositas tibiae am Ansatz der Patellasehne. Betroffen sind v. a. sportliche Heranwachsende im Wachstumsschub (~10–14 Jahre, Jungen häufiger). Klinik: belastungsabhängiger Schmerz und Schwellung/Vorwölbung über der Tuberositas tibiae, verstärkt bei Quadrizeps-Anspannung und Knien.'},
+{region:'Knie',color:'sage',type:'text',
+ q:'Wie wird das Iliotibiale Bandsyndrom (ITBS) umgangssprachlich genannt?',
+ accept:['laeuferknie','läuferknie','runners knee','runner knee','tractus','tractussyndrom','laeufer knie'],
+ solution:'Läuferknie (Tractus-iliotibialis-Syndrom).',
+ explain:'Reibung des Tractus iliotibialis über dem lateralen Femurepikondyl, typisch bei Läufern; Schmerz lateral am Knie.'},
+{region:'Knie',color:'sage',type:'mc',
+ q:'Was beschreibt die Osteochondrosis dissecans (OCD) am Knie?',
+ opts:[['Akute Kreuzbandruptur',0],['Umschriebene subchondrale Nekrose, aus der sich ein Knorpel-Knochen-Fragment lösen kann („Gelenkmaus")',1],['Entzündung der Bursa praepatellaris',0],['Verknöcherung der Patellasehne',0]],
+ explain:'Bei OCD kann sich ein subchondrales Fragment ablösen und als freier Gelenkkörper („Gelenkmaus") Blockaden auslösen.'},
+
+/* ---- FUSS (Kap. 6) ---- */
+{region:'Fuß',color:'ochre',type:'mc',
+ q:'Was kennzeichnet den Hallux valgus?',
+ opts:[['Krallenstellung der Kleinzehen',0],['Laterale Abweichung der Großzehe im Grundgelenk mit medialer Pseudoexostose',1],['Überhöhtes Längsgewölbe',0],['Adduktionsfehlstellung des Vorfußes beim Säugling',0]],
+ explain:'Großzehe weicht nach lateral ab, Metatarsale I nach medial (Metatarsus primus varus); oft mit Spreizfuß kombiniert.'},
+{region:'Fuß',color:'ochre',type:'tf',
+ q:'Beim Knicksenkfuß bestehen ein Rückfuß-Valgus und eine Abflachung des medialen Längsgewölbes.',
+ answer:true,
+ explain:'Knicksenkfuß = Pes planovalgus: Ferse knickt nach valgus, das mediale Längsgewölbe sinkt ab.'},
+{region:'Fuß',color:'ochre',type:'text',
+ q:'Welcher Nerv wird beim Tarsaltunnelsyndrom komprimiert?',
+ accept:['n tibialis','nervus tibialis','tibialis','tibialisnerv'],
+ solution:'N. tibialis — im Tarsaltunnel hinter dem Innenknöchel (Malleolus medialis).',
+ explain:'Folge: brennende Schmerzen/Parästhesien an Fußsohle und Zehen, oft nachts.'},
+{region:'Fuß',color:'ochre',type:'describe',
+ q:'Welcher klinische Test weist eine komplette Achillessehnenruptur nach, und wann ist er positiv?',
+ solution:'Thompson-Test (Wadenkompressionstest): Patient in Bauchlage, der Untersucher drückt die Wade zusammen. Normal kommt es zur Plantarflexion des Fußes. Bei kompletter Ruptur bleibt diese aus — der Test ist positiv. Zusätzlich oft tastbare Delle im Sehnenverlauf und Kraftverlust der Plantarflexion.'},
+
+/* ---- WIRBELSÄULE (Kap. 7) ---- */
+{region:'Wirbelsäule',color:'steel',type:'mc',
+ q:'Was bezeichnet eine Radikulopathie?',
+ opts:[['Schmerz aus dem Iliosakralgelenk',0],['Reizung/Schädigung einer Nervenwurzel mit dermatombezogener Symptomatik',1],['Muskelhartspann ohne Nervenbeteiligung',0],['Entzündung der Rückenmarkshäute',0]],
+ explain:'Wurzelsyndrom: dermatombezogener Schmerz, ggf. Sensibilitäts-/Kraftausfall und abgeschwächte Reflexe.'},
+{region:'Wirbelsäule',color:'steel',type:'multi',
+ q:'Welche Aussagen zu Bandscheibenprotrusion und -prolaps treffen zu? (Mehrfachauswahl)',
+ opts:[
+   ['Protrusion = Vorwölbung bei weitgehend intaktem Anulus fibrosus',1],
+   ['Prolaps = Durchtritt von Nucleus-pulposus-Material durch den Anulus',1],
+   ['Ein Bandscheibenvorfall muss immer sofort operiert werden',0],
+   ['Ein Prolaps kann eine Nervenwurzel komprimieren und eine Radikulopathie auslösen',1]
+ ],
+ explain:'Die meisten Vorfälle werden konservativ behandelt; eine OP ist v. a. bei Cauda-Syndrom, relevanten/progredienten Paresen oder therapieresistenten Schmerzen nötig.'},
+{region:'Wirbelsäule',color:'steel',type:'tf',
+ q:'Die Spinalkanalstenose zeigt klassisch eine Claudicatio spinalis: Beschwerden bei Streckung/Gehen und Besserung bei Beugung (z. B. vornübergebeugt, „Einkaufswagen-Zeichen").',
+ answer:true,
+ explain:'In Flexion nimmt der Spinalkanalquerschnitt zu — daher Besserung beim Vornüberbeugen.'},
+{region:'Wirbelsäule',color:'steel',type:'describe',
+ q:'Beschreibe die Skoliose und das typische Zeichen im Vorbeugetest.',
+ solution:'Skoliose = strukturelle, fixierte dreidimensionale Seitausbiegung der Wirbelsäule mit Rotation der Wirbelkörper (nicht durch Haltung ausgleichbar). Im Vorbeugetest (Adams-Test) wird durch die Rotation ein Rippenbuckel (BWS) bzw. Lendenwulst (LWS) sichtbar. Das Ausmaß wird radiologisch mit dem Cobb-Winkel quantifiziert.'},
+{region:'Wirbelsäule',color:'steel',type:'text',
+ q:'Wie heißt die Adoleszentenkyphose mit Keilwirbelbildung und Schmorl-Knötchen?',
+ accept:['scheuermann','morbus scheuermann','m scheuermann'],
+ solution:'Morbus Scheuermann.',
+ explain:'Wachstumsstörung der Grund-/Deckplatten mit Keilwirbeln und fixierter Hyperkyphose der BWS.'},
+
+/* ---- SCHULTER (Kap. 8) ---- */
+{region:'Schulter',color:'clay',type:'mc',
+ q:'Die „Frozen Shoulder" entspricht welcher Pathologie?',
+ opts:[['Subakromiales Impingement',0],['Adhäsive Kapsulitis (Schultersteife) mit phasenhafter Bewegungseinschränkung',1],['Rotatorenmanschettenruptur',0],['ACG-Arthrose',0]],
+ explain:'Adhäsive Kapsulitis: Kapselschrumpfung mit Phasenverlauf (freezing – frozen – thawing), v. a. die Außenrotation ist eingeschränkt.'},
+{region:'Schulter',color:'clay',type:'tf',
+ q:'Beim subakromialen Impingement ist ein schmerzhafter Bogen („painful arc") etwa zwischen 60° und 120° Abduktion typisch.',
+ answer:true,
+ explain:'In diesem Bereich wird der subakromiale Raum am engsten — die Strukturen werden eingeklemmt.'},
+{region:'Schulter',color:'clay',type:'describe',
+ q:'Worin unterscheiden sich Schulterluxation und Schulterinstabilität, und in welche Richtung luxiert die Schulter am häufigsten?',
+ solution:'Luxation = akutes vollständiges Auskugeln: der Humeruskopf verlässt die Gelenkpfanne, am häufigsten nach anterior-inferior (vorn-unten, ~95 %). Instabilität = (rezidivierende) Unfähigkeit, den Humeruskopf zentriert zu halten — traumatisch (z. B. nach Erstluxation mit Bankart-Läsion) oder atraumatisch/anlagebedingt; sie kann auch ohne vollständige Luxation bestehen (Subluxation, Apprehension).'},
+{region:'Schulter',color:'clay',type:'text',
+ q:'Wie heißt die Arthrose des Schultereckgelenks (Akromioklavikulargelenk)?',
+ accept:['acg','acg arthrose','ac gelenk','ac-gelenk','akromioklavikular','acromioclavicular'],
+ solution:'ACG-Arthrose (Arthrose des Akromioklavikulargelenks / AC-Gelenks).',
+ explain:'Schmerz über dem AC-Gelenk, typischerweise bei Horizontaladduktion und Überkopfarbeit.'},
+
+/* ---- ELLENBOGEN (Kap. 9) ---- */
+{region:'Ellenbogen',color:'ochre',type:'mc',
+ q:'Der „Tennisarm" (Epicondylitis humeri lateralis) betrifft den Ursprung welcher Muskelgruppe?',
+ opts:[['Unterarmflexoren (Handbeuger)',0],['Unterarmextensoren (Hand-/Fingerstrecker) am lateralen Epikondyl',1],['Bizeps brachii',0],['Pronatoren am medialen Epikondyl',0]],
+ explain:'Tennisarm = laterale Epicondylitis (Extensorenursprung, oft M. extensor carpi radialis brevis). Golferarm = mediale Epicondylitis (Flexoren/Pronatoren).'},
+{region:'Ellenbogen',color:'ochre',type:'tf',
+ q:'Beim „Golferarm" (Epicondylitis humeri medialis) sind die Unterarmflexoren und Pronatoren am medialen Epikondyl betroffen.',
+ answer:true,
+ explain:'Medialer Epikondyl = Ursprung der Flexoren/Pronatoren — daher „Golferarm".'},
+{region:'Ellenbogen',color:'ochre',type:'mc',
+ q:'Welcher Provokationstest ist klassisch positiv beim Tennisarm (laterale Epicondylitis)?',
+ opts:[['Thompson-Test',0],['Cozen-Test (Schmerz lateral bei Widerstands-Dorsalextension der Hand)',1],['Lasègue-Zeichen',0],['Phalen-Test',0]],
+ explain:'Cozen- und Maudsley-/Mittelfingerstrecktest provozieren über die Extensoren den lateralen Epikondylenschmerz.'},
+
+/* ---- HAND (Kap. 10) ---- */
+{region:'Hand',color:'plum',type:'mc',
+ q:'Das Karpaltunnelsyndrom ist eine Kompression welches Nervs?',
+ opts:[['N. ulnaris',0],['N. medianus',1],['N. radialis',0],['N. tibialis',0]],
+ explain:'KTS = Kompression des N. medianus im Karpaltunnel; Parästhesien der radialen 3½ Finger, später Thenaratrophie.'},
+{region:'Hand',color:'plum',type:'text',
+ q:'Wie heißt die Arthrose des Daumensattelgelenks (Articulatio carpometacarpalis I)?',
+ accept:['rhizarthrose'],
+ solution:'Rhizarthrose.',
+ explain:'Arthrose des Daumensattelgelenks; Schmerz beim Greifen/Zangengriff, oft Frauen mittleren Alters.'},
+{region:'Hand',color:'plum',type:'tf',
+ q:'Morbus Dupuytren ist eine Fibrosierung/Schrumpfung der Palmaraponeurose mit zunehmender Beugekontraktur, v. a. von Ring- und Kleinfinger.',
+ answer:true,
+ explain:'Bindegewebige Knoten und Stränge in der Hohlhand ziehen die Finger in Beugung; Tabletop-Test positiv.'},
+{region:'Hand',color:'plum',type:'describe',
+ q:'Beschreibe das CRPS (Complex Regional Pain Syndrome, früher Morbus Sudeck): typische Auslöser und Kardinalsymptome.',
+ solution:'CRPS ist ein regionales Schmerzsyndrom, das meist nach Trauma, Fraktur oder Operation an einer Extremität auftritt — mit einem Schmerz, der in Intensität und Dauer unverhältnismäßig zum auslösenden Ereignis ist. Kardinalsymptome: brennender Ruhe-/Belastungsschmerz, autonome Störungen (Schwellung/Ödem, Temperatur- und Hautfarbänderung, vermehrtes Schwitzen), trophische Veränderungen (Haut, Nägel, Behaarung) sowie motorische/funktionelle Störungen (Kraftminderung, eingeschränkte Beweglichkeit). Verlauf oft stadienhaft; Therapie multimodal.'}
+];
+
+/* =================== ENGINE =================== */
+const TYPE_LABEL = {mc:'Multiple Choice', multi:'Mehrfachauswahl', tf:'Wahr / Falsch', text:'Freitext', describe:'Beschreibe'};
+const LETTERS = ['A','B','C','D','E','F'];
+const BEST_KEY = 'ortho_bonusquiz_best_v1';
+const card = document.getElementById('quizCard');
+let qi = 0, score = 0, locked = false, results = [];
+
+document.getElementById('metaCount').textContent = QUIZ.length;
+
+function norm(s){
+  return (s||'').toString().toLowerCase().trim()
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss')
+    .replace(/[^a-z0-9]/g,'');
+}
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+function nextLabel(){return (qi===QUIZ.length-1?'Ergebnis ansehen':'Weiter')+' →';}
+function advance(){qi++; if(qi<QUIZ.length) renderQ(); else renderResult();}
+function updateScore(){const s=card.querySelector('.quiz-score'); if(s) s.textContent='Punkte: '+score+' / '+QUIZ.length;}
+function updateBar(){const i=card.querySelector('.quiz-bar i'); if(i) i.style.width=(qi/QUIZ.length*100)+'%';}
+
+/* localStorage (file:// safe) */
+function getBest(){try{const v=localStorage.getItem(BEST_KEY);return v==null?null:parseInt(v,10);}catch(e){return null;}}
+function saveBest(pct){try{const b=getBest(); if(b==null||pct>b) localStorage.setItem(BEST_KEY,String(pct));}catch(e){} updateBestChip();}
+function clearBest(){try{localStorage.removeItem(BEST_KEY);}catch(e){} updateBestChip();}
+function updateBestChip(){const c=document.getElementById('bestChip'); if(!c) return; const b=getBest();
+  c.lastChild.textContent = b==null ? ' Noch keine Bestleistung' : (' Bestleistung: '+b+' %');}
+
+function head(item){
+  return `
+    <div class="quiz-top">
+      <div class="quiz-tags">
+        <span class="region-tag" style="color:var(--${item.color})">${item.region}</span>
+        <span class="qtype-badge">${TYPE_LABEL[item.type]}</span>
+      </div>
+      <span class="quiz-score">Punkte: ${score} / ${QUIZ.length}</span>
+    </div>
+    <span class="quiz-counter">Frage ${qi+1} / ${QUIZ.length}</span>
+    <div class="quiz-bar"><i style="width:${(qi/QUIZ.length)*100}%"></i></div>
+    <div class="quiz-q">${item.q}</div>`;
+}
+function finishSingle(correct){
+  results[qi]=correct;
+  const ex=document.getElementById('explain'); if(ex && ex.textContent.trim()) ex.classList.add('show');
+  updateScore();
+  const nb=document.getElementById('nextBtn'); if(nb) nb.disabled=false;
+}
+function wireNext(){const nb=document.getElementById('nextBtn'); if(nb) nb.addEventListener('click',advance);}
+
+/* ---- Multiple Choice ---- */
+function renderMC(item){
+  const opts=shuffle(item.opts);
+  card.innerHTML = head(item) + `
+    <div class="opts">
+      ${opts.map((o,i)=>`<button class="opt" data-correct="${o[1]}"><span class="ok">${LETTERS[i]}</span><span>${o[0]}</span></button>`).join('')}
+    </div>
+    <div class="explain" id="explain">${item.explain?'<b>Erklärung:</b> '+item.explain:''}</div>
+    <div class="quiz-actions"><button class="btn" id="nextBtn" disabled>${nextLabel()}</button></div>`;
+  card.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(locked) return; locked=true;
+      const correct=btn.dataset.correct==='1';
+      btn.classList.add(correct?'correct':'wrong');
+      card.querySelectorAll('.opt').forEach(b=>{
+        if(b.dataset.correct==='1') b.classList.add('correct');
+        b.classList.add('locked');
+        if(!b.classList.contains('correct')&&!b.classList.contains('wrong')) b.classList.add('dim');
+      });
+      if(correct) score++;
+      finishSingle(correct);
+    });
+  });
+  wireNext();
+}
+
+/* ---- True / False ---- */
+function renderTF(item){
+  card.innerHTML = head(item) + `
+    <div class="opts tf">
+      <button class="opt" data-correct="${item.answer?1:0}"><span class="ok">✓</span><span>Wahr</span></button>
+      <button class="opt" data-correct="${item.answer?0:1}"><span class="ok">✕</span><span>Falsch</span></button>
+    </div>
+    <div class="explain" id="explain">${item.explain?'<b>Erklärung:</b> '+item.explain:''}</div>
+    <div class="quiz-actions"><button class="btn" id="nextBtn" disabled>${nextLabel()}</button></div>`;
+  card.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(locked) return; locked=true;
+      const correct=btn.dataset.correct==='1';
+      btn.classList.add(correct?'correct':'wrong');
+      card.querySelectorAll('.opt').forEach(b=>{
+        if(b.dataset.correct==='1') b.classList.add('correct');
+        b.classList.add('locked');
+        if(!b.classList.contains('correct')&&!b.classList.contains('wrong')) b.classList.add('dim');
+      });
+      if(correct) score++;
+      finishSingle(correct);
+    });
+  });
+  wireNext();
+}
+
+/* ---- Mehrfachauswahl ---- */
+function renderMulti(item){
+  const opts=shuffle(item.opts);
+  card.innerHTML = head(item) + `
+    <p class="quiz-help">Mehrere Antworten können richtig sein. Wähle alle zutreffenden aus und klicke „Prüfen".</p>
+    <div class="opts">
+      ${opts.map((o,i)=>`<button class="opt" data-correct="${o[1]}"><span class="ok">${LETTERS[i]}</span><span>${o[0]}</span></button>`).join('')}
+    </div>
+    <div class="explain" id="explain">${item.explain?'<b>Erklärung:</b> '+item.explain:''}</div>
+    <div class="quiz-actions"><button class="btn" id="actBtn">Prüfen</button></div>`;
+  let done=false;
+  card.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{ if(done) return; btn.classList.toggle('selected');
+      const ok=btn.querySelector('.ok'); ok.textContent = btn.classList.contains('selected')?'✓':LETTERS[[...card.querySelectorAll('.opt')].indexOf(btn)]; });
+  });
+  document.getElementById('actBtn').addEventListener('click',()=>{
+    if(!done){
+      done=true; locked=true;
+      let allCorrect=true;
+      card.querySelectorAll('.opt').forEach(b=>{
+        const shouldSel=b.dataset.correct==='1';
+        const isSel=b.classList.contains('selected');
+        b.classList.remove('selected');
+        if(shouldSel) b.classList.add('correct');
+        if(isSel && !shouldSel){ b.classList.add('wrong'); allCorrect=false; }
+        if(!isSel && shouldSel) allCorrect=false;
+        b.classList.add('locked');
+        if(!b.classList.contains('correct')&&!b.classList.contains('wrong')) b.classList.add('dim');
+      });
+      if(allCorrect) score++;
+      results[qi]=allCorrect;
+      const ex=document.getElementById('explain'); if(ex && ex.textContent.trim()) ex.classList.add('show');
+      updateScore();
+      const ab=document.getElementById('actBtn'); ab.textContent=nextLabel();
+    } else { advance(); }
+  });
+}
+
+/* ---- Freitext ---- */
+function renderText(item){
+  card.innerHTML = head(item) + `
+    <input type="text" id="txtIn" class="quiz-input" placeholder="Deine Antwort …" autocomplete="off">
+    <div class="solution" id="sol">
+      <div class="sol-label">Musterlösung</div>
+      <p>${item.solution}</p>
+      ${item.explain?`<p class="sol-ex">${item.explain}</p>`:''}
+    </div>
+    <div class="quiz-actions">
+      <button class="btn ghost" id="dunnoBtn" type="button">Weiß ich nicht</button>
+      <button class="btn" id="actBtn" type="button">Antwort prüfen</button>
+    </div>`;
+  const input=document.getElementById('txtIn');
+  setTimeout(()=>input.focus(),30);
+  let done=false;
+  function grade(forceWrong){
+    if(done) return; done=true; locked=true;
+    const val=norm(input.value);
+    let ok=false;
+    if(!forceWrong && val.length>=3){
+      ok=item.accept.some(a=>{const n=norm(a); return n.length>0 && (val.includes(n)||n.includes(val));});
+    }
+    input.classList.add(ok?'ok':'no'); input.disabled=true;
+    document.getElementById('sol').classList.add('show');
+    if(ok) score++;
+    results[qi]=ok;
+    const actions=card.querySelector('.quiz-actions');
+    actions.innerHTML = (ok?'':`<button class="btn ghost" id="overrideBtn" type="button">Ich lag richtig — Punkt geben</button>`) +
+      `<button class="btn" id="nextBtn" type="button">${nextLabel()}</button>`;
+    document.getElementById('nextBtn').addEventListener('click',advance);
+    const ov=document.getElementById('overrideBtn');
+    if(ov) ov.addEventListener('click',()=>{ if(results[qi]!==true){score++;results[qi]=true;} ov.disabled=true; ov.textContent='Punkt vergeben ✓'; input.classList.remove('no'); input.classList.add('ok'); updateScore(); });
+    updateScore();
+  }
+  document.getElementById('actBtn').addEventListener('click',()=>grade(false));
+  document.getElementById('dunnoBtn').addEventListener('click',()=>grade(true));
+  input.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault(); grade(false);} });
+}
+
+/* ---- Beschreibe (Selbsteinschätzung) ---- */
+function renderDescribe(item){
+  card.innerHTML = head(item) + `
+    <p class="quiz-help">Formuliere deine Antwort (im Kopf oder im Feld), decke dann die Musterlösung auf und bewerte dich selbst ehrlich.</p>
+    <textarea id="descIn" class="quiz-text" placeholder="Optional: Stichpunkte notieren …"></textarea>
+    <div class="solution" id="sol">
+      <div class="sol-label">Musterlösung</div>
+      <p>${item.solution}</p>
+    </div>
+    <div class="quiz-actions"><button class="btn" id="revealBtn" type="button">Musterlösung aufdecken</button></div>`;
+  document.getElementById('revealBtn').addEventListener('click',()=>{
+    locked=true;
+    document.getElementById('sol').classList.add('show');
+    const actions=card.querySelector('.quiz-actions');
+    actions.innerHTML = `<span class="assess-q">Wie gut wusstest du es?</span>
+      <button class="btn ghost" data-ok="0" type="button">Nicht gewusst</button>
+      <button class="btn" data-ok="1" type="button">Gewusst ✓</button>`;
+    actions.querySelectorAll('[data-ok]').forEach(b=>{
+      b.addEventListener('click',()=>{ const ok=b.dataset.ok==='1'; if(ok) score++; results[qi]=ok; advance(); });
+    });
+  });
+}
+
+function renderQ(){
+  locked=false;
+  const item=QUIZ[qi];
+  if(item.type==='mc') renderMC(item);
+  else if(item.type==='tf') renderTF(item);
+  else if(item.type==='multi') renderMulti(item);
+  else if(item.type==='text') renderText(item);
+  else if(item.type==='describe') renderDescribe(item);
+}
+
+function donut(pct){
+  const r=60, c=2*Math.PI*r, off=c*(1-pct/100);
+  return `<svg class="rdonut" viewBox="0 0 150 150">
+    <circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="13"/>
+    <circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--clay)" stroke-width="13" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 75 75)"/>
+    <text x="75" y="72" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="31" font-weight="600" fill="var(--ink)">${pct}%</text>
+    <text x="75" y="96" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif" font-size="12" fill="var(--ink-faint)">${score}/${QUIZ.length} Punkte</text>
+  </svg>`;
+}
+function renderResult(){
+  const pct=Math.round(score/QUIZ.length*100);
+  saveBest(pct);
+  let msg;
+  if(pct>=90) msg='Herausragend — das sitzt klinisch sicher.';
+  else if(pct>=75) msg='Stark! Ein paar Feinheiten noch, dann ist es perfekt.';
+  else if(pct>=50) msg='Solide Basis — wiederhole gezielt die schwächeren Themen.';
+  else msg='Dranbleiben — geh die Kapitel nochmal in Ruhe durch.';
+  const best=getBest();
+  card.innerHTML = `
+    <div class="result">
+      ${donut(pct)}
+      <h3>Quiz abgeschlossen</h3>
+      <p>${score} von ${QUIZ.length} Punkten · ${msg}</p>
+      ${best!=null?`<p class="best-line">Deine Bestleistung in diesem Browser: <b>${best} %</b></p>`:''}
+      <div class="result-actions">
+        <button class="btn" id="restartBtn" type="button">Nochmal starten</button>
+        <a class="btn ghost" href="index.html">Zur Startseite</a>
+        <button class="btn danger" id="resetBtn" type="button">Quiz zurücksetzen</button>
+      </div>
+    </div>`;
+  document.getElementById('restartBtn').addEventListener('click',start);
+  document.getElementById('resetBtn').addEventListener('click',()=>{ clearBest(); start(); });
+}
+
+function start(){ qi=0; score=0; results=[]; locked=false; renderQ(); }
+
+/* progress bar reflects quiz position */
+function tickBar(){const bar=document.getElementById('progress'); const p=(qi/QUIZ.length); bar.style.width=(p*100)+'%';}
+const _adv=advance;
+advance=function(){_adv(); tickBar();};
+
+updateBestChip();
+start();
+tickBar();
+</script>
+</body>
+</html>

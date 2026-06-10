@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathologie-Atlas · Lernplattform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;--surface:#FBF8F2;--ink:#22251f;--ink-soft:#5c6056;--ink-faint:#8a8d82;
+  --line:#d9d0c1;--clay:#bd4a30;--cream:#fffdf8;
+  /* Orthopädie = Grün */
+  --ortho:#1f3d33;--ortho-2:#2c5446;--ortho-glow:rgba(44,84,70,.4);
+  --ortho-d1:#234438;--ortho-d2:#16302a;
+  /* Neurologie = Blau */
+  --neuro:#1b3a5c;--neuro-2:#274f78;--neuro-glow:rgba(39,79,120,.42);
+  --neuro-d1:#23507e;--neuro-d2:#13283f;
+  --shadow:0 1px 2px rgba(34,37,31,.05),0 10px 30px -14px rgba(34,37,31,.3);
+  --shadow-lg:0 4px 8px rgba(34,37,31,.08),0 30px 60px -24px rgba(34,37,31,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--clay);color:#fff}
+
+/* ---------- top bar ---------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 34px;mix-blend-mode:difference}
+.topbar .mark{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:.01em;color:#fff;display:flex;align-items:center;gap:10px}
+.topbar .mark .gem{width:13px;height:13px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.topbar .meta{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:.85}
+
+/* ---------- hero intro band ---------- */
+.intro{position:relative;z-index:10;text-align:center;padding:118px 26px 40px;max-width:760px;margin:0 auto}
+.intro .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:22px}
+.intro .eyebrow::before,.intro .eyebrow::after{content:"";width:30px;height:1px;background:var(--line)}
+.intro h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.0;letter-spacing:-.03em;color:var(--ink)}
+.intro h1 .a{font-style:italic;color:var(--ortho-2)}
+.intro h1 .b{font-style:italic;color:var(--neuro-2)}
+.intro p{margin-top:22px;font-size:1.12rem;color:var(--ink-soft);max-width:32rem;margin-left:auto;margin-right:auto}
+.intro .scroll-cue{margin-top:30px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:inline-flex;flex-direction:column;align-items:center;gap:8px}
+.intro .scroll-cue svg{width:20px;height:20px;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ---------- split doors ---------- */
+.doors{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:560px;margin-top:30px;isolation:isolate}
+/* the diagonal seam */
+.doors::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,transparent,var(--clay),transparent);transform:translateX(-50%) skewX(-9deg);z-index:5;opacity:.6}
+.door{position:relative;overflow:hidden;text-decoration:none;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 46px 54px;min-height:560px;transition:flex-basis .5s;isolation:isolate}
+.door .bg{position:absolute;inset:0;z-index:-2}
+.door .noise{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+/* clip each door along the diagonal so the seam is angled */
+.door.ortho{clip-path:polygon(0 0, 100% 0, calc(100% - 60px) 100%, 0 100%)}
+.door.neuro{clip-path:polygon(60px 0, 100% 0, 100% 100%, 0 100%);margin-left:-60px;padding-left:92px}
+.door.ortho .bg{background:radial-gradient(120% 90% at 20% 0%,var(--ortho-glow),transparent 55%),linear-gradient(155deg,var(--ortho-d1),var(--ortho-d2) 78%)}
+.door.neuro .bg{background:radial-gradient(120% 90% at 80% 0%,var(--neuro-glow),transparent 55%),linear-gradient(205deg,var(--neuro-d1),var(--neuro-d2) 78%)}
+
+/* big faint illustration */
+.door .art{position:absolute;z-index:-1;opacity:.16;pointer-events:none}
+.door.ortho .art{right:-40px;top:40px;width:340px}
+.door.neuro .art{left:-30px;top:30px;width:340px}
+.door .art svg{width:100%;height:auto}
+
+/* big index number */
+.door .idx{position:absolute;top:40px;font-family:'Fraunces',serif;font-weight:500;font-size:5.5rem;line-height:1;opacity:.18;color:#fff}
+.door.ortho .idx{left:46px}
+.door.neuro .idx{right:46px}
+
+.door .tag{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.82;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.door .tag .dot{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
+.door h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.1rem,3.6vw,3.1rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:14px}
+.door p{font-size:1rem;line-height:1.55;max-width:25rem;color:rgba(255,255,255,.86);margin-bottom:26px}
+.door .stats{display:flex;gap:26px;margin-bottom:30px;flex-wrap:wrap}
+.door .stats div{display:flex;flex-direction:column}
+.door .stats b{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;line-height:1}
+.door .stats span{font-size:.74rem;letter-spacing:.04em;opacity:.78;margin-top:5px}
+.door .enter{display:inline-flex;align-items:center;gap:11px;font-weight:700;font-size:.96rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:14px 26px;border-radius:13px;width:fit-content;backdrop-filter:blur(4px);transition:.22s}
+.door .enter svg{width:18px;height:18px;transition:transform .22s}
+.door:hover .enter{background:#fff;border-color:#fff}
+.door.ortho:hover .enter{color:var(--ortho)}
+.door.neuro:hover .enter{color:var(--neuro)}
+.door:hover .enter svg{transform:translateX(5px)}
+.door:hover .art{opacity:.24;transition:opacity .5s}
+.door .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
+.door .chips span{font-size:.74rem;font-weight:600;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:5px 11px;border-radius:999px;color:rgba(255,255,255,.92)}
+
+/* hover widen on desktop */
+@media(min-width:921px){
+  .doors:hover .door{flex:1}
+  .door{flex:1;transition:flex .45s cubic-bezier(.4,0,.2,1)}
+  .doors:hover .door:hover{flex:1.35}
+}
+
+/* ---------- future-areas hint ---------- */
+.future{max-width:1180px;margin:0 auto;padding:60px 34px 30px}
+.future .fhead{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.future .fhead h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--ink);white-space:nowrap}
+.future .fhead .ln{flex:1;height:1px;background:var(--line)}
+.future .fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.fcard{border:1.5px dashed var(--line);border-radius:16px;padding:22px 20px;background:rgba(251,248,242,.5);display:flex;flex-direction:column;gap:8px;min-height:128px;transition:.2s}
+.fcard:hover{border-color:var(--ink-faint)}
+.fcard .fic{width:30px;height:30px;color:var(--ink-faint);opacity:.7}
+.fcard h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;color:var(--ink-soft)}
+.fcard p{font-size:.84rem;color:var(--ink-faint)}
+.fcard .soon{margin-top:auto;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);background:var(--surface);border:1px solid var(--line);padding:4px 10px;border-radius:999px;width:fit-content}
+
+/* ---------- Probeklausuren band ---------- */
+.exam-band{max-width:1180px;margin:0 auto;padding:18px 34px 0}
+.exam-card{display:flex;align-items:center;gap:28px;text-decoration:none;color:#f3ece0;
+  background:radial-gradient(120% 150% at 90% -25%,rgba(189,74,48,.42),transparent 55%),linear-gradient(150deg,#6f4a22,#34230f);
+  border-radius:24px;padding:34px 38px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);
+  transition:transform .22s,box-shadow .22s}
+.exam-card::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='ne'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ne)' opacity='0.05'/%3E%3C/svg%3E")}
+.exam-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -22px rgba(34,37,31,.5)}
+.exam-icon{width:74px;height:74px;border-radius:20px;background:rgba(240,200,150,.16);border:1px solid rgba(240,200,150,.4);display:grid;place-items:center;flex-shrink:0;color:#f0c98f;position:relative;z-index:2}
+.exam-icon svg{width:38px;height:38px}
+.exam-text{flex:1;min-width:0;position:relative;z-index:2}
+.exam-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#dcc59c}
+.exam-text h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.02em;margin:6px 0 8px;color:#f6efe3}
+.exam-text p{font-size:.95rem;color:#e3d8c4;max-width:46rem;line-height:1.5}
+.exam-go{margin-top:16px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;color:#f6d9bb;background:rgba(240,200,150,.14);border:1px solid rgba(240,200,150,.32);padding:10px 20px;border-radius:11px;transition:gap .2s}
+.exam-card:hover .exam-go{gap:14px}
+.exam-go svg{width:16px;height:16px}
+.exam-badge{position:absolute;top:20px;right:22px;z-index:2;font-size:.66rem;font-weight:800;letter-spacing:.12em;color:#34230f;background:#e8b98c;padding:5px 12px;border-radius:999px}
+.exam-card:focus-visible{outline:2.5px solid #e8b98c;outline-offset:3px}
+
+/* ---------- footer ---------- */
+footer{text-align:center;padding:44px 26px 54px;color:var(--ink-faint)}
+footer .fmark{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--ink-soft);margin-bottom:8px}
+footer p{font-size:.82rem;max-width:42rem;margin:0 auto}
+footer .fnote{font-size:.74rem;margin-top:14px;font-style:italic;opacity:.85}
+
+@media(max-width:920px){
+  .doors{grid-template-columns:1fr;min-height:0;gap:18px;padding:0 18px}
+  .doors::before{display:none}
+  .door{min-height:420px;border-radius:24px;clip-path:none!important;margin-left:0!important;box-shadow:var(--shadow-lg)}
+  .door .idx{font-size:4rem}
+  .topbar{padding:16px 20px}
+  .intro{padding-top:92px}
+  .exam-band{padding:16px 18px 0}
+  .exam-card{flex-direction:column;text-align:center;align-items:center;padding:32px 24px}
+  .exam-badge{top:16px;right:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="mark"><span class="gem"></span> Pathologie-Atlas</div>
+  <div class="meta">Lernplattform · Physiotherapie</div>
+</div>
+
+<section class="intro">
+  <span class="eyebrow">Interaktive Lernübersichten</span>
+  <h1>Zwei Welten der <span class="a">Bewegung</span> &amp; des <span class="b">Nervensystems</span>.</h1>
+  <p>Wähle deinen Fachbereich. Jede Welt bündelt interaktive Lernübersichten mit Visualisierungen, Detailkarten und Lernchecks.</p>
+  <div class="scroll-cue">Fachbereich wählen
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<div class="doors" id="doors"></div>
+
+<section class="exam-band">
+  <a class="exam-card" href="probeklausuren.html" aria-label="Probeklausuren öffnen">
+    <span class="exam-badge">NEU</span>
+    <div class="exam-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+    </div>
+    <div class="exam-text">
+      <span class="exam-eyebrow">Prüfungssimulation · Wissen testen</span>
+      <h2>Probeklausuren</h2>
+      <p>Realistische Probeklausuren im Prüfungsformat — mit Zeitlimit, gemischten Aufgaben und Selbstkorrektur. Übe quer durch Orthopädie und Neurologie unter echten Bedingungen.</p>
+      <span class="exam-go">Zu den Probeklausuren <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </div>
+  </a>
+</section>
+
+<section class="future">
+  <div class="fhead"><h3>Weitere Fachbereiche</h3><div class="ln"></div></div>
+  <div class="fgrid" id="futureGrid"></div>
+</section>
+
+<footer>
+  <div class="fmark">Pathologie-Atlas</div>
+  <p>Strukturierte Lernhilfen für die physiotherapeutische Ausbildung — erstellt aus den Skripten zu Orthopädie und Neurologie.</p>
+  <p class="fnote">Lernzusammenfassungen — ersetzen keine medizinische Diagnostik oder Behandlung.</p>
+</footer>
+
+<script>
+/* ===== DATA-DRIVEN AREAS — add a new object here to add a future area ===== */
+const AREAS = [
+  {
+    key:'ortho', name:'Orthopädie', tag:'Bewegungsapparat',
+    href:'ortho.html',           // bestehende Ortho-Startseite
+    blurb:'Pathologien von Gelenken, Knochen und Weichteilen — von der Hüfte bis zur Wirbelsäule.',
+    topics:7, cases:54,
+    chips:['Hüfte','Knie','Fuß','Schulter','Ellenbogen','Hand','Wirbelsäule'],
+    art:'ortho'
+  },
+  {
+    key:'neuro', name:'Neurologie', tag:'Nervensystem',
+    href:'neuro.html',           // neue Neuro-Startseite
+    blurb:'Erkrankungen von Gehirn, Rückenmark und Nerven — von Schlaganfall bis Parkinson.',
+    topics:6, cases:24,
+    chips:['Zerebrovaskulär','Neurodegenerativ','Entzündlich','Anfälle & Trauma','Rückenmark','Grundlagen'],
+    art:'neuro'
+  }
+];
+
+/* future / planned areas (rendered as dashed placeholders) */
+const FUTURE = [
+  {name:'Innere Medizin', blurb:'Kardiopulmonale & internistische Krankheitsbilder.'},
+  {name:'Pädiatrie', blurb:'Entwicklungs- und kinderspezifische Pathologien.'},
+  {name:'Geriatrie', blurb:'Altersassoziierte Erkrankungen & Multimorbidität.'}
+];
+
+/* ---- illustrations ---- */
+const ART = {
+  ortho:`<svg viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 20 C64 44 96 60 84 92 C74 118 116 132 104 168 C96 196 122 214 110 244"/>
+    <g fill="rgba(255,255,255,.12)">
+      <rect x="58" y="30" width="26" height="14" rx="4" transform="rotate(-10 71 37)"/>
+      <rect x="62" y="56" width="30" height="16" rx="4" transform="rotate(6 77 64)"/>
+      <rect x="74" y="86" width="32" height="17" rx="4" transform="rotate(14 90 94)"/>
+      <rect x="82" y="120" width="33" height="18" rx="4" transform="rotate(8 98 129)"/>
+      <rect x="86" y="156" width="34" height="19" rx="4" transform="rotate(-6 103 165)"/>
+      <rect x="80" y="194" width="34" height="19" rx="4" transform="rotate(-12 97 203)"/>
+    </g>
+  </svg>`,
+  neuro:`<svg viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M44 96 C42 60 76 36 118 34 C150 32 182 44 192 76 C200 104 188 128 162 138 C150 150 130 152 116 146 C104 152 84 150 74 140 C54 142 40 124 44 104 Z"/>
+    <path d="M70 78 C84 72 90 86 80 94 M120 64 C134 64 136 80 124 86 M150 86 C164 88 166 102 154 108 M100 108 C114 104 118 118 106 124"/>
+    <g fill="rgba(255,255,255,.16)" stroke="none"><circle cx="92" cy="92" r="5"/><circle cx="140" cy="80" r="4.5"/><circle cx="120" cy="116" r="4"/></g>
+  </svg>`
+};
+
+const ICONS_FUTURE = [
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>'
+];
+
+/* ---- render doors ---- */
+const doors = document.getElementById('doors');
+const enterIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+AREAS.forEach((a,i)=>{
+  const el=document.createElement('a');
+  el.href=a.href; el.className='door '+a.key;
+  el.setAttribute('aria-label', a.name+' öffnen');
+  el.innerHTML =
+    '<div class="bg"></div><div class="noise"></div>'
+    +'<div class="art">'+(ART[a.art]||'')+'</div>'
+    +'<div class="idx">0'+(i+1)+'</div>'
+    +'<div class="tag"><span class="dot"></span>'+a.tag+'</div>'
+    +'<h2>'+a.name+'</h2>'
+    +'<p>'+a.blurb+'</p>'
+    +'<div class="chips">'+a.chips.map(c=>'<span>'+c+'</span>').join('')+'</div>'
+    +'<div class="stats"><div><b>'+a.topics+'</b><span>Lernübersichten</span></div><div><b>'+a.cases+'</b><span>Krankheitsbilder</span></div></div>'
+    +'<span class="enter">'+a.name+' öffnen '+enterIcon+'</span>';
+  doors.appendChild(el);
+});
+
+/* ---- render future placeholders ---- */
+const fg=document.getElementById('futureGrid');
+FUTURE.forEach((f,i)=>{
+  const c=document.createElement('div');
+  c.className='fcard';
+  c.innerHTML='<div class="fic">'+ICONS_FUTURE[i%ICONS_FUTURE.length]+'</div><h4>'+f.name+'</h4><p>'+f.blurb+'</p><span class="soon">geplant</span>';
+  fg.appendChild(c);
+});
+</script>
+</body>
+</html>

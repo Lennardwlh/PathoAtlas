@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hüft-Pathologien · Lernübersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;
+  --surface:#FBF8F2;
+  --surface-2:#F3EDE2;
+  --ink:#22251f;
+  --ink-soft:#5c6056;
+  --ink-faint:#8a8d82;
+  --line:#d9d0c1;
+  --line-soft:#e6ddce;
+  --pine:#1f3d33;
+  --pine-2:#2c5446;
+  --clay:#bd4a30;
+  --clay-2:#a73d27;
+  --ochre:#b07d1e;
+  --steel:#37607e;
+  --plum:#834d63;
+  --cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Hanken Grotesk',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--pine);color:#f4efe4}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:22px}
+.brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;white-space:nowrap}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a.active{background:var(--pine);color:#f0ebde}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+
+header.hero{
+  background:
+    radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.30),transparent 55%),
+    radial-gradient(90% 80% at 6% 110%,rgba(55,96,126,.28),transparent 55%),
+    linear-gradient(160deg,#234438,#19302a 70%);
+  color:#efe9dc;position:relative;overflow:hidden;border-bottom:1px solid #0f1f1a;
+}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+.hero-in{max-width:1180px;margin:0 auto;padding:74px 26px 78px;position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9b69b;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#c9b69b;display:inline-block}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.5rem,5.6vw,4.3rem);line-height:1.02;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#e8a48c}
+.hero p.lead{margin-top:22px;font-size:1.08rem;max-width:30rem;color:#d6cfbf}
+.hero-meta{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;line-height:1;color:#f3eee2}
+.hero-meta span{font-size:.78rem;color:#b3a890;margin-top:4px;letter-spacing:.03em}
+
+section{padding:72px 0;border-bottom:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.sec-num{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--clay);border:1.5px solid var(--clay);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:-.02em;line-height:1.05}
+.sec-head p{color:var(--ink-soft);font-size:1rem;max-width:42rem;width:100%;margin-top:2px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 21px 20px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s,border-color .22s;display:flex;flex-direction:column;min-height:172px}
+.pcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--c)}
+.pcard .ptag{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:auto}
+.pcard .pno{position:absolute;top:16px;right:18px;font-family:'Fraunces',serif;font-size:2.4rem;font-weight:500;color:var(--line);line-height:1}
+.pcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.28rem;letter-spacing:-.01em;margin:14px 0 5px;line-height:1.12}
+.pcard p{font-size:.86rem;color:var(--ink-soft);line-height:1.45}
+.pcard .arrow{margin-top:12px;font-size:.8rem;font-weight:700;color:var(--c);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.pcard:hover .arrow{gap:11px}
+
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.legend span{font-size:.76rem;font-weight:600;color:var(--ink-soft);display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.legend i{width:10px;height:10px;border-radius:3px}
+
+.illo-wrap{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 30px;box-shadow:var(--shadow)}
+.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.axis-fig{text-align:center}
+.axis-fig svg{width:100%;height:auto;max-height:240px}
+.axis-fig h4{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;margin-top:8px}
+.axis-fig .nick{font-size:.82rem;color:var(--ink-faint);font-weight:600;letter-spacing:.04em}
+.axis-fig ul{list-style:none;margin-top:13px;text-align:left;display:inline-block}
+.axis-fig li{font-size:.84rem;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:5px}
+.axis-fig li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--ac)}
+
+.map-layout{display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:32px;align-items:start}
+.knee-stage{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow);position:relative}
+.knee-stage svg{width:100%;height:auto;display:block}
+.hot{cursor:pointer;transition:.2s}
+.hot circle.ring{fill:rgba(189,74,48,.14);stroke:var(--clay);stroke-width:2}
+.hot circle.core{fill:var(--clay)}
+.hot text{fill:#fff;font-family:'Hanken Grotesk';font-weight:800;font-size:13px;text-anchor:middle}
+.hot:hover circle.ring,.hot.sel circle.ring{fill:rgba(189,74,48,.3)}
+.hot.sel circle.core{fill:var(--pine)}
+.hot .pulse{transform-origin:center;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{r:13px;opacity:.55}70%,100%{r:30px;opacity:0}}
+.map-info{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:30px 30px 26px;box-shadow:var(--shadow);min-height:280px}
+.map-info .mi-tag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+.map-info h3{font-family:'Fraunces',serif;font-size:1.65rem;font-weight:600;margin:8px 0 4px;line-height:1.1}
+.map-info .mi-loc{font-size:.9rem;color:var(--ink-faint);font-weight:600;margin-bottom:16px}
+.map-info p{color:var(--ink-soft);font-size:.95rem;margin-bottom:14px}
+.map-info .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.chip{font-size:.78rem;font-weight:600;background:var(--surface-2);border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--ink)}
+.map-hint{font-size:.85rem;color:var(--ink-faint);font-style:italic}
+
+.acc{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.item.open{box-shadow:var(--shadow-lg);border-color:var(--c)}
+.item-head{display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;user-select:none}
+.item-head .ino{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:#fff;background:var(--c);min-width:50px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;padding:0 6px}
+.item-head .ititle{flex:1}
+.item-head h3{font-family:'Fraunces',serif;font-size:1.32rem;font-weight:600;letter-spacing:-.01em;line-height:1.12}
+.item-head .isub{font-size:.84rem;color:var(--ink-faint);margin-top:2px}
+.item-head .icat{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--cbg);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.item-head .caret{width:24px;height:24px;flex-shrink:0;color:var(--ink-faint);transition:transform .25s}
+.item.open .caret{transform:rotate(180deg);color:var(--c)}
+.item-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.item-body-in{padding:4px 24px 26px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px 30px}
+.block{padding:16px 0;border-top:1px solid var(--line-soft)}
+.block.full{grid-column:1/-1}
+.block h5{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.block h5 svg{width:15px;height:15px}
+.pp{font-size:.92rem;color:var(--ink-soft)}
+.ul{list-style:none}
+.ul li{font-size:.9rem;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:6px;line-height:1.45}
+.ul li::before{content:"";position:absolute;left:1px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--c);opacity:.7}
+.ul li b{color:var(--ink);font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.split-col h6{font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:7px}
+.split-col.cons h6::before{content:"● ";color:var(--steel)}
+.split-col.op h6::before{content:"● ";color:var(--clay)}
+.merke{grid-column:1/-1;margin-top:14px;background:var(--cbg);border:1px solid var(--c);border-left:4px solid var(--c);border-radius:12px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start}
+.merke svg{width:20px;height:20px;color:var(--c);flex-shrink:0;margin-top:1px}
+.merke b{font-weight:700;color:var(--ink)}
+.merke p{font-size:.9rem;color:var(--ink-soft);margin:0}
+
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.stages.three{grid-template-columns:repeat(3,1fr)}
+.stages.two{grid-template-columns:repeat(2,1fr)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 12px;text-align:center;box-shadow:var(--shadow)}
+.stage svg{width:100%;height:78px;margin-bottom:8px}
+.stage .sn{font-family:'Fraunces',serif;font-weight:600;color:var(--clay);font-size:1rem}
+.stage p{font-size:.78rem;color:var(--ink-soft);margin-top:3px;line-height:1.32}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:680px;background:var(--surface);font-size:.88rem}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line-soft)}
+thead th{background:var(--pine);color:#eee6d7;font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+td b{color:var(--ink);font-weight:700}
+.loc-pill{font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);white-space:nowrap}
+
+.lc-tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.lc-tab{font-family:'Hanken Grotesk';font-size:.9rem;font-weight:700;padding:11px 20px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);cursor:pointer;transition:.18s;display:flex;align-items:center;gap:8px}
+.lc-tab svg{width:17px;height:17px}
+.lc-tab:hover{border-color:var(--clay);color:var(--ink)}
+.lc-tab.active{background:var(--clay);color:#fff;border-color:var(--clay)}
+.lc-panel{display:none}
+.lc-panel.show{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.flip{perspective:1200px;height:210px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.flip.flipped .flip-in{transform:rotateY(180deg)}
+.fface{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.ffront{background:var(--surface);border:1px solid var(--line)}
+.fback{background:var(--pine);color:#eee6d7;transform:rotateY(180deg);border:1px solid var(--pine)}
+.fface .qlabel{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+.fback .qlabel{color:#cdb89a}
+.ffront p{font-family:'Fraunces',serif;font-size:1.14rem;font-weight:500;line-height:1.28}
+.fback p{font-size:.93rem;line-height:1.45}
+.flip .tapn{position:absolute;bottom:14px;right:18px;font-size:.72rem;color:var(--ink-faint);font-weight:600}
+.fback .tapn{color:#a99a82}
+
+.quiz-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 34px 30px;box-shadow:var(--shadow-lg);max-width:720px}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.quiz-counter{font-size:.82rem;font-weight:700;color:var(--ink-faint);letter-spacing:.05em}
+.quiz-score{font-size:.82rem;font-weight:700;color:var(--clay)}
+.quiz-bar{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-bottom:22px}
+.quiz-bar i{display:block;height:100%;background:var(--clay);border-radius:99px;transition:width .4s}
+.quiz-q{font-family:'Fraunces',serif;font-size:1.34rem;font-weight:600;line-height:1.22;margin-bottom:22px}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{text-align:left;font-family:'Hanken Grotesk';font-size:.96rem;font-weight:600;padding:15px 18px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;transition:.16s;display:flex;align-items:center;gap:13px}
+.opt .ok{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem;font-weight:800;color:var(--ink-faint);transition:.16s}
+.opt:hover:not(.locked){border-color:var(--pine);transform:translateX(3px)}
+.opt.correct{border-color:#2c7a4b;background:#e7f3ea;color:#1c5232}
+.opt.correct .ok{background:#2c7a4b;border-color:#2c7a4b;color:#fff}
+.opt.wrong{border-color:var(--clay);background:#f8e6e0;color:var(--clay-2)}
+.opt.wrong .ok{background:var(--clay);border-color:var(--clay);color:#fff}
+.opt.locked{cursor:default}
+.opt.dim{opacity:.5}
+.explain{margin-top:18px;background:var(--surface-2);border-radius:13px;padding:15px 18px;font-size:.9rem;color:var(--ink-soft);display:none;border-left:4px solid var(--pine)}
+.explain.show{display:block;animation:fade .3s}
+.explain b{color:var(--ink)}
+.quiz-actions{margin-top:22px;display:flex;justify-content:flex-end}
+.btn{font-family:'Hanken Grotesk';font-size:.92rem;font-weight:700;padding:12px 26px;border-radius:12px;border:none;background:var(--pine);color:#eee6d7;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:9px}
+.btn:hover{background:var(--pine-2);transform:translateY(-2px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--pine);background:var(--surface-2)}
+.result{text-align:center;padding:20px 0}
+.result .rdonut{width:150px;height:150px;margin:0 auto 18px}
+.result h3{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;margin-bottom:6px}
+.result p{color:var(--ink-soft);margin-bottom:20px}
+
+.match-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.match-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+.mitem{padding:14px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);font-size:.88rem;font-weight:600;cursor:pointer;margin-bottom:10px;transition:.16s}
+.mitem:hover:not(.done){border-color:var(--pine);transform:translateX(3px)}
+.mitem.sel{border-color:var(--clay);background:#f8e6e0}
+.mitem.done{background:#e7f3ea;border-color:#2c7a4b;color:#1c5232;cursor:default;opacity:.85}
+.mitem.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.match-status{margin-top:18px;font-weight:700;color:var(--clay);min-height:24px}
+
+footer{padding:50px 26px 60px;text-align:center;background:var(--pine);color:#cdc2ad}
+footer .fbrand{font-family:'Fraunces',serif;color:#efe9dc;font-size:1.3rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.76rem;color:#9d927c;margin-top:18px;font-style:italic}
+
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr;gap:30px}
+  .map-layout{grid-template-columns:1fr}
+  .axis-grid{grid-template-columns:1fr;gap:30px}
+  .axis-fig svg{max-height:210px}
+  .stages{grid-template-columns:repeat(2,1fr)}
+  .stages.three{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .match-layout{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-knee{max-width:300px;margin:0 auto}
+}
+@media(max-width:520px){
+  .wrap,.nav-in{padding-left:18px;padding-right:18px}
+  .hero-in{padding-left:18px;padding-right:18px}
+  .quiz-card{padding:24px 20px}
+  .item-head{padding:16px;gap:12px}
+  .item-head .icat{display:none}
+  .stages{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="index.html" style="text-decoration:none;color:inherit"><span class="dot"></span> Hüfte · Pathologien</a>
+    <div class="nav-links">
+      <a href="#ueberblick">Überblick</a>
+      <a href="#ccd">CCD-Winkel</a>
+      <a href="#karte">Hüftkarte</a>
+      <a href="#details">Krankheitsbilder</a>
+      <a href="#vergleich">Vergleich</a>
+      <a href="#lerncheck">Lerncheck</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">Pathologie Orthopädie · Kapitel 4</span>
+      <h1>Die Hüfte — <em>Lastträger</em> mit Winkelfrage.</h1>
+      <p class="lead">Acht Krankheitsbilder der Hüftregion — von den Schenkelhals-Fehlstellungen über Dysplasie, Coxarthrose und femoroacetabuläres Impingement bis zum kindlichen Morbus Perthes. Visuell aufbereitet, klinisch strukturiert, mit interaktiven Lernchecks.</p>
+      <div class="hero-meta">
+        <div><b>8</b><span>Krankheitsbilder</span></div>
+        <div><b>4</b><span>Kategorien</span></div>
+        <div><b>3</b><span>Lerncheck-Modi</span></div>
+      </div>
+    </div>
+    <div class="hero-knee">
+      <svg viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <g stroke="#e8a48c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".9">
+          <!-- pelvis hint -->
+          <path d="M70 70 Q140 50 210 70 Q220 110 196 140 Q150 120 150 120"/>
+          <!-- acetabulum -->
+          <path d="M150 120 Q188 116 198 150"/>
+          <!-- femoral head -->
+          <circle cx="172" cy="150" r="34"/>
+          <!-- neck -->
+          <path d="M150 176 L120 220"/>
+          <!-- femur shaft -->
+          <path d="M120 220 L108 300"/>
+          <path d="M150 200 L140 300"/>
+          <!-- greater trochanter -->
+          <path d="M120 196 Q104 196 104 214"/>
+        </g>
+        <circle cx="172" cy="150" r="3.4" fill="#e8a48c"/>
+        <path d="M150 176 L120 220" stroke="#f0c2af" stroke-width="6" opacity=".4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== ÜBERBLICK ===================== -->
+<section id="ueberblick">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <div>
+        <h2>Überblick auf einen Blick</h2>
+        <p>Alle acht Krankheitsbilder, nach Mechanismus gruppiert. Tippe auf eine Karte, um direkt zum Detailteil zu springen.</p>
+      </div>
+    </div>
+    <div class="grid" id="overviewGrid"></div>
+    <div class="legend">
+      <span><i style="background:#1f3d33"></i> Fehlstellung &amp; Achse</span>
+      <span><i style="background:#37607e"></i> Dysplasie &amp; Instabilität</span>
+      <span><i style="background:#bd4a30"></i> Degeneration &amp; Impingement</span>
+      <span><i style="background:#b07d1e"></i> Kindliche Nekrose</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CCD-WINKEL ===================== -->
+<section id="ccd">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <div>
+        <h2>Der CCD-Winkel im Profil</h2>
+        <p>Der Centrum-Collum-Diaphysen-Winkel beschreibt die Stellung des Schenkelhalses. Merke: <b>Coxa vara &lt; 120°</b>, physiologisch ~126°, <b>Coxa valga &gt; 130°</b>.</p>
+      </div>
+    </div>
+    <div class="illo-wrap">
+      <div class="axis-grid">
+        <div class="axis-fig" style="--ac:#37607e" id="ccdFig1Wrap">
+          <div id="ccdFig1"></div>
+          <h4>Coxa vara</h4>
+          <div class="nick">CCD &lt; 120°</div>
+          <ul>
+            <li>Abflachung des Schenkelhalses</li>
+            <li>mehr Biegespannung → Frakturneigung ↑</li>
+            <li>Trochanter steht höher → Trendelenburg</li>
+          </ul>
+        </div>
+        <div class="axis-fig" style="--ac:#2c7a4b" id="ccdFig2Wrap">
+          <div id="ccdFig2"></div>
+          <h4>Physiologisch</h4>
+          <div class="nick">CCD ~126°</div>
+          <ul>
+            <li>harmonische Krafteinleitung</li>
+            <li>entwickelt sich bis zum 12. Lebensjahr</li>
+            <li>gute Zentrierung in der Pfanne</li>
+          </ul>
+        </div>
+        <div class="axis-fig" style="--ac:#bd4a30" id="ccdFig3Wrap">
+          <div id="ccdFig3"></div>
+          <h4>Coxa valga</h4>
+          <div class="nick">CCD &gt; 130°</div>
+          <ul>
+            <li>Steilstellung des Schenkelhalses</li>
+            <li>Luxationsneigung nach lateral bei Adduktion</li>
+            <li>oft Spontankorrektur im Wachstum</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HÜFTKARTE ===================== -->
+<section id="karte">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div>
+        <h2>Interaktive Hüftkarte</h2>
+        <p>Region und Struktur bestimmen das Krankheitsbild. Tippe auf die markierten Punkte.</p>
+      </div>
+    </div>
+    <div class="map-layout">
+      <div class="knee-stage" id="hipStage"></div>
+      <div class="map-info" id="mapInfo">
+        <span class="map-hint">↑ Tippe einen nummerierten Punkt an der Hüfte an, um Struktur und Krankheitsbilder zu sehen.</span>
+        <div id="mapContent" style="display:none">
+          <span class="mi-tag" id="miTag"></span>
+          <h3 id="miTitle"></h3>
+          <div class="mi-loc" id="miLoc"></div>
+          <p id="miDesc"></p>
+          <div class="chips" id="miChips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DETAILS ===================== -->
+<section id="details">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <div>
+        <h2>Die Krankheitsbilder im Detail</h2>
+        <p>Aufklappbar und einheitlich strukturiert: Definition → Ursache → Klinik → Diagnostik → Therapie. Jede Karte schließt mit einem <b>Merke</b>.</p>
+      </div>
+    </div>
+    <div class="acc" id="accordion"></div>
+  </div>
+</section>
+
+<!-- ===================== VERGLEICH ===================== -->
+<section id="vergleich">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <div>
+        <h2>Schnellvergleich &amp; Differenzialdiagnose</h2>
+        <p>Die wichtigsten Unterscheidungsmerkmale der Hüftpathologien nebeneinander.</p>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Krankheitsbild</th><th>Leitbefund / Kennzeichen</th><th>Typische Gruppe</th><th>Schlüsselbefund</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Coxa vara</b></td><td><span class="loc-pill">CCD &lt; 120°</span></td><td>angeboren / posttraumatisch</td><td>Frakturneigung, Trendelenburg</td></tr>
+          <tr><td><b>Coxa valga</b></td><td><span class="loc-pill">CCD &gt; 130°</span></td><td>physiologisch im Kleinkind</td><td>Luxationsneigung lateral, Spontankorrektur</td></tr>
+          <tr><td><b>Coxa antetorta/retrotorta</b></td><td><span class="loc-pill">Torsionswinkel ±</span></td><td>Kinder/Jugendliche</td><td>antetorta = Innenrotationsgang, retrotorta = Außenrotation</td></tr>
+          <tr><td><b>Hüftdysplasie</b></td><td><span class="loc-pill">Pfanne unreif</span></td><td>Mädchen; 2–3:100 NG</td><td>Ortolani/Barlow, Ultraschall im 1. LJ</td></tr>
+          <tr><td><b>Coxarthrose</b></td><td><span class="loc-pill">Anlauf-/Leistenschmerz</span></td><td>Männer; 50–60 J</td><td>Gelenkspalt ↓, Osteophyten, Kapselmuster</td></tr>
+          <tr><td><b>FAI</b></td><td><span class="loc-pill">Leistenschmerz bei Flexion</span></td><td>Cam: junge Männer · Pincer: Frauen</td><td>Flex &amp; IR eingeschränkt; Labrumschaden</td></tr>
+          <tr><td><b>Morbus Perthes</b></td><td><span class="loc-pill">Schonhinken, Knieschmerz</span></td><td>Jungen 4:1; 5–9 J</td><td>Viererzeichen/Faber +, 5 Stadien</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LERNCHECK ===================== -->
+<section id="lerncheck" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <div>
+        <h2>Lerncheck</h2>
+        <p>Drei Modi zum aktiven Wiederholen. Erst raten, dann aufdecken — so bleibt es hängen.</p>
+      </div>
+    </div>
+
+    <div class="lc-tabs">
+      <button class="lc-tab active" data-panel="quiz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Quiz
+      </button>
+      <button class="lc-tab" data-panel="cards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="14" rx="2"/><path d="M8 6V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg>
+        Karteikarten
+      </button>
+      <button class="lc-tab" data-panel="match">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 7h6M9 17h6M4 7h.01M4 12h.01M4 17h.01"/></svg>
+        Zuordnung
+      </button>
+    </div>
+
+    <div class="lc-panel show" id="panel-quiz">
+      <div class="quiz-card" id="quizCard"></div>
+    </div>
+
+    <div class="lc-panel" id="panel-cards">
+      <p style="color:var(--ink-soft);margin-bottom:18px;font-size:.92rem">Tippe eine Karte an, um die Antwort zu sehen.</p>
+      <div class="fc-grid" id="fcGrid"></div>
+    </div>
+
+    <div class="lc-panel" id="panel-match">
+      <p style="color:var(--ink-soft);margin-bottom:18px;font-size:.92rem">Wähle links einen Befund/Test, dann rechts das passende Krankheitsbild.</p>
+      <div class="match-layout">
+        <div class="match-col"><h4>Befund / Kennzeichen</h4><div id="matchLeft"></div></div>
+        <div class="match-col"><h4>Krankheitsbild</h4><div id="matchRight"></div></div>
+      </div>
+      <div class="match-status" id="matchStatus"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">Hüft-Pathologien · Lernübersicht</div>
+  <p>Erstellt aus dem Skript „Pathologie Orthopädie“ (Kap. 4, Hüftregion) als strukturierte Lernhilfe für die physiotherapeutische Ausbildung.</p>
+  <p class="fnote">Lernzusammenfassung — ersetzt keine medizinische Diagnostik oder Behandlung. Im Zweifel immer das Originalskript prüfen.</p>
+</footer>
+
+<script>
+/* ============ CATEGORIES ============ */
+const CATS = {
+  malpos: {label:'Fehlstellung & Achse',     c:'#1f3d33', bg:'#e3ece4'},
+  dys:    {label:'Dysplasie & Instabilität', c:'#37607e', bg:'#dfe8ef'},
+  degen:  {label:'Degeneration & Impingement',c:'#bd4a30', bg:'#f7e4dc'},
+  child:  {label:'Kindliche Nekrose',        c:'#b07d1e', bg:'#f4e9d2'}
+};
+
+const icons = {
+  def:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>',
+  cause:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>',
+  clin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg>',
+  diag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  ther:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>',
+  prog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 7h4v4"/></svg>',
+  stage:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>',
+  epi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.1a4 4 0 0 1 0 7.8M21 21v-2a4 4 0 0 0-3-3.9"/></svg>'
+};
+
+/* ============ DETAIL DATA ============ */
+const P = [
+ {id:'coxa-vara-valga', no:'4.1', cat:'malpos', title:'Coxa vara & Coxa valga', sub:'Fehlstellungen des CCD-Winkels',
+  short:'Schenkelhals zu flach (vara, < 120°) oder zu steil (valga, > 130°) — oft Ausgangspunkt für Instabilität.',
+  sections:[
+   {h:'Überblick',ic:'def',blocks:[
+     {type:'text',content:'Fehlstellungen wie Coxa vara/valga und Coxa antetorta/retrotorta treten häufig kombiniert auf (z.B. Coxa valga et antetorta). Sie führen zu einer Instabilität im Hüftgelenk, die eine Hüftluxation zur Folge haben kann.'}]},
+   {h:'Coxa vara',ic:'cause',blocks:[
+     {type:'list',content:[
+       'Definition: Abflachung des Schenkelhalses, <b>CCD-Winkel &lt; 120°</b>','Angeboren oder z.B. nach verheilter Schenkelhalsfraktur / Femurosteotomie','Verkleinerter CCD → Collum femoris muss mehr Biegespannung aushalten → <b>Frakturneigung ↑</b>','M. tensor fasciae latae fängt Spannung ab → Insertionstendopathien möglich','Trochanter major steht höher → aktive Insuffizienz der Abduktoren → <b>Trendelenburg-Zeichen</b>']}]},
+   {h:'Coxa valga',ic:'cause',blocks:[
+     {type:'list',content:[
+       'Definition: Steilstellung des Schenkelhalses, <b>CCD-Winkel &gt; 130°</b>','Physiologisch entwickelt sich der CCD bis zum 12. Lebensjahr auf ca. 126°','Muskuläre Dysbalancen können die Entwicklung verzögern','Ohne neuromuskuläre Erkrankung gute Prognose auf <b>Spontankorrektur</b> im Wachstum','Vergrößerter CCD → Luxationsneigung nach lateral bei Adduktion']}]},
+   {h:'Operative Therapie',ic:'ther',blocks:[
+     {type:'list',content:[
+       '<b>Umstellungsosteotomie</b> bei präarthrotischer Deformität, beginnender Coxarthrose, Schmerz &gt; 1 Jahr oder Alter &gt; 60 J','Intertrochantäre Umstellung bei Coxa valga oder vara','<b>Valgisation</b> (laterale Keilentnahme) → Beinverlängerung, mehr Muskelspannung','<b>Varisation</b> (mediale Keilentnahme) → Beinverkürzung, Entspannung der Muskulatur','Fixation mit Platte/Schrauben, Entfernung nach 12–18 Monaten; Teilbelastung erste 6 Wochen']}]}
+  ],
+  merke:'Eselsbrücke über den CCD-Winkel: <b>vara &lt; 120°</b> (flach, Frakturgefahr, Trendelenburg), physiologisch ~126°, <b>valga &gt; 130°</b> (steil, Luxation nach lateral). Therapie über Umstellungsosteotomie.'},
+
+ {id:'coxa-torsion', no:'4.1', cat:'malpos', title:'Coxa antetorta & retrotorta', sub:'Torsionsfehler des Schenkelhalses',
+  short:'Antetorsionswinkel zu groß (antetorta, Innenrotationsgang) oder zu klein (retrotorta, Außenrotationsgang).',
+  sections:[
+   {h:'Coxa antetorta',ic:'def',blocks:[
+     {type:'list',content:[
+       'Antetorsionswinkel <b>vergrößert</b>','Äußert sich durch ein vermehrt <b>innenrotiertes Gangbild</b> — Fußspitzen zeigen nach innen','Kinder sitzen gerne im „umgekehrten Schneidersitz" (innenrotierte Oberschenkel)']}]},
+   {h:'Coxa retrotorta',ic:'def',blocks:[
+     {type:'list',content:[
+       'Antetorsionswinkel <b>verkleinert</b> (Schenkelhals in Bezug auf die Kondylenachse nach hinten gerichtet)','Äußert sich durch ein vermehrt <b>außenrotiertes Gangbild</b> — Fußspitzen zeigen nach außen']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'list',content:[
+       '<b>Derotationsosteotomie</b> v.a. bei Jugendlichen mit pathologischer Coxa antetorta','Ziel: bessere Zentrierung des Hüftkopfes im Acetabulum, Innenrotationsfehlstellung vermeiden','Strukturelle Fehlstellungen lösen meist keine Symptome aus — diese treten erst bei zusätzlichen Funktionsstörungen auf']}]}
+  ],
+  merke:'<b>Antetorta = Antetorsion ↑ = Innenrotationsgang</b> (Zehen nach innen); <b>retrotorta = Antetorsion ↓ = Außenrotationsgang</b> (Zehen nach außen). Korrektur per Derotationsosteotomie.'},
+
+ {id:'dysplasie', no:'4.2', cat:'dys', title:'Hüftdysplasie', sub:'Reifestörung des Acetabulums',
+  short:'Mangelnde Formgebung der Hüftpfanne im Säuglingsalter — der Femurkopf ist unzureichend überdacht.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'text',content:'Mangelnde Formgebung des Acetabulums durch eine Reifestörung im Säuglings-/Kindesalter. Die Femurkopfüberdachung ist unzureichend.'}]},
+   {h:'Epidemiologie',ic:'epi',blocks:[
+     {type:'list',content:[
+       'Genetische Vorbelastung begünstigt','2–3 Hüftdysplasien auf 100 Neugeborene','Echte Hüftluxation deutlich seltener (~0,2 %)','<b>Mädchen häufiger</b> als Jungen']}]},
+   {h:'Pathogenese',ic:'cause',blocks:[
+     {type:'list',content:[
+       'Instabile Neugeborenenhüfte; Fehllage im Uterus → Kapselüberdehnung','Verknöcherungsverzögerung des Acetabulums; weich-knorpeliger Femurkopf findet keinen Halt','Geringe Überdachung → erhöhtes Risiko für vorzeitige Degeneration und Luxation nach kranial-dorsal','Luxationsgefahr steigt bei muskulärem Ungleichgewicht: Außenrotatoren + Glutealmuskulatur &lt; Adduktoren']}]},
+   {h:'Symptomatik',ic:'clin',blocks:[
+     {type:'list',content:[
+       'Asymmetrien der Gesäß- und Analfalte','Bewegungsarmut &amp; schnellere Ermüdbarkeit des betroffenen Beines → Duchenne-/Trendelenburg-Hinken','Kompensatorische Beckenflexion','Gangbild mit starker Innenrotation (zentriert den Kopf in der Pfanne)']}]},
+   {h:'Diagnostik',ic:'diag',blocks:[
+     {type:'list',content:[
+       '<b>Ortolani</b>-Stabilitätstest: „Klicken" bei Instabilität, „Schnappen" bei (Sub-)Luxationsneigung','<b>Barlow-Zeichen:</b> vollständige Luxation provozierbar; Abduktionshemmung','<b>Ultraschall:</b> Methode der Wahl im 1. Lebensjahr (Form/Struktur/Lage); engmaschige Kontrolle','Röntgen erst nach Verknöcherung des Femurkopfes (Seitenvergleich, Winkel)']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Ziel: Zentrierung des Hüftkopfes → Nachverknöcherung der Pfanne','Spreizhose (Flex/ABD), sinnvoll bis ~12. Lebensmonat','Pavlik-Bandage (Flexion + Strampeln → Reposition durch Abduktion)','Breites Wickeln, Hock-Spreiz-Tragen']},
+       {h:'Operativ',cls:'op',items:['Wenn konservative Reposition nicht gelingt','Bis ~8. Lj: Salter-Beckenosteotomie (Os ilium, Pfanne nach lateral/ventral)','Ältere Kinder: Triple-Osteotomie (Ilium, Pubis, Ischii)','Erwachsene mit Degeneration: Hüft-TEP']}]}]}
+  ],
+  merke:'Unreife, zu flache Pfanne mit schlechter Kopfüberdachung; v.a. Mädchen. Screening per <b>Ortolani/Barlow</b> und <b>Ultraschall im 1. Lebensjahr</b>. Frühbehandlung verhindert frühe Arthrose.'},
+
+ {id:'coxarthrose', no:'4.3', cat:'degen', title:'Coxarthrose', sub:'Arthrose des Hüftgelenks',
+  short:'Degenerative Zerstörung des Hüftknorpels — Anlaufschmerz und tiefer Leistenschmerz.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'text',content:'Degenerative Erkrankung des Hüftgelenks mit Veränderung/Zerstörung des Gelenkknorpels unter Beteiligung von Knochen, Gelenkkapsel und umgebender Muskulatur.'}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       'Hohes Lebensalter, Übergewicht, Rauchen, Fehlbelastung','Hüftgelenksdysplasie, Gelenkfrakturen, Infektionen','Idiopathische Hüftkopfnekrose, Morbus Perthes','Rheumatische Erkrankungen']}]},
+   {h:'Epidemiologie',ic:'epi',blocks:[
+     {type:'list',content:['Prävalenz steigt mit dem Lebensalter','<b>Männer häufiger</b> als Frauen','Altersgipfel bei Erstdiagnose 50.–60. Lebensjahr']}]},
+   {h:'Symptomatik',ic:'clin',blocks:[
+     {type:'list',content:[
+       'Belastungsschmerz; <b>Anlaufschmerz</b> morgens und nach längerer Ruhe','Verkürzte Gehstrecke','<b>Tiefer Leistenschmerz</b>, ggf. Ausstrahlung in den ventralen Oberschenkel','Später Ruhe- und Nachtschmerz','Bewegungseinschränkung / Kapselmuster']}]},
+   {h:'Diagnostik',ic:'diag',blocks:[
+     {type:'list',content:[
+       'Anamnese, klinische Untersuchung','Röntgen: <b>Gelenkspaltverschmälerung</b>, subchondrale Sklerosierung, Osteophyten am Gelenkrand, subchondrale Zysten, Deformierung','Ultraschall, CT']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Medikamente (Schmerzmittel, Hyaluronsäure)','Physiotherapie (MT, Muskelaufbautraining)']},
+       {h:'Operativ',cls:'op',items:['Prothetische Versorgung (Hüft-TEP)']}]}]}
+  ],
+  merke:'Leitsymptome: <b>Anlaufschmerz</b> + <b>tiefer Leistenschmerz</b> mit Kapselmuster. Im Röntgen die vier Arthrosezeichen (Gelenkspalt ↓, Sklerose, Osteophyten, Zysten). Endstadium → Hüft-TEP.'},
+
+ {id:'fai', no:'4.4', cat:'degen', title:'Femoroacetabuläres Impingement (FAI)', sub:'Pathologischer Kontakt Femur ↔ Pfanne',
+  short:'Anschlag zwischen Schenkelhals und Pfanne — als Cam-, Pincer- oder Mischtyp, Wegbereiter der Arthrose.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'text',content:'Pathologischer Kontakt zwischen Acetabulum und proximalem Femur, der bei Bewegung auftritt.'}]},
+   {h:'Einteilung',ic:'stage',blocks:[{type:'fai'}]},
+   {h:'Epidemiologie',ic:'epi',blocks:[
+     {type:'list',content:[
+       '<b>Cam-Typ:</b> häufiger junge, sportliche Männer (20–30 J)','<b>Pincer-Typ:</b> typischerweise Frauen (30–40 J)','Bei den meisten Betroffenen Mischform beider Varianten']}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       'Formveränderung des Acetabulums oder des Oberschenkelhalses','Anschlag führt nach und nach zu Knorpel- und Labrumschäden','<b>Risikofaktor für die Entwicklung einer Coxarthrose</b>','Begünstigend: belastende Sportarten (Ballett, Kampfsport, Basketball, Hockey)']}]},
+   {h:'Symptome',ic:'clin',blocks:[
+     {type:'list',content:[
+       '<b>Tiefer Leistenschmerz</b>; belastungs- und bewegungsabhängig','Schmerz bei Hüftflexion, v.a. nach längerem Sitzen — stechend/einschießend','Schmerz beim Stehen/Gehen am lateralen Oberschenkel bis ins Knie','Bewegungseinschränkung v.a. in <b>Flexion und Innenrotation</b>']}]},
+   {h:'Diagnostik',ic:'diag',blocks:[
+     {type:'list',content:[
+       'Ausschluss von Leistenschmerz durch Adduktorenproblematik / Schambeinentzündung','Funktionsuntersuchung: <b>Flexion und Innenrotation eingeschränkt</b>','Röntgen, MRT']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Schafft meist nur temporär Linderung','NSAR','Modifikation/Reduktion der sportlichen Aktivität','Kräftigung der Rumpfmuskulatur']},
+       {h:'Operativ',cls:'op',items:['Arthroskopie: Formanomalien beseitigen, Labrum-/Knorpelschäden reparieren','Abfräsen der Formstörung; Glätten/Annähen des Labrums','Knorpel: Shaving, Entfernung freier Teile','Pridie-Bohrung / Mikrofrakturierung bei tiefen Defekten (Narbenknorpel)']}]}]}
+  ],
+  merke:'Zwei Typen merken: <b>Cam</b> (verdickter Schenkelhals, junge Männer) und <b>Pincer</b> (zu tiefe Pfanne, Frauen). Leitbefund: Leistenschmerz mit Einschränkung von <b>Flexion + Innenrotation</b>; Arthroserisiko.'},
+
+ {id:'perthes', no:'4.5', cat:'child', title:'Morbus Perthes', sub:'Aseptische Hüftkopfnekrose des Kindes',
+  short:'Durchblutungsstörung des kindlichen Hüftkopfes mit Knochennekrose — verläuft in fünf Stadien.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'text',content:'Orthopädische Kinderkrankheit aus der Gruppe der aseptischen Osteochondronekrosen. Durch eine Durchblutungsstörung (Ischämie) des Hüftkopfes stirbt Knochengewebe ab (Nekrose).'}]},
+   {h:'Epidemiologie',ic:'epi',blocks:[
+     {type:'list',content:[
+       '<b>Jungen 4× häufiger</b> als Mädchen','Prävalenz ca. 1:1200','Auftreten meist zwischen 5. und 9. Lebensjahr','Bei ca. 48 % beidseitig','Eine der häufigsten aseptischen Knochennekrosen']}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       'Ursachen weitgehend unbekannt','Diskutiert: Durchblutungsstörung durch Gefäßfehlbildungen','Hormonelle Dysregulation, Druckerhöhung im Knochen/Gelenkraum','Genetische Faktoren']}]},
+   {h:'Symptomatik',ic:'clin',blocks:[
+     {type:'list',content:[
+       'Schonhinken, Lauffaulheit','<b>Schmerzen im Knie- und Oberschenkelbereich</b> (Ruhe-, Belastungs- oder Anlaufschmerz)','Bewegungseinschränkung in Rotation, v.a. Innenrotation']}]},
+   {h:'Verlauf in 5 Stadien',ic:'stage',blocks:[{type:'perthes'}]},
+   {h:'Diagnostik',ic:'diag',blocks:[
+     {type:'list',content:[
+       'Anamnese (Alter, Symptome)','<b>Positives Viererzeichen / Faber-Test</b> → Innenrotation und Abduktion eingeschränkt','Röntgen, Ultraschall, MRT']}]},
+   {h:'Therapie & Prognose',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Entlastung und günstige Stellung (Unterstützung des Reparationsstadiums)','<b>Containment</b> mittels Orthesen/Schienen','Physiotherapie zum Erhalt der Beweglichkeit; regelmäßige Röntgenkontrolle']},
+       {h:'Operativ',cls:'op',items:['Intertrochantäre Korrekturosteotomie (Derotations-Varisationsosteotomie)','meist mit Beckenosteotomie, danach Entlastung über UAGST']}]},
+     {type:'text',content:'Prognose: je früher die Erkrankung auftritt und je geringer der Befall, desto besser. Gefahr der frühzeitigen Hüftarthrose. Dauer meist 2–4 Jahre.'}]}
+  ],
+  merke:'Aseptische Hüftkopfnekrose, typisch beim <b>Jungen (5–9 J)</b>. Cave: der Schmerz wird oft am <b>Knie</b> empfunden! Test: <b>Viererzeichen/Faber</b>. Therapieprinzip: <b>Containment</b>; Verlauf in 5 Stadien.'}
+];
+
+/* ============ STAGE DATA ============ */
+// femur with adjustable CCD neck angle. type: 'vara' | 'normal' | 'valga'
+function ccdSVG(type){
+  const bone='#e3d6bd', stroke='#cdbfa9', accent='#bd4a30';
+  // neck angle from vertical shaft
+  const cfg={vara:{ang:55,col:'#37607e'},normal:{ang:40,col:'#2c7a4b'},valga:{ang:22,col:'#bd4a30'}}[type];
+  const shaftX=96, shaftTop=70, shaftBot=210;
+  const neckLen=70;
+  const a=cfg.ang*Math.PI/180;
+  const hubX=shaftX, hubY=shaftTop+14;
+  const headX=hubX - Math.sin(a)*neckLen;
+  const headY=hubY - Math.cos(a)*neckLen;
+  return `<svg viewBox="0 0 180 230" xmlns="http://www.w3.org/2000/svg">
+    <!-- shaft -->
+    <path d="M${shaftX-13} ${shaftBot} L${shaftX-13} ${shaftTop+20} Q${shaftX} ${shaftTop} ${shaftX+13} ${shaftTop+20} L${shaftX+13} ${shaftBot}" fill="${bone}" stroke="${stroke}" stroke-width="2"/>
+    <!-- neck -->
+    <path d="M${hubX-12} ${hubY+6} L${(headX-9).toFixed(1)} ${(headY+6).toFixed(1)} L${(headX+9).toFixed(1)} ${(headY-6).toFixed(1)} L${hubX+12} ${hubY-6} Z" fill="${bone}" stroke="${stroke}" stroke-width="2"/>
+    <!-- head -->
+    <circle cx="${headX.toFixed(1)}" cy="${headY.toFixed(1)}" r="22" fill="${bone}" stroke="${stroke}" stroke-width="2"/>
+    <!-- greater trochanter -->
+    <path d="M${shaftX+10} ${shaftTop+22} Q${shaftX+26} ${shaftTop+14} ${shaftX+24} ${shaftTop+34} L${shaftX+13} ${shaftTop+42} Z" fill="${bone}" stroke="${stroke}" stroke-width="1.5"/>
+    <!-- angle marker -->
+    <line x1="${hubX}" y1="${hubY}" x2="${hubX}" y2="${hubY+58}" stroke="${cfg.col}" stroke-width="2" stroke-dasharray="3 3"/>
+    <line x1="${hubX}" y1="${hubY}" x2="${(headX).toFixed(1)}" y2="${(headY).toFixed(1)}" stroke="${cfg.col}" stroke-width="2" stroke-dasharray="3 3"/>
+    <circle cx="${hubX}" cy="${hubY}" r="3" fill="${cfg.col}"/>
+  </svg>`;
+}
+
+// FAI types: 'cam' | 'pincer'
+function faiSVG(type){
+  const bone='#e3d6bd', stroke='#cdbfa9', dmg='#bd4a30', soc='#dcc9a8';
+  if(type==='cam'){
+    return `<svg viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg">
+      <!-- acetabulum normal -->
+      <path d="M150 30 Q188 75 150 120" fill="none" stroke="${soc}" stroke-width="12" stroke-linecap="round"/>
+      <!-- femoral head with cam bump -->
+      <circle cx="96" cy="75" r="40" fill="${bone}" stroke="${stroke}" stroke-width="2"/>
+      <path d="M120 44 Q150 50 140 78 Q132 64 116 56 Z" fill="${dmg}" opacity=".5"/>
+      <!-- neck -->
+      <path d="M78 110 L60 158 M120 110 L120 158" stroke="${stroke}" stroke-width="13" stroke-linecap="round" fill="none"/>
+      <text x="96" y="166" text-anchor="middle" font-family="Hanken Grotesk" font-weight="700" font-size="11" fill="#8a8d82">Bump am Schenkelhals</text>
+    </svg>`;
+  }
+  return `<svg viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg">
+    <!-- acetabulum overcovering (deeper) -->
+    <path d="M150 18 Q200 75 150 132" fill="none" stroke="${dmg}" stroke-width="12" stroke-linecap="round" opacity=".55"/>
+    <path d="M150 30 Q186 75 150 120" fill="none" stroke="${soc}" stroke-width="8" stroke-linecap="round"/>
+    <!-- femoral head normal -->
+    <circle cx="96" cy="75" r="40" fill="${bone}" stroke="${stroke}" stroke-width="2"/>
+    <!-- neck -->
+    <path d="M78 110 L60 158 M120 110 L120 158" stroke="${stroke}" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <text x="96" y="166" text-anchor="middle" font-family="Hanken Grotesk" font-weight="700" font-size="11" fill="#8a8d82">Pfanne überdacht</text>
+  </svg>`;
+}
+const FAI_TYPES=[
+  {n:'Cam-Typ',t:'Verdickung des Oberschenkelhalses — der Schenkelhals schlägt bei Flexion ans Labrum',svg:()=>faiSVG('cam')},
+  {n:'Pincer-Typ',t:'Gelenkpfanne zu tief — der Hüftkopf schlägt an und verletzt das Labrum',svg:()=>faiSVG('pincer')}
+];
+
+// Morbus Perthes 5 stages - femoral head condition
+function perthesSVG(stage){
+  const bone='#e3d6bd', stroke='#cdbfa9', dmg='#bd4a30', gap='#9fc4b4';
+  let head='';
+  if(stage===0){ // initial - widened gap
+    head=`<circle cx="40" cy="34" r="22" fill="${bone}" stroke="${stroke}" stroke-width="2"/><path d="M40 8 A26 26 0 0 1 40 60" fill="none" stroke="${gap}" stroke-width="3" stroke-dasharray="2 3"/>`;
+  }else if(stage===1){ // condensation - denser
+    head=`<circle cx="40" cy="34" r="22" fill="#cBae7d" stroke="${stroke}" stroke-width="2"/><circle cx="40" cy="34" r="22" fill="${dmg}" opacity=".18"/>`;
+  }else if(stage===2){ // fragmentation - broken up
+    head=`<circle cx="40" cy="34" r="22" fill="${bone}" stroke="${stroke}" stroke-width="2"/><path d="M30 18 L34 50 M40 14 L40 54 M50 18 L46 50" stroke="${dmg}" stroke-width="2"/>`;
+  }else if(stage===3){ // reparation - rebuilding, slightly flattened
+    head=`<path d="M18 38 Q18 14 40 14 Q62 14 62 38 Q62 52 40 54 Q18 52 18 38 Z" fill="${bone}" stroke="${stroke}" stroke-width="2"/><path d="M24 30 Q40 24 56 30" stroke="${gap}" stroke-width="2" fill="none"/>`;
+  }else{ // endstage - restored contour, maybe slightly oval
+    head=`<ellipse cx="40" cy="36" rx="24" ry="20" fill="${bone}" stroke="${stroke}" stroke-width="2"/>`;
+  }
+  return `<svg viewBox="0 0 80 78" xmlns="http://www.w3.org/2000/svg">${head}<path d="M30 56 L24 76 M52 56 L52 76" stroke="${stroke}" stroke-width="9" stroke-linecap="round"/></svg>`;
+}
+const PERTHES_STAGES=[
+  {n:'Initial',t:'Gelenkspalt erweitert (Knorpelödem, Erguss)'},
+  {n:'Kondensation',t:'Verdichtung der Femurkopfepiphyse'},
+  {n:'Fragmentation',t:'Zerfall der Epiphyse, Lücken im Knochen'},
+  {n:'Reparation',t:'Wiederaufbau des Femurkopfes'},
+  {n:'Endstadium',t:'Wiederherstellung der Kopfkontur'}
+];
+
+/* ============ RENDER OVERVIEW ============ */
+const og = document.getElementById('overviewGrid');
+P.forEach(p=>{
+  const cat=CATS[p.cat];
+  const a=document.createElement('a');
+  a.href='#'+p.id; a.className='pcard';
+  a.style.setProperty('--c',cat.c);
+  a.innerHTML=`<span class="pno">${p.no.replace('4.','')}</span>
+    <span class="ptag">${cat.label}</span>
+    <h3>${p.title}</h3>
+    <p>${p.short}</p>
+    <span class="arrow">Zum Detail →</span>`;
+  a.addEventListener('click',e=>{e.preventDefault();openAndScroll(p.id);});
+  og.appendChild(a);
+});
+
+/* ============ RENDER ACCORDION ============ */
+const acc=document.getElementById('accordion');
+function renderBlocks(blocks,c){
+  return blocks.map(b=>{
+    if(b.type==='text') return `<p class="pp">${b.content}</p>`;
+    if(b.type==='list') return `<ul class="ul">${b.content.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    if(b.type==='split') return `<div class="split">${b.content.map(col=>`<div class="split-col ${col.cls}"><h6>${col.h}</h6><ul class="ul">${col.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}</div>`;
+    if(b.type==='fai'){
+      return `<div class="stages two">${FAI_TYPES.map(s=>`<div class="stage"><div style="height:90px;display:flex;align-items:center;justify-content:center">${s.svg()}</div><div class="sn">${s.n}</div><p>${s.t}</p></div>`).join('')}</div>`;
+    }
+    if(b.type==='perthes'){
+      return `<div class="stages">${PERTHES_STAGES.map((s,i)=>`<div class="stage">${perthesSVG(i)}<div class="sn">${s.n}</div><p>${s.t}</p></div>`).join('')}</div>`;
+    }
+    return '';
+  }).join('');
+}
+P.forEach(p=>{
+  const cat=CATS[p.cat];
+  const item=document.createElement('div');
+  item.className='item'; item.id=p.id;
+  item.style.setProperty('--c',cat.c);
+  item.style.setProperty('--cbg',cat.bg);
+  const body = p.sections.map(s=>`
+    <div class="block">
+      <h5 style="color:${cat.c}">${icons[s.ic]||''}${s.h}</h5>
+      ${renderBlocks(s.blocks,p.id)}
+    </div>`).join('');
+  item.innerHTML=`
+    <div class="item-head" role="button" tabindex="0">
+      <span class="ino">${p.no.replace('4.','')}</span>
+      <div class="ititle"><h3>${p.title}</h3><div class="isub">${p.sub}</div></div>
+      <span class="icat">${cat.label}</span>
+      <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="item-body"><div class="item-body-in"><div class="bgrid">${body}
+      <div class="merke"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+        <p><b>Merke.</b> ${p.merke}</p></div>
+    </div></div></div>`;
+  acc.appendChild(item);
+  const head=item.querySelector('.item-head');
+  const toggle=()=>{
+    const open=item.classList.toggle('open');
+    const bodyEl=item.querySelector('.item-body');
+    bodyEl.style.maxHeight = open ? bodyEl.scrollHeight+'px' : '0';
+  };
+  head.addEventListener('click',toggle);
+  head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+});
+function openAndScroll(id){
+  const item=document.getElementById(id);
+  if(item && !item.classList.contains('open')){
+    item.classList.add('open');
+    const b=item.querySelector('.item-body'); b.style.maxHeight=b.scrollHeight+'px';
+  }
+  setTimeout(()=>item.scrollIntoView({behavior:'smooth',block:'center'}),120);
+}
+window.addEventListener('resize',()=>{
+  document.querySelectorAll('.item.open .item-body').forEach(b=>b.style.maxHeight=b.scrollHeight+'px');
+});
+
+/* ============ CCD FIGURES ============ */
+document.getElementById('ccdFig1').innerHTML = ccdSVG('vara');
+document.getElementById('ccdFig2').innerHTML = ccdSVG('normal');
+document.getElementById('ccdFig3').innerHTML = ccdSVG('valga');
+
+/* ============ HIP MAP ============ */
+const hipStage=document.getElementById('hipStage');
+hipStage.innerHTML = `
+  <svg viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg">
+    <!-- pelvis / ilium -->
+    <path d="M60 70 Q160 40 250 76 Q272 120 250 168 Q210 200 176 196 L176 150 Q150 150 150 150 Z"
+          fill="#f4ead8" stroke="#cdbfa9" stroke-width="2.5"/>
+    <!-- acetabulum socket -->
+    <path d="M168 130 Q210 140 214 182" fill="none" stroke="#c3b394" stroke-width="7" stroke-linecap="round"/>
+    <!-- labrum hint -->
+    <path d="M206 150 Q224 168 214 196" fill="none" stroke="#bd4a30" stroke-width="3" stroke-dasharray="3 4" opacity=".6"/>
+    <!-- femoral head -->
+    <circle cx="186" cy="176" r="40" fill="#f4ead8" stroke="#cdbfa9" stroke-width="2.5"/>
+    <!-- femoral neck -->
+    <path d="M168 206 L130 256" stroke="#cdbfa9" stroke-width="22" stroke-linecap="round" fill="none"/>
+    <!-- greater trochanter -->
+    <path d="M132 232 Q108 226 110 256 L132 268 Z" fill="#efe7d8" stroke="#cdbfa9" stroke-width="2"/>
+    <!-- femur shaft -->
+    <path d="M126 258 C118 320 120 360 118 404" stroke="#cdbfa9" stroke-width="24" stroke-linecap="round" fill="none"/>
+
+    <!-- HOTSPOTS -->
+    <g class="hot" data-key="acetabulum" tabindex="0" role="button" aria-label="Acetabulum">
+      <circle class="pulse" cx="198" cy="150" fill="rgba(189,74,48,.4)"/>
+      <circle class="ring" cx="198" cy="150" r="15"/><circle class="core" cx="198" cy="150" r="11"/>
+      <text x="198" y="155">1</text>
+    </g>
+    <g class="hot" data-key="head" tabindex="0" role="button" aria-label="Hüftkopf">
+      <circle class="ring" cx="186" cy="182" r="15"/><circle class="core" cx="186" cy="182" r="11"/>
+      <text x="186" y="187">2</text>
+    </g>
+    <g class="hot" data-key="neck" tabindex="0" role="button" aria-label="Schenkelhals">
+      <circle class="ring" cx="150" cy="232" r="15"/><circle class="core" cx="150" cy="232" r="11"/>
+      <text x="150" y="237">3</text>
+    </g>
+    <g class="hot" data-key="labrum" tabindex="0" role="button" aria-label="Labrum">
+      <circle class="ring" cx="220" cy="186" r="15"/><circle class="core" cx="220" cy="186" r="11"/>
+      <text x="220" y="191">4</text>
+    </g>
+    <g class="hot" data-key="trochanter" tabindex="0" role="button" aria-label="Trochanter major">
+      <circle class="ring" cx="108" cy="244" r="15"/><circle class="core" cx="108" cy="244" r="11"/>
+      <text x="108" y="249">5</text>
+    </g>
+    <g class="hot" data-key="groin" tabindex="0" role="button" aria-label="Leiste">
+      <circle class="ring" cx="170" cy="116" r="15"/><circle class="core" cx="170" cy="116" r="11"/>
+      <text x="170" y="121">6</text>
+    </g>
+  </svg>`;
+const MAP={
+  acetabulum:{tag:'Hüftpfanne',title:'Acetabulum',loc:'Pfanne des Beckens',desc:'Reifestörung führt zur unzureichenden Überdachung (Dysplasie); eine zu tiefe Pfanne verursacht ein Pincer-Impingement.',chips:['Hüftdysplasie','FAI (Pincer)']},
+  head:{tag:'Femurkopf',title:'Hüftkopf',loc:'Caput femoris',desc:'Durchblutungsstörung führt beim Kind zur Nekrose (Morbus Perthes); Knorpelverschleiß zur Coxarthrose.',chips:['Morbus Perthes','Coxarthrose']},
+  neck:{tag:'Schenkelhals',title:'Collum femoris',loc:'Verbindung Kopf ↔ Schaft',desc:'Stellung über den CCD-Winkel: zu flach = Coxa vara, zu steil = Coxa valga. Eine Verdickung ergibt ein Cam-Impingement.',chips:['Coxa vara/valga','FAI (Cam)']},
+  labrum:{tag:'Gelenklippe',title:'Labrum acetabuli',loc:'Rand der Hüftpfanne',desc:'Beim Impingement schlägt der Schenkelhals oder Kopf an und schädigt das Labrum — Wegbereiter der Arthrose.',chips:['FAI','Coxarthrose']},
+  trochanter:{tag:'Knochenvorsprung',title:'Trochanter major',loc:'lateraler Femur',desc:'Ansatz der Abduktoren. Bei Coxa vara steht er höher → aktive Insuffizienz der Abduktoren (Trendelenburg-Zeichen).',chips:['Coxa vara']},
+  groin:{tag:'Leiste',title:'Leistenregion',loc:'ventrale Hüfte',desc:'Typischer Ort des tiefen Hüftschmerzes — bei Coxarthrose und FAI. Cave: Adduktoren/Schambein als Differenzialdiagnose ausschließen.',chips:['Coxarthrose','FAI']}
+};
+const mapHint=document.querySelector('#mapInfo .map-hint');
+const mapContent=document.getElementById('mapContent');
+document.querySelectorAll('.hot').forEach(h=>{
+  const act=()=>{
+    document.querySelectorAll('.hot').forEach(x=>x.classList.remove('sel'));
+    h.classList.add('sel');
+    const d=MAP[h.dataset.key];
+    mapHint.style.display='none'; mapContent.style.display='block';
+    document.getElementById('miTag').textContent=d.tag;
+    document.getElementById('miTitle').textContent=d.title;
+    document.getElementById('miLoc').textContent=d.loc;
+    document.getElementById('miDesc').textContent=d.desc;
+    document.getElementById('miChips').innerHTML=d.chips.map(c=>`<span class="chip">${c}</span>`).join('');
+  };
+  h.addEventListener('click',act);
+  h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});
+});
+
+/* ============ TABS ============ */
+document.querySelectorAll('.lc-tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.lc-tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.lc-panel').forEach(x=>x.classList.remove('show'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.panel).classList.add('show');
+  });
+});
+
+/* ============ FLASHCARDS ============ */
+const FC=[
+ ['Coxa vara — CCD-Winkel?','Abflachung des Schenkelhalses, CCD < 120° (Frakturneigung, Trendelenburg)'],
+ ['Coxa valga — CCD-Winkel?','Steilstellung, CCD > 130° (Luxationsneigung nach lateral bei Adduktion)'],
+ ['Coxa antetorta vs. retrotorta?','antetorta = Antetorsion ↑ → Innenrotationsgang; retrotorta = Antetorsion ↓ → Außenrotationsgang'],
+ ['Was ist eine Hüftdysplasie?','Mangelnde Formgebung des Acetabulums durch Reifestörung — unzureichende Femurkopfüberdachung'],
+ ['Zwei Tests bei Hüftdysplasie?','Ortolani (Klicken/Schnappen) und Barlow (vollständige Luxation provozierbar)'],
+ ['Untersuchungsmethode der Wahl im 1. Lj bei Dysplasie?','Ultraschall (Form, Struktur und Lage erkennbar)'],
+ ['Leitsymptome der Coxarthrose?','Anlaufschmerz + tiefer Leistenschmerz, später Ruhe-/Nachtschmerz, Kapselmuster'],
+ ['Die 4 röntgenologischen Arthrosezeichen?','Gelenkspaltverschmälerung, subchondrale Sklerose, Osteophyten, subchondrale Zysten'],
+ ['FAI — Cam vs. Pincer?','Cam = verdickter Schenkelhals (junge Männer); Pincer = zu tiefe Pfanne (Frauen)'],
+ ['Welche Bewegungen sind beim FAI eingeschränkt?','Vor allem Flexion und Innenrotation; Leitsymptom tiefer Leistenschmerz'],
+ ['Morbus Perthes — was und bei wem?','Aseptische Hüftkopfnekrose durch Ischämie; Jungen 4:1, meist 5.–9. Lj'],
+ ['Wo wird der Schmerz beim Morbus Perthes oft empfunden?','Im Knie- und Oberschenkelbereich (Test: Viererzeichen/Faber)']
+];
+const fcGrid=document.getElementById('fcGrid');
+FC.forEach(([q,a])=>{
+  const card=document.createElement('div');
+  card.className='flip';
+  card.innerHTML=`<div class="flip-in">
+    <div class="fface ffront"><div class="qlabel">Frage</div><p>${q}</p><span class="tapn">tippen ↻</span></div>
+    <div class="fface fback"><div class="qlabel">Antwort</div><p>${a}</p><span class="tapn">↻ zurück</span></div>
+  </div>`;
+  card.addEventListener('click',()=>card.classList.toggle('flipped'));
+  fcGrid.appendChild(card);
+});
+
+/* ============ QUIZ ============ */
+const QUIZ=[
+ {q:'Ab welchem CCD-Winkel spricht man von einer Coxa vara?',
+  o:[['kleiner als 120°',1],['größer als 130°',0],['genau 126°',0],['größer als 150°',0]],
+  e:'Coxa vara = Abflachung des Schenkelhalses mit CCD-Winkel unter 120°.'},
+ {q:'Welche Fehlstellung zeigt ein innenrotiertes Gangbild (Zehen nach innen)?',
+  o:[['Coxa retrotorta',0],['Coxa antetorta',1],['Coxa valga',0],['Coxa vara',0]],
+  e:'Die Coxa antetorta (vergrößerter Antetorsionswinkel) führt zu einem innenrotierten Gangbild.'},
+ {q:'Welche Untersuchung ist im 1. Lebensjahr Methode der Wahl bei Hüftdysplasie?',
+  o:[['Röntgen',0],['Ultraschall',1],['CT',0],['Szintigraphie',0]],
+  e:'Im 1. Lebensjahr ist der Ultraschall die Methode der Wahl, da der Kopf noch nicht verknöchert ist.'},
+ {q:'Welche zwei Tests gehören zur Hüftdysplasie des Säuglings?',
+  o:[['Lachman & Pivot-Shift',0],['Ortolani & Barlow',1],['Thompson & Mill',0],['Faber & Phalen',0]],
+  e:'Ortolani (Reposition, „Klicken") und Barlow (Luxation provozierbar) sind die klassischen Tests.'},
+ {q:'Was ist das Leitsymptom der Coxarthrose?',
+  o:[['Nachtschweiß',0],['Anlauf- und tiefer Leistenschmerz',1],['Fallhand',0],['Rippenbuckel',0]],
+  e:'Typisch sind Anlaufschmerz und tiefer Leistenschmerz, oft mit Ausstrahlung in den ventralen Oberschenkel.'},
+ {q:'Welcher FAI-Typ betrifft typischerweise junge, sportliche Männer?',
+  o:[['Pincer-Typ',0],['Cam-Typ',1],['Mischtyp',0],['kein Typ',0]],
+  e:'Der Cam-Typ (verdickter Schenkelhals) betrifft häufiger junge Männer (20–30 J).'},
+ {q:'Welche Bewegungen sind beim FAI vor allem eingeschränkt?',
+  o:[['Extension und Außenrotation',0],['Flexion und Innenrotation',1],['Abduktion und Extension',0],['nur Adduktion',0]],
+  e:'Beim FAI sind v.a. Flexion und Innenrotation der Hüfte schmerzhaft eingeschränkt.'},
+ {q:'Morbus Perthes betrifft typischerweise…',
+  o:[['Mädchen über 12 Jahre',0],['Jungen zwischen 5 und 9 Jahren',1],['Männer über 50',0],['Frauen 30–40',0]],
+  e:'Jungen sind 4× häufiger betroffen, der Altersgipfel liegt zwischen dem 5. und 9. Lebensjahr.'},
+ {q:'Welcher Test ist bei Morbus Perthes positiv?',
+  o:[['Thompson-Test',0],['Viererzeichen / Faber-Test',1],['Zohlen-Zeichen',0],['Cozen-Test',0]],
+  e:'Das positive Viererzeichen (Faber-Test) zeigt eingeschränkte Innenrotation und Abduktion.'},
+ {q:'Was bewirkt eine Coxa vara am Trochanter major?',
+  o:[['er steht tiefer',0],['er steht höher → Trendelenburg',1],['er verschwindet',0],['keine Veränderung',0]],
+  e:'Durch die vara-Stellung steht der Trochanter höher → aktive Insuffizienz der Abduktoren (Trendelenburg-Zeichen).'},
+ {q:'Welches ist KEIN röntgenologisches Zeichen der Coxarthrose?',
+  o:[['Gelenkspaltverschmälerung',0],['Osteophyten',0],['subchondrale Sklerose',0],['Schmorl-Knötchen',1]],
+  e:'Schmorl-Knötchen gehören zum Morbus Scheuermann (Wirbelsäule), nicht zur Coxarthrose.'},
+ {q:'Wo wird der Schmerz beim Morbus Perthes häufig empfunden?',
+  o:[['im Fuß',0],['im Knie- und Oberschenkelbereich',1],['im unteren Rücken',0],['in der Schulter',0]],
+  e:'Charakteristisch ist der ins Knie/Oberschenkel projizierte Schmerz — ein wichtiger Stolperstein.'}
+];
+let qi=0, score=0, locked=false;
+const quizCard=document.getElementById('quizCard');
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function renderQ(){
+  locked=false;
+  const item=QUIZ[qi];
+  const opts=shuffle([...item.o]);
+  const letters=['A','B','C','D'];
+  quizCard.innerHTML=`
+    <div class="quiz-top">
+      <span class="quiz-counter">Frage ${qi+1} / ${QUIZ.length}</span>
+      <span class="quiz-score">${score} richtig</span>
+    </div>
+    <div class="quiz-bar"><i style="width:${(qi/QUIZ.length)*100}%"></i></div>
+    <div class="quiz-q">${item.q}</div>
+    <div class="opts">
+      ${opts.map((o,i)=>`<button class="opt" data-correct="${o[1]}"><span class="ok">${letters[i]}</span><span>${o[0]}</span></button>`).join('')}
+    </div>
+    <div class="explain" id="explain"><b>Erklärung.</b> ${item.e}</div>
+    <div class="quiz-actions">
+      <button class="btn" id="nextBtn" disabled>${qi===QUIZ.length-1?'Ergebnis ansehen':'Weiter'} →</button>
+    </div>`;
+  quizCard.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(locked) return; locked=true;
+      const correct=btn.dataset.correct==='1';
+      if(correct){btn.classList.add('correct'); score++;}
+      else{btn.classList.add('wrong'); quizCard.querySelectorAll('.opt').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct');});}
+      quizCard.querySelectorAll('.opt').forEach(b=>{b.classList.add('locked'); if(!b.classList.contains('correct')&&!b.classList.contains('wrong'))b.classList.add('dim');});
+      document.getElementById('explain').classList.add('show');
+      document.getElementById('nextBtn').disabled=false;
+      quizCard.querySelector('.quiz-score').textContent=score+' richtig';
+    });
+  });
+  document.getElementById('nextBtn').addEventListener('click',()=>{qi++; if(qi<QUIZ.length) renderQ(); else renderResult();});
+}
+function renderResult(){
+  const pct=Math.round(score/QUIZ.length*100);
+  const circ=2*Math.PI*60;
+  const off=circ-(pct/100)*circ;
+  let msg = pct>=85?'Stark! Die Hüfte sitzt. 💪' : pct>=60?'Solide Basis — ein paar Punkte nochmal ansehen.' : 'Guter Anfang — wiederhole die Detailkarten und versuch es erneut.';
+  quizCard.innerHTML=`
+    <div class="result">
+      <svg class="rdonut" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="60" fill="none" stroke="#e8dfce" stroke-width="12"/>
+        <circle cx="70" cy="70" r="60" fill="none" stroke="#bd4a30" stroke-width="12" stroke-linecap="round"
+          stroke-dasharray="${circ}" stroke-dashoffset="${off}" transform="rotate(-90 70 70)"/>
+        <text x="70" y="66" text-anchor="middle" font-family="Fraunces" font-size="30" font-weight="600" fill="#22251f">${pct}%</text>
+        <text x="70" y="88" text-anchor="middle" font-family="Hanken Grotesk" font-size="12" fill="#8a8d82">${score}/${QUIZ.length}</text>
+      </svg>
+      <h3>Quiz abgeschlossen</h3>
+      <p>${msg}</p>
+      <button class="btn ghost" id="restart">↺ Nochmal versuchen</button>
+    </div>`;
+  document.getElementById('restart').addEventListener('click',()=>{qi=0;score=0;renderQ();});
+}
+renderQ();
+
+/* ============ MATCH GAME ============ */
+const PAIRS=[
+ {l:'CCD < 120°, Trendelenburg',r:'Coxa vara'},
+ {l:'Ortolani & Barlow, Ultraschall 1. Lj',r:'Hüftdysplasie'},
+ {l:'Anlaufschmerz + tiefer Leistenschmerz',r:'Coxarthrose'},
+ {l:'Cam & Pincer, Flexion/IR eingeschränkt',r:'FAI'},
+ {l:'Viererzeichen +, Jungen 5–9 J, Knieschmerz',r:'Morbus Perthes'},
+ {l:'Innenrotationsgang, Antetorsion ↑',r:'Coxa antetorta'}
+];
+const ml=document.getElementById('matchLeft'), mr=document.getElementById('matchRight'), ms=document.getElementById('matchStatus');
+let selLeft=null, solved=0;
+function buildMatch(){
+  ml.innerHTML=''; mr.innerHTML=''; selLeft=null; solved=0; ms.textContent='';
+  PAIRS.forEach((p,i)=>{
+    const a=document.createElement('div'); a.className='mitem'; a.textContent=p.l; a.dataset.i=i; ml.appendChild(a);
+  });
+  shuffle([...PAIRS.keys()]).forEach(i=>{
+    const b=document.createElement('div'); b.className='mitem'; b.textContent=PAIRS[i].r; b.dataset.i=i; mr.appendChild(b);
+  });
+  ml.querySelectorAll('.mitem').forEach(el=>el.addEventListener('click',()=>{
+    if(el.classList.contains('done'))return;
+    ml.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel'));
+    el.classList.add('sel'); selLeft=el;
+  }));
+  mr.querySelectorAll('.mitem').forEach(el=>el.addEventListener('click',()=>{
+    if(el.classList.contains('done')||!selLeft)return;
+    if(el.dataset.i===selLeft.dataset.i){
+      el.classList.add('done'); selLeft.classList.add('done'); selLeft.classList.remove('sel'); selLeft=null; solved++;
+      ms.style.color='#2c7a4b';
+      ms.textContent = solved===PAIRS.length ? '✓ Alle Zuordnungen korrekt! Sauber gemacht.' : `${solved} / ${PAIRS.length} richtig zugeordnet`;
+    }else{
+      el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),350);
+      ms.style.color='#bd4a30'; ms.textContent='Nicht ganz — versuch eine andere Zuordnung.';
+    }
+  }));
+}
+buildMatch();
+document.querySelector('[data-panel="match"]').addEventListener('click',buildMatch);
+
+/* ============ SCROLL PROGRESS + ACTIVE NAV ============ */
+const prog=document.getElementById('progress');
+const navLinks=[...document.querySelectorAll('.nav-links a')];
+const secIds=navLinks.map(a=>a.getAttribute('href').slice(1));
+function onScroll(){
+  const h=document.documentElement;
+  const sc=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  prog.style.width=(sc*100)+'%';
+  let cur=secIds[0];
+  secIds.forEach(id=>{const el=document.getElementById(id); if(el && el.getBoundingClientRect().top<160) cur=id;});
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+}
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+</script>
+<script>
+/* DEEPLINK-HASH — Pathologie aus URL-Hash öffnen, z. B. datei.html#gonarthrose */
+(function(){
+  function openFromHash(){
+    var id = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+    if(!id) return;
+    var el = document.getElementById(id);
+    if(el && el.classList.contains('item') && typeof openAndScroll === 'function'){
+      openAndScroll(id);
+    }
+  }
+  window.addEventListener('load', openFromHash);
+  window.addEventListener('hashchange', openFromHash);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neurologie Pathologien · Lernplattform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;--surface:#FBF8F2;--surface-2:#F3EDE2;--ink:#22251f;--ink-soft:#5c6056;--ink-faint:#8a8d82;
+  --line:#d9d0c1;--line-soft:#e6ddce;--pine:#1b3a5c;--pine-2:#274f78;--clay:#bd4a30;--clay-2:#a73d27;
+  --ochre:#b07d1e;--steel:#37607e;--plum:#834d63;--cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);--r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--pine);color:#f4efe4}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:22px}
+.brand{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.home-link{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);white-space:nowrap}
+.home-link:hover{background:var(--surface-2);color:var(--ink);border-color:var(--ink-faint)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;white-space:nowrap}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a.active{background:var(--pine);color:#f0ebde}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+header.hero{background:radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.30),transparent 55%),radial-gradient(90% 80% at 6% 110%,rgba(55,96,126,.40),transparent 55%),linear-gradient(160deg,#23507e,#152d47 70%);color:#e9eef4;position:relative;overflow:hidden;border-bottom:1px solid #0e1f31}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+.hero-in{max-width:1180px;margin:0 auto;padding:74px 26px 78px;position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#a9c2dc;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#a9c2dc;display:inline-block}
+.hero h1{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(2.4rem,5.4vw,4.2rem);line-height:1.02;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#e8a48c}
+.hero p.lead{margin-top:22px;font-size:1.08rem;max-width:33rem;color:#c4d4e4}
+.hero-meta{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.9rem;font-weight:600;line-height:1;color:#eef3f8}
+.hero-meta span{font-size:.78rem;color:#9fb4c8;margin-top:4px;letter-spacing:.03em}
+.hero-brain{max-width:340px;margin-left:auto}
+section{padding:64px 0}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:30px;flex-wrap:wrap}
+.sec-head h2{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em;line-height:1.05}
+.sec-head p{color:var(--ink-soft);font-size:1rem;max-width:42rem}
+/* toolbar */
+.toolbar{display:flex;gap:14px;align-items:center;margin-bottom:26px;flex-wrap:wrap}
+.search{flex:1;min-width:240px;position:relative}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink-faint)}
+.search input{width:100%;font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.95rem;padding:13px 16px 13px 44px;border:1.5px solid var(--line);border-radius:13px;background:var(--surface);color:var(--ink);transition:.18s}
+.search input:focus{outline:none;border-color:var(--pine);box-shadow:0 0 0 4px rgba(27,58,92,.1)}
+.btn{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.9rem;font-weight:700;padding:13px 22px;border-radius:12px;border:none;background:var(--pine);color:#eef3f8;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:9px;white-space:nowrap}
+.btn:hover{background:var(--pine-2);transform:translateY(-2px)}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--pine);background:var(--surface-2)}
+.count-pill{font-size:.82rem;font-weight:700;color:var(--ink-faint);white-space:nowrap}
+/* cluster cards */
+.clusters{display:flex;flex-direction:column;gap:16px}
+.cluster{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:box-shadow .2s,border-color .2s;scroll-margin-top:84px}
+.cluster.open{box-shadow:var(--shadow-lg);border-color:var(--c)}
+.cluster.locked{opacity:.72}
+.cl-head{display:flex;align-items:center;gap:20px;padding:24px 26px;cursor:pointer;user-select:none}
+.cl-head .clno{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.5rem;font-weight:600;color:#fff;background:var(--c);min-width:58px;height:58px;border-radius:15px;display:grid;place-items:center;flex-shrink:0}
+.cl-head .cltext{flex:1;min-width:0}
+.cl-head h3{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.5rem;font-weight:600;letter-spacing:-.01em;line-height:1.1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cl-head .cldesc{font-size:.92rem;color:var(--ink-soft);margin-top:5px}
+.cl-head .clmeta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.cl-head .clcount{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--cbg);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.cl-head .clchap{font-size:.74rem;color:var(--ink-faint);font-weight:600}
+.cl-head .caret{width:26px;height:26px;flex-shrink:0;color:var(--ink-faint);transition:transform .25s}
+.cluster.open .caret{transform:rotate(180deg);color:var(--c)}
+.badge-soon{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ochre);background:#f4e9d2;border:1px solid var(--ochre);padding:3px 9px;border-radius:999px}
+.cl-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.cl-body-in{padding:2px 26px 26px}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.case{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:var(--cream);text-decoration:none;color:inherit;transition:.18s}
+.case:hover{border-color:var(--c);transform:translateX(3px);box-shadow:var(--shadow)}
+.case .cn{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:.95rem;color:#fff;background:var(--c);min-width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+.case .ct{flex:1;min-width:0}
+.case .ct b{display:block;font-size:.92rem;font-weight:700;line-height:1.2}
+.case .ct span{font-size:.8rem;color:var(--ink-faint);line-height:1.3}
+.case .go{font-size:.78rem;font-weight:700;color:var(--c);opacity:0;transition:.18s;white-space:nowrap}
+.case:hover .go{opacity:1}
+.cl-foot{margin-top:18px;display:flex;justify-content:flex-start}
+.open-full{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:.92rem;color:#fff;background:var(--c);padding:13px 22px;border-radius:12px;text-decoration:none;transition:.18s}
+.open-full svg{width:17px;height:17px;transition:transform .2s}
+.open-full:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);filter:brightness(1.06)}
+.open-full:hover svg{transform:translateX(4px)}
+.locked-note{display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--surface-2);border:1px dashed var(--line);border-radius:13px;color:var(--ink-soft);font-size:.9rem}
+.locked-note svg{width:20px;height:20px;color:var(--ochre);flex-shrink:0}
+.no-result{text-align:center;padding:50px 20px;color:var(--ink-faint);font-size:1rem;display:none}
+/* footer */
+footer{padding:50px 26px 60px;text-align:center;background:var(--pine);color:#b7c6d6;margin-top:30px}
+footer .fbrand{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;color:#eef3f8;font-size:1.3rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.76rem;color:#8295a8;margin-top:18px;font-style:italic}
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr;gap:30px}
+  .hero-brain{max-width:240px;margin:0 auto}
+  .nav-links{display:none}
+  .cl-head{flex-wrap:wrap;gap:14px}
+  .cl-head .clmeta{flex-direction:row;align-items:center;width:100%;justify-content:flex-start}
+}
+@media(max-width:520px){
+  .wrap,.nav-in{padding-left:18px;padding-right:18px}
+  .hero-in{padding-left:18px;padding-right:18px}
+  .cl-head{padding:18px}
+  .cl-head .clno{min-width:48px;height:48px;font-size:1.2rem}
+}
+/* a11y-focus-polish */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2.5px solid var(--pine,#1f3d33);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav><div class="nav-in">
+  <a href="start.html" class="home-link" title="Zur Über-Startseite">← Fachbereiche</a>
+  <a class="brand" href="start.html" style="text-decoration:none;color:inherit"><span class="dot"></span> Neurologie · Pathologien</a>
+  <div class="nav-links" id="navLinks"></div>
+</div></nav>
+
+<header class="hero"><div class="hero-in">
+  <div>
+    <span class="eyebrow">Physiotherapeutische Neurologie · Lernplattform</span>
+    <h1>Das Nervensystem — <em>verstehen</em>, Schritt für Schritt.</h1>
+    <p class="lead">Sechs Themengruppen vom Schlaganfall bis zur Polyneuropathie. Klapp eine Gruppe auf, klick ein Krankheitsbild — die passende Lernübersicht öffnet sich direkt an der richtigen Stelle.</p>
+    <div class="hero-meta">
+      <div><b>6</b><span>Themengruppen</span></div>
+      <div><b id="totalCases">30</b><span>Krankheitsbilder</span></div>
+      <div><b id="readyCount">3</b><span>fertige Übersichten</span></div>
+    </div>
+  </div>
+  <div class="hero-brain">
+    <svg viewBox="0 0 320 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <g stroke="#e8a48c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".92">
+        <path d="M44 132 C42 84 84 48 142 44 C184 40 218 44 250 56 C290 70 320 96 322 138 C324 178 308 210 272 226 C254 234 236 234 220 232 C210 244 192 248 176 244 C160 252 136 252 118 244 C92 248 66 236 54 214 C40 194 42 166 44 132 Z"/>
+        <path d="M86 108 C100 100 108 114 98 124 M118 86 C132 80 138 96 126 104 M160 76 C174 74 178 90 166 96 M204 78 C218 80 220 94 208 100 M250 96 C264 98 266 112 254 118 M150 182 C164 178 168 192 156 198 M210 184 C224 182 228 194 216 202"/>
+        <path d="M150 60 C150 96 150 200 150 240" stroke-dasharray="1 7" opacity=".55"/>
+      </g>
+      <circle cx="150" cy="150" r="3.4" fill="#e8a48c"/>
+    </svg>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="sec-head"><div>
+    <h2>Themengruppen der Neurologie</h2>
+    <p>Geordnet nach Krankheitsmechanismus. Fertige Gruppen lassen sich aufklappen und öffnen; weitere folgen.</p>
+  </div></div>
+  <div class="toolbar">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Krankheitsbild suchen — z. B. Parkinson, Meningitis, MS …" aria-label="Suche">
+    </div>
+    <button class="btn ghost" id="toggleAll">Alle ausklappen</button>
+    <span class="count-pill" id="countPill"></span>
+  </div>
+  <div class="clusters" id="clusters"></div>
+  <div class="no-result" id="noResult">Kein Krankheitsbild passt zu dieser Suche.</div>
+</div></section>
+
+<footer>
+  <div class="fbrand">Neurologie · Pathologien</div>
+  <p>Strukturierte Lernhilfen für die physiotherapeutische Ausbildung — erstellt aus dem Skript „Pathologie und Pathophysiologie · Neurologie".</p>
+  <p class="fnote">Lernzusammenfassungen — ersetzen keine medizinische Diagnostik oder Behandlung.</p>
+</footer>
+
+<script>
+/* ============================================================
+   DATENGETRIEBEN — neue Kategorie: Objekt ergänzen.
+   ready:true  -> aufklappbar + verlinkt
+   ready:false -> Platzhalter ("in Arbeit")
+   file        -> Ziel-HTML; cases[].id -> Anker (#id) in der Datei
+   ============================================================ */
+const CLUSTERS = [
+  {
+    key:'zerebro', no:'1', title:'Zerebrovaskulär', chapter:'Kapitel 4',
+    color:'#37607e', bg:'#dfe8ef', ready:true,
+    file:'zerebrovaskulaer_lernuebersicht.html',
+    desc:'Der Schlaganfall und seine Verwandten — Ischämie, Blutung und Subarachnoidalblutung.',
+    cases:[
+      {n:1,id:'allgemein',t:'Schlaganfall im Allgemeinen',s:'Akute zerebrale Durchblutungsstörung'},
+      {n:2,id:'ischaemisch',t:'Ischämischer Schlaganfall',s:'Verschluss durch Thrombose/Embolie'},
+      {n:3,id:'haemorrhagisch',t:'Hämorrhagischer Schlaganfall',s:'Intrazerebrale Blutung'},
+      {n:4,id:'sab',t:'Subarachnoidalblutung (SAB)',s:'Einblutung in den Subarachnoidalraum'}
+    ]
+  },
+  {
+    key:'neurodeg', no:'2', title:'Neurodegenerativ', chapter:'Kapitel 5, 9 & 16',
+    color:'#834d63', bg:'#efe1e7', ready:true,
+    file:'neurodegenerativ_lernuebersicht.html',
+    desc:'Wenn Neurone verstummen — Parkinson, die Demenzen und die amyotrophe Lateralsklerose.',
+    cases:[
+      {n:1,id:'grundlagen-demenz',t:'Grundlagen: Demenzerkrankungen',s:'Was alle Demenzformen teilen'},
+      {n:2,id:'parkinson',t:'Idiopathisches Parkinson-Syndrom',s:'Dopaminmangel · Substantia nigra'},
+      {n:3,id:'alzheimer',t:'Alzheimer-Demenz',s:'Amyloid-Plaques & Tau-Fibrillen'},
+      {n:4,id:'vaskulaer',t:'Vaskuläre Demenz',s:'Folge vaskulärer Schädigung'},
+      {n:5,id:'pdd',t:'Parkinson-Disease-Demenz',s:'Demenz bei gesichertem Parkinson'},
+      {n:6,id:'als',t:'Amyotrophe Lateralsklerose (ALS)',s:'Degeneration 1. & 2. Motoneuron'}
+    ]
+  },
+  {
+    key:'entzuendlich', no:'3', title:'Entzündlich & Infektiös', chapter:'Kapitel 6, 8 & 12',
+    color:'#bd4a30', bg:'#f7e4dc', ready:true,
+    file:'entzuendlich_infektioes_lernuebersicht.html',
+    desc:'Wenn das Immunsystem das Nervensystem trifft — MS, Meningitiden, Neuroborreliose, Abszess.',
+    cases:[
+      {n:1,id:'ms',t:'Multiple Sklerose (MS)',s:'Encephalomyelitis disseminata'},
+      {n:2,id:'virale-meningitis',t:'Virale Meningitis',s:'Häufigste ZNS-Infektion'},
+      {n:3,id:'bakterielle-meningitis',t:'Bakterielle Meningitis',s:'Meldepflichtig & ansteckend'},
+      {n:4,id:'neuroborreliose',t:'Neuroborreliose',s:'Borrelien über Zecken · 3 Stadien'},
+      {n:5,id:'spinaler-abszess',t:'Abszess des Rückenmarks',s:'Spinaler epiduraler Abszess'}
+    ]
+  },
+  {
+    key:'anfaelle', no:'4', title:'Anfälle & Trauma', chapter:'Kapitel 10 & 11',
+    color:'#b07d1e', bg:'#f4e9d2', ready:false,
+    file:'#',
+    desc:'Epilepsie und das Schädel-Hirn-Trauma — mit Anfallsphasen und Glasgow Coma Scale.',
+    cases:[
+      {n:1,t:'Epilepsie',s:'GTKA, Absence, Status epilepticus'},
+      {n:2,t:'Schädel-Hirn-Trauma (SHT)',s:'Commotio bis Contusio · GCS'}
+    ]
+  },
+  {
+    key:'rueckenmark', no:'5', title:'Rückenmark & peripher', chapter:'Kapitel 13, 14 & 15',
+    color:'#2c7a4b', bg:'#e7f3ea', ready:false,
+    file:'#',
+    desc:'Querschnittlähmung, Polyneuropathie und Guillain-Barré-Syndrom — mit ASIA-Skala.',
+    cases:[
+      {n:1,t:'Querschnittlähmung',s:'ASIA-Klassifikation, Syndrome'},
+      {n:2,t:'Polyneuropathie',s:'Axonale Schädigung peripherer Nerven'},
+      {n:3,t:'Guillain-Barré-Syndrom',s:'Akute Polyradikuloneuropathie'}
+    ]
+  },
+  {
+    key:'grundlagen', no:'6', title:'Grundlagen & Übergreifendes', chapter:'Kapitel 2, 3, 17 & 18',
+    color:'#5f6b5e', bg:'#e7e9e2', ready:false,
+    file:'#',
+    desc:'Technische Diagnostik, Minus-/Plus-Symptomatik, vegetative Störungen, Bewusstseinszustände.',
+    cases:[
+      {n:1,t:'Technische Diagnostik',s:'EEG, ENG, EMG, EP, Sonografie'},
+      {n:2,t:'Neuromuskuläre Steuerung',s:'Minus- & Plus-Symptomatik (Spastik)'},
+      {n:3,t:'Vegetative Störungen',s:'Autonome Dysfunktionen'},
+      {n:4,t:'Bewusstseinszustände',s:'Koma, Locked-in, Wachkoma'}
+    ]
+  }
+];
+
+/* ---- compute hero stats ---- */
+const totalCases = CLUSTERS.reduce((s,c)=>s+c.cases.length,0);
+const readyCount = CLUSTERS.filter(c=>c.ready).length;
+document.getElementById('totalCases').textContent = totalCases;
+document.getElementById('readyCount').textContent = readyCount;
+
+/* ---- build nav links (ready clusters only) ---- */
+const navLinks=document.getElementById('navLinks');
+CLUSTERS.filter(c=>c.ready).forEach(c=>{
+  const a=document.createElement('a'); a.href='#cl-'+c.key; a.textContent=c.title; navLinks.appendChild(a);
+});
+
+/* ---- build clusters ---- */
+const wrap=document.getElementById('clusters');
+const enterIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const lockIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+CLUSTERS.forEach(c=>{
+  const el=document.createElement('div');
+  el.className='cluster'+(c.ready?'':' locked');
+  el.id='cl-'+c.key;
+  el.style.setProperty('--c',c.color); el.style.setProperty('--cbg',c.bg);
+  const cases = c.cases.map(cs=>{
+    if(c.ready){
+      return '<a class="case" href="'+c.file+'#'+cs.id+'" data-name="'+(cs.t+' '+cs.s).toLowerCase()+'"><span class="cn">'+cs.n+'</span><span class="ct"><b>'+cs.t+'</b><span>'+cs.s+'</span></span><span class="go">Öffnen →</span></a>';
+    }
+    return '<div class="case" data-name="'+(cs.t+' '+cs.s).toLowerCase()+'" style="cursor:default"><span class="cn">'+cs.n+'</span><span class="ct"><b>'+cs.t+'</b><span>'+cs.s+'</span></span></div>';
+  }).join('');
+  const foot = c.ready
+    ? '<div class="cl-foot"><a class="open-full" href="'+c.file+'">Komplette '+c.title+'-Übersicht öffnen '+enterIcon+'</a></div>'
+    : '<div class="cl-foot" style="width:100%"><div class="locked-note">'+lockIcon+' Diese Themengruppe ist noch in Arbeit — die Krankheitsbilder sind hier schon als Vorschau gelistet.</div></div>';
+  el.innerHTML =
+    '<div class="cl-head" role="button" tabindex="0">'
+    +'<span class="clno">'+c.no+'</span>'
+    +'<div class="cltext"><h3>'+c.title+(c.ready?'':' <span class="badge-soon">in Arbeit</span>')+'</h3><div class="cldesc">'+c.desc+'</div></div>'
+    +'<div class="clmeta"><span class="clcount">'+c.cases.length+' Krankheitsbilder</span><span class="clchap">'+c.chapter+'</span></div>'
+    +'<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>'
+    +'</div>'
+    +'<div class="cl-body"><div class="cl-body-in"><div class="case-grid">'+cases+'</div>'+foot+'</div></div>';
+  wrap.appendChild(el);
+  const head=el.querySelector('.cl-head');
+  const body=el.querySelector('.cl-body');
+  const toggle=()=>{const open=el.classList.toggle('open');body.style.maxHeight=open?body.scrollHeight+'px':'0';};
+  head.addEventListener('click',toggle);
+  head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+});
+
+/* ---- expand/collapse all ---- */
+let allOpen=false;
+const toggleAllBtn=document.getElementById('toggleAll');
+toggleAllBtn.addEventListener('click',()=>{
+  allOpen=!allOpen;
+  document.querySelectorAll('.cluster').forEach(el=>{
+    const body=el.querySelector('.cl-body');
+    if(allOpen){el.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+    else{el.classList.remove('open');body.style.maxHeight='0';}
+  });
+  toggleAllBtn.textContent=allOpen?'Alle einklappen':'Alle ausklappen';
+});
+
+/* ---- search ---- */
+const searchInput=document.getElementById('searchInput');
+const noResult=document.getElementById('noResult');
+const countPill=document.getElementById('countPill');
+function updateCount(){countPill.textContent=totalCases+' Krankheitsbilder';}
+updateCount();
+searchInput.addEventListener('input',()=>{
+  const q=searchInput.value.trim().toLowerCase();
+  let visibleCases=0;
+  document.querySelectorAll('.cluster').forEach(el=>{
+    const items=el.querySelectorAll('.case');
+    let anyMatch=false;
+    items.forEach(it=>{
+      const match = !q || (it.dataset.name||'').includes(q);
+      it.style.display = match ? '' : 'none';
+      if(match) anyMatch=true, visibleCases++;
+    });
+    el.style.display = anyMatch ? '' : 'none';
+    if(q && anyMatch){el.classList.add('open');const b=el.querySelector('.cl-body');b.style.maxHeight=b.scrollHeight+'px';}
+    else if(!q){/* leave as is */}
+  });
+  noResult.style.display = visibleCases===0 ? 'block' : 'none';
+  countPill.textContent = q ? visibleCases+' Treffer' : totalCases+' Krankheitsbilder';
+});
+
+/* ---- progress + active nav ---- */
+const prog=document.getElementById('progress');
+const links=Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+const ids=links.map(a=>a.getAttribute('href').slice(1));
+function onScroll(){
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  let cur=ids[0];
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<140)cur=id;});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+</script>
+</body>
+</html>
