@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schulter-Pathologien · Lernübersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;
+  --surface:#FBF8F2;
+  --surface-2:#F3EDE2;
+  --ink:#22251f;
+  --ink-soft:#5c6056;
+  --ink-faint:#8a8d82;
+  --line:#d9d0c1;
+  --line-soft:#e6ddce;
+  --pine:#1f3d33;
+  --pine-2:#2c5446;
+  --clay:#bd4a30;
+  --clay-2:#a73d27;
+  --ochre:#b07d1e;
+  --steel:#37607e;
+  --cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--pine);color:#f4efe4}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:22px}
+.brand{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;white-space:nowrap}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a.active{background:var(--pine);color:#f0ebde}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+
+header.hero{
+  background:
+    radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.30),transparent 55%),
+    radial-gradient(90% 80% at 6% 110%,rgba(55,96,126,.28),transparent 55%),
+    linear-gradient(160deg,#234438,#19302a 70%);
+  color:#efe9dc;position:relative;overflow:hidden;border-bottom:1px solid #0f1f1a;
+}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+.hero-in{max-width:1180px;margin:0 auto;padding:74px 26px 78px;position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .85fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9b69b;margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#c9b69b;display:inline-block}
+.hero h1{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(2.5rem,5.6vw,4.3rem);line-height:1.02;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#e8a48c}
+.hero p.lead{margin-top:22px;font-size:1.08rem;max-width:30rem;color:#d6cfbf}
+.hero-meta{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.9rem;font-weight:600;line-height:1;color:#f3eee2}
+.hero-meta span{font-size:.78rem;color:#b3a890;margin-top:4px;letter-spacing:.03em}
+
+section{padding:72px 0;border-bottom:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.sec-num{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1rem;font-weight:600;color:var(--clay);border:1.5px solid var(--clay);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.sec-head h2{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.5rem);letter-spacing:-.02em;line-height:1.05}
+.sec-head p{color:var(--ink-soft);font-size:1rem;max-width:42rem;width:100%;margin-top:2px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 21px 20px;text-decoration:none;color:inherit;position:relative;overflow:hidden;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s,border-color .22s;display:flex;flex-direction:column;min-height:172px}
+.pcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--c)}
+.pcard .ptag{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:auto}
+.pcard .pno{position:absolute;top:16px;right:18px;font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:2.4rem;font-weight:500;color:var(--line);line-height:1}
+.pcard h3{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;font-size:1.28rem;letter-spacing:-.01em;margin:14px 0 5px;line-height:1.12}
+.pcard p{font-size:.86rem;color:var(--ink-soft);line-height:1.45}
+.pcard .arrow{margin-top:12px;font-size:.8rem;font-weight:700;color:var(--c);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.pcard:hover .arrow{gap:11px}
+
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.legend span{font-size:.76rem;font-weight:600;color:var(--ink-soft);display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.legend i{width:10px;height:10px;border-radius:3px}
+
+.illo-wrap{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 30px;box-shadow:var(--shadow)}
+.axis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.axis-fig{text-align:center}
+.axis-fig svg{width:100%;height:auto;max-height:300px}
+.axis-fig h4{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.25rem;font-weight:600;margin-top:6px}
+.axis-fig .nick{font-size:.82rem;color:var(--ink-faint);font-weight:600;letter-spacing:.04em}
+.axis-fig ul{list-style:none;margin-top:13px;text-align:left;display:inline-block}
+.axis-fig li{font-size:.84rem;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:5px}
+.axis-fig li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--ac)}
+
+.map-layout{display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:32px;align-items:start}
+.knee-stage{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow);position:relative}
+.knee-stage svg{width:100%;height:auto;display:block}
+.hot{cursor:pointer;transition:.2s}
+.hot circle.ring{fill:rgba(189,74,48,.14);stroke:var(--clay);stroke-width:2}
+.hot circle.core{fill:var(--clay)}
+.hot text{fill:#fff;font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-weight:800;font-size:13px;text-anchor:middle}
+.hot:hover circle.ring,.hot.sel circle.ring{fill:rgba(189,74,48,.3)}
+.hot.sel circle.core{fill:var(--pine)}
+.hot .pulse{transform-origin:center;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{r:13px;opacity:.55}70%,100%{r:30px;opacity:0}}
+.map-info{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:30px 30px 26px;box-shadow:var(--shadow);min-height:280px}
+.map-info .mi-tag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+.map-info h3{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.65rem;font-weight:600;margin:8px 0 4px;line-height:1.1}
+.map-info .mi-loc{font-size:.9rem;color:var(--ink-faint);font-weight:600;margin-bottom:16px}
+.map-info p{color:var(--ink-soft);font-size:.95rem;margin-bottom:14px}
+.map-info .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.chip{font-size:.78rem;font-weight:600;background:var(--surface-2);border:1px solid var(--line);padding:6px 12px;border-radius:999px;color:var(--ink)}
+.map-hint{font-size:.85rem;color:var(--ink-faint);font-style:italic}
+
+.acc{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.item.open{box-shadow:var(--shadow-lg);border-color:var(--c)}
+.item-head{display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;user-select:none}
+.item-head .ino{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.15rem;font-weight:600;color:#fff;background:var(--c);min-width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.item-head .ititle{flex:1}
+.item-head h3{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.32rem;font-weight:600;letter-spacing:-.01em;line-height:1.12}
+.item-head .isub{font-size:.84rem;color:var(--ink-faint);margin-top:2px}
+.item-head .icat{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--cbg);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.item-head .caret{width:24px;height:24px;flex-shrink:0;color:var(--ink-faint);transition:transform .25s}
+.item.open .caret{transform:rotate(180deg);color:var(--c)}
+.item-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.item-body-in{padding:4px 24px 26px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px 30px}
+.block{padding:16px 0;border-top:1px solid var(--line-soft)}
+.block h5{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.block h5 svg{width:15px;height:15px}
+.pp{font-size:.92rem;color:var(--ink-soft)}
+.ul{list-style:none}
+.ul li{font-size:.9rem;color:var(--ink-soft);padding-left:18px;position:relative;margin-bottom:6px;line-height:1.45}
+.ul li::before{content:"";position:absolute;left:1px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--c);opacity:.7}
+.ul li b{color:var(--ink);font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.split-col h6{font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:7px}
+.split-col.cons h6::before{content:"● ";color:var(--steel)}
+.split-col.op h6::before{content:"● ";color:var(--clay)}
+.merke{grid-column:1/-1;margin-top:14px;background:var(--cbg);border:1px solid var(--c);border-left:4px solid var(--c);border-radius:12px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start}
+.merke svg{width:20px;height:20px;color:var(--c);flex-shrink:0;margin-top:1px}
+.merke b{font-weight:700;color:var(--ink)}
+.merke p{font-size:.9rem;color:var(--ink-soft);margin:0}
+
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.stages.three{grid-template-columns:repeat(3,1fr)}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 14px;text-align:center;box-shadow:var(--shadow)}
+.stage svg{width:100%;height:74px;margin-bottom:8px}
+.stage .sn{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-weight:600;color:var(--clay);font-size:1.05rem}
+.stage p{font-size:.8rem;color:var(--ink-soft);margin-top:3px;line-height:1.35}
+
+.tablewrap{-webkit-overflow-scrolling:touch;overflow-x:auto;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:640px;background:var(--surface);font-size:.88rem}
+th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line-soft)}
+thead th{background:var(--pine);color:#eee6d7;font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+td b{color:var(--ink);font-weight:700}
+.loc-pill{font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line)}
+
+.lc-tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.lc-tab{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.9rem;font-weight:700;padding:11px 20px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);cursor:pointer;transition:.18s;display:flex;align-items:center;gap:8px}
+.lc-tab svg{width:17px;height:17px}
+.lc-tab:hover{border-color:var(--clay);color:var(--ink)}
+.lc-tab.active{background:var(--clay);color:#fff;border-color:var(--clay)}
+.lc-panel{display:none}
+.lc-panel.show{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.flip{perspective:1200px;height:200px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.flip.flipped .flip-in{transform:rotateY(180deg)}
+.fface{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+.ffront{background:var(--surface);border:1px solid var(--line)}
+.fback{background:var(--pine);color:#eee6d7;transform:rotateY(180deg);border:1px solid var(--pine)}
+.fface .qlabel{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
+.fback .qlabel{color:#cdb89a}
+.ffront p{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.18rem;font-weight:500;line-height:1.28}
+.fback p{font-size:.95rem;line-height:1.45}
+.flip .tapn{position:absolute;bottom:14px;right:18px;font-size:.72rem;color:var(--ink-faint);font-weight:600}
+.fback .tapn{color:#a99a82}
+
+.quiz-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px 34px 30px;box-shadow:var(--shadow-lg);max-width:720px}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.quiz-counter{font-size:.82rem;font-weight:700;color:var(--ink-faint);letter-spacing:.05em}
+.quiz-score{font-size:.82rem;font-weight:700;color:var(--clay)}
+.quiz-bar{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-bottom:22px}
+.quiz-bar i{display:block;height:100%;background:var(--clay);border-radius:99px;transition:width .4s}
+.quiz-q{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.38rem;font-weight:600;line-height:1.22;margin-bottom:22px}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{text-align:left;font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.96rem;font-weight:600;padding:15px 18px;border-radius:13px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;transition:.16s;display:flex;align-items:center;gap:13px}
+.opt .ok{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem;font-weight:800;color:var(--ink-faint);transition:.16s}
+.opt:hover:not(.locked){border-color:var(--pine);transform:translateX(3px)}
+.opt.correct{border-color:#2c7a4b;background:#e7f3ea;color:#1c5232}
+.opt.correct .ok{background:#2c7a4b;border-color:#2c7a4b;color:#fff}
+.opt.wrong{border-color:var(--clay);background:#f8e6e0;color:var(--clay-2)}
+.opt.wrong .ok{background:var(--clay);border-color:var(--clay);color:#fff}
+.opt.locked{cursor:default}
+.opt.dim{opacity:.5}
+.explain{margin-top:18px;background:var(--surface-2);border-radius:13px;padding:15px 18px;font-size:.9rem;color:var(--ink-soft);display:none;border-left:4px solid var(--pine)}
+.explain.show{display:block;animation:fade .3s}
+.explain b{color:var(--ink)}
+.quiz-actions{margin-top:22px;display:flex;justify-content:flex-end}
+.btn{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.92rem;font-weight:700;padding:12px 26px;border-radius:12px;border:none;background:var(--pine);color:#eee6d7;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:9px}
+.btn:hover{background:var(--pine-2);transform:translateY(-2px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--pine);background:var(--surface-2)}
+.result{text-align:center;padding:20px 0}
+.result .rdonut{width:150px;height:150px;margin:0 auto 18px}
+.result h3{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;font-size:1.9rem;font-weight:600;margin-bottom:6px}
+.result p{color:var(--ink-soft);margin-bottom:20px}
+
+.match-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.match-col h4{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+.mitem{padding:14px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:10px;transition:.16s}
+.mitem:hover:not(.done){border-color:var(--pine);transform:translateX(3px)}
+.mitem.sel{border-color:var(--clay);background:#f8e6e0}
+.mitem.done{background:#e7f3ea;border-color:#2c7a4b;color:#1c5232;cursor:default;opacity:.85}
+.mitem.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.match-status{margin-top:18px;font-weight:700;color:var(--clay);min-height:24px}
+
+footer{padding:50px 26px 60px;text-align:center;background:var(--pine);color:#cdc2ad}
+footer .fbrand{font-family:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;color:#efe9dc;font-size:1.3rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.76rem;color:#9d927c;margin-top:18px;font-style:italic}
+
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr;gap:30px}
+  .map-layout{grid-template-columns:1fr}
+  .axis-grid{grid-template-columns:1fr;gap:34px}
+  .stages{grid-template-columns:1fr 1fr}
+  .stages.three{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .match-layout{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .hero-knee{max-width:320px;margin:0 auto}
+}
+@media(max-width:520px){
+  .wrap,.nav-in{padding-left:18px;padding-right:18px}
+  .hero-in{padding-left:18px;padding-right:18px}
+  .quiz-card{padding:24px 20px}
+  .item-head{padding:16px;gap:12px}
+  .item-head .icat{display:none}
+  .stages{grid-template-columns:1fr}
+}
+/* BACK-LINK */
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:.82rem;font-weight:700;color:var(--ink-soft);text-decoration:none;padding:8px 13px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);transition:.16s;white-space:nowrap;flex-shrink:0}
+.nav-back:hover{border-color:var(--pine);color:var(--ink);background:var(--surface-2)}
+.nav-back svg{width:15px;height:15px}
+@media(max-width:600px){.nav-back .nbtxt{display:none}.nav-back{padding:8px}}
+/* a11y-focus-polish */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:focus-visible,summary:focus-visible{outline:2.5px solid var(--pine,#1f3d33);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-in">
+    <a href="ortho.html" class="nav-back" title="Zurück zur Startseite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span class="nbtxt">Startseite</span></a>
+    <a class="brand" href="../../index.html" style="text-decoration:none;color:inherit"><span class="dot"></span> Schulter · Pathologien</a>
+    <div class="nav-links">
+      <a href="#ueberblick">Überblick</a>
+      <a href="#arc">Painful Arc</a>
+      <a href="#karte">Schulterkarte</a>
+      <a href="#details">Krankheitsbilder</a>
+      <a href="#vergleich">Vergleich</a>
+      <a href="#lerncheck">Lerncheck</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">Pathologie Orthopädie · Kapitel 8</span>
+      <h1>Die Schulter — <em>beweglich</em>, aber verletzlich.</h1>
+      <p class="lead">Sieben Krankheitsbilder der Schulterregion — von der Omarthrose über die Frozen Shoulder bis zur Instabilität. Visuell aufbereitet, klinisch strukturiert, mit interaktiven Lernchecks zum Selbsttest.</p>
+      <div class="hero-meta">
+        <div><b>7</b><span>Krankheitsbilder</span></div>
+        <div><b>4</b><span>Kategorien</span></div>
+        <div><b>3</b><span>Lerncheck-Modi</span></div>
+      </div>
+    </div>
+    <div class="hero-knee">
+      <svg viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <g stroke="#e8a48c" stroke-width="2.4" opacity=".85" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M40 120 Q110 100 165 128"/>
+          <path d="M165 128 Q205 118 232 150 Q240 162 232 176"/>
+          <path d="M60 150 L150 175 L150 300 L92 322"/>
+          <circle cx="196" cy="200" r="46"/>
+          <path d="M176 240 Q172 300 192 348"/>
+          <path d="M236 244 Q244 300 232 344"/>
+          <path d="M150 170 Q196 150 236 172" opacity=".6"/>
+        </g>
+        <ellipse cx="202" cy="164" rx="30" ry="7" fill="rgba(232,164,140,.18)" stroke="#f0c2af" stroke-width="2"/>
+        <circle cx="196" cy="200" r="3.4" fill="#e8a48c"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== ÜBERBLICK ===================== -->
+<section id="ueberblick">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <div>
+        <h2>Überblick auf einen Blick</h2>
+        <p>Alle sieben Krankheitsbilder, nach Mechanismus gruppiert. Tippe auf eine Karte, um direkt zum Detailteil zu springen.</p>
+      </div>
+    </div>
+    <div class="grid" id="overviewGrid"></div>
+    <div class="legend">
+      <span><i style="background:#bd4a30"></i> Arthrose / Degeneration</span>
+      <span><i style="background:#1f3d33"></i> Kapsel &amp; Steife</span>
+      <span><i style="background:#b07d1e"></i> Engpass &amp; Reizung (subakromial)</span>
+      <span><i style="background:#37607e"></i> Instabilität &amp; Luxation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAINFUL ARC ===================== -->
+<section id="arc">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <div>
+        <h2>Der schmerzhafte Bogen</h2>
+        <p>Wo im Bewegungsbogen der Schmerz auftritt, grenzt die Diagnose ein. Merke: ein <b>Painful Arc bei 60–120°</b> spricht für eine subakromiale Enge.</p>
+      </div>
+    </div>
+    <div class="illo-wrap">
+      <div class="axis-grid">
+        <div class="axis-fig" style="--ac:#2c7a4b" id="arcFig1Wrap">
+          <div id="arcFig1"></div>
+          <h4>0 – 60°</h4>
+          <div class="nick">weitgehend frei</div>
+          <ul>
+            <li>Abduktion beginnt schmerzarm</li>
+            <li>Humeruskopf gleitet frei unter dem Akromion</li>
+            <li>kein Kontakt der Sehne mit dem Schulterdach</li>
+          </ul>
+        </div>
+        <div class="axis-fig" style="--ac:#bd4a30" id="arcFig2Wrap">
+          <div id="arcFig2"></div>
+          <h4>60 – 120°</h4>
+          <div class="nick">Painful Arc</div>
+          <ul>
+            <li>Enge im subakromialen Raum</li>
+            <li>Kontakt Humeruskopf ↔ Akromion</li>
+            <li>→ <b>Impingement</b> &amp; <b>Bursitis subacromialis</b></li>
+          </ul>
+        </div>
+        <div class="axis-fig" style="--ac:#b07d1e" id="arcFig3Wrap">
+          <div id="arcFig3"></div>
+          <h4>&gt; 160°</h4>
+          <div class="nick">hochgradige Abduktion</div>
+          <ul>
+            <li>Schmerz ganz oben, über Kopf</li>
+            <li>Belastung des AC-Gelenks</li>
+            <li>→ typisch für <b>ACG-Arthrose</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SCHULTERKARTE ===================== -->
+<section id="karte">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <div>
+        <h2>Interaktive Schulterkarte</h2>
+        <p>Welche Struktur betroffen ist, bestimmt das Krankheitsbild. Tippe auf die markierten Punkte.</p>
+      </div>
+    </div>
+    <div class="map-layout">
+      <div class="knee-stage">
+        <svg viewBox="0 0 360 430" xmlns="http://www.w3.org/2000/svg">
+          <!-- capsule outline -->
+          <ellipse cx="200" cy="218" rx="78" ry="92" fill="rgba(31,61,51,.05)" stroke="#cdbfa9" stroke-width="2" stroke-dasharray="4 6"/>
+          <!-- scapula blade -->
+          <path d="M44 156 L150 180 L150 308 L74 338 Q42 306 40 244 Z" fill="#efe7d8" stroke="#cdbfa9" stroke-width="2.5"/>
+          <!-- glenoid socket -->
+          <path d="M150 172 Q174 210 150 256" fill="none" stroke="#c3b394" stroke-width="6" stroke-linecap="round"/>
+          <!-- humeral head -->
+          <circle cx="206" cy="210" r="52" fill="#f4ead8" stroke="#c3b394" stroke-width="2.5"/>
+          <!-- humerus shaft -->
+          <path d="M182 256 Q176 340 202 418 L254 418 Q248 326 252 250 Q228 268 182 256 Z" fill="#efe7d8" stroke="#cdbfa9" stroke-width="2.5"/>
+          <!-- clavicle -->
+          <path d="M26 112 Q92 104 152 124 L152 138 Q94 120 28 128 Z" fill="#efe7d8" stroke="#cdbfa9" stroke-width="2.5"/>
+          <!-- acromion -->
+          <path d="M150 128 Q204 116 256 150 Q268 162 260 182 Q212 150 170 158 Q150 150 150 128 Z" fill="#e7dfce" stroke="#cdbfa9" stroke-width="2.5"/>
+          <!-- supraspinatus tendon band -->
+          <path d="M150 176 Q204 152 248 176 Q212 200 180 192 Q160 188 150 176 Z" fill="#dcc9a8" opacity=".75"/>
+          <!-- bursa -->
+          <ellipse cx="206" cy="170" rx="36" ry="9" fill="#bd4a30" opacity=".22"/>
+          <!-- AC joint gap -->
+          <line x1="151" y1="118" x2="151" y2="144" stroke="#bd4a30" stroke-width="2" opacity=".45"/>
+
+          <!-- HOTSPOTS -->
+          <g class="hot" data-key="gh" tabindex="0" role="button" aria-label="Glenohumeralgelenk">
+            <circle class="pulse" cx="206" cy="216" fill="rgba(189,74,48,.4)"/>
+            <circle class="ring" cx="206" cy="216" r="15"/><circle class="core" cx="206" cy="216" r="11"/>
+            <text x="206" y="221">1</text>
+          </g>
+          <g class="hot" data-key="acg" tabindex="0" role="button" aria-label="AC-Gelenk">
+            <circle class="ring" cx="150" cy="124" r="15"/><circle class="core" cx="150" cy="124" r="11"/>
+            <text x="150" y="129">2</text>
+          </g>
+          <g class="hot" data-key="bursa" tabindex="0" role="button" aria-label="Bursa subacromialis">
+            <circle class="ring" cx="216" cy="168" r="15"/><circle class="core" cx="216" cy="168" r="11"/>
+            <text x="216" y="173">3</text>
+          </g>
+          <g class="hot" data-key="supra" tabindex="0" role="button" aria-label="Supraspinatussehne">
+            <circle class="ring" cx="168" cy="182" r="15"/><circle class="core" cx="168" cy="182" r="11"/>
+            <text x="168" y="187">4</text>
+          </g>
+          <g class="hot" data-key="capsule" tabindex="0" role="button" aria-label="Gelenkkapsel">
+            <circle class="ring" cx="258" cy="252" r="15"/><circle class="core" cx="258" cy="252" r="11"/>
+            <text x="258" y="257">5</text>
+          </g>
+          <g class="hot" data-key="labrum" tabindex="0" role="button" aria-label="Pfanne und Labrum">
+            <circle class="ring" cx="150" cy="216" r="15"/><circle class="core" cx="150" cy="216" r="11"/>
+            <text x="150" y="221">6</text>
+          </g>
+        </svg>
+      </div>
+      <div class="map-info" id="mapInfo">
+        <span class="map-hint">↑ Tippe einen nummerierten Punkt an der Schulter an, um Struktur und Krankheitsbilder zu sehen.</span>
+        <div id="mapContent" style="display:none">
+          <span class="mi-tag" id="miTag"></span>
+          <h3 id="miTitle"></h3>
+          <div class="mi-loc" id="miLoc"></div>
+          <p id="miDesc"></p>
+          <div class="chips" id="miChips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DETAILS ===================== -->
+<section id="details">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <div>
+        <h2>Die Krankheitsbilder im Detail</h2>
+        <p>Aufklappbar und einheitlich strukturiert: Definition → Ursache → Klinik → Diagnostik → Therapie. Jede Karte schließt mit einem <b>Merke</b>.</p>
+      </div>
+    </div>
+    <div class="acc" id="accordion"></div>
+  </div>
+</section>
+
+<!-- ===================== VERGLEICH ===================== -->
+<section id="vergleich">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <div>
+        <h2>Schnellvergleich &amp; Differenzialdiagnose</h2>
+        <p>Die wichtigsten Unterscheidungsmerkmale der Schulterpathologien nebeneinander.</p>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Krankheitsbild</th><th>Leitbefund / Schmerzmuster</th><th>Typische Gruppe</th><th>Schlüsselbefund</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Omarthrose</b></td><td><span class="loc-pill">Rotation + Abduktion</span></td><td>seltene Arthrose (~3 %)</td><td>Krepitation, Innenrotationskontraktur, Outerbridge</td></tr>
+          <tr><td><b>ACG-Arthrose</b></td><td><span class="loc-pill">hoch über Kopf</span></td><td>Männer &gt; 50 J (~100 %)</td><td>Druckschmerz AC, Osteophyten → Impingement</td></tr>
+          <tr><td><b>Frozen Shoulder</b></td><td><span class="loc-pill">alle Richtungen</span></td><td>Frauen; Diabetes/Schilddrüse</td><td><b>aktiv + passiv</b> eingeschränkt, 3 Phasen</td></tr>
+          <tr><td><b>Bursitis subacromialis</b></td><td><span class="loc-pill">Painful Arc 70–120°</span></td><td>Überkopfberufe, 50–60 J</td><td>Nacht-/Ruheschmerz, Entzündungszeichen</td></tr>
+          <tr><td><b>Impingement-Syndrom</b></td><td><span class="loc-pill">Painful Arc 60–120°</span></td><td>Überkopfbelastung</td><td>Supraspinatussehne + Bursa, Impingement-Tests</td></tr>
+          <tr><td><b>Schulterluxation</b></td><td><span class="loc-pill">leere Pfanne</span></td><td>junge Männer (Trauma)</td><td>tastbare Delle, Bankart-/Hill-Sachs-Läsion</td></tr>
+          <tr><td><b>Schulterinstabilität</b></td><td><span class="loc-pill">Schnapp-/Unsicherheit</span></td><td>jung, hyperlax</td><td>Apprehension/Relocation, Sulkuszeichen</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LERNCHECK ===================== -->
+<section id="lerncheck" style="border-bottom:none">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <div>
+        <h2>Lerncheck</h2>
+        <p>Drei Modi zum aktiven Wiederholen. Erst raten, dann aufdecken — so bleibt es hängen.</p>
+      </div>
+    </div>
+
+    <div class="lc-tabs">
+      <button class="lc-tab active" data-panel="quiz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Quiz
+      </button>
+      <button class="lc-tab" data-panel="cards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="14" rx="2"/><path d="M8 6V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg>
+        Karteikarten
+      </button>
+      <button class="lc-tab" data-panel="match">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 7h6M9 17h6M4 7h.01M4 12h.01M4 17h.01"/></svg>
+        Zuordnung
+      </button>
+    </div>
+
+    <div class="lc-panel show" id="panel-quiz">
+      <div class="quiz-card" id="quizCard"></div>
+    </div>
+
+    <div class="lc-panel" id="panel-cards">
+      <p style="color:var(--ink-soft);margin-bottom:18px;font-size:.92rem">Tippe eine Karte an, um die Antwort zu sehen.</p>
+      <div class="fc-grid" id="fcGrid"></div>
+    </div>
+
+    <div class="lc-panel" id="panel-match">
+      <p style="color:var(--ink-soft);margin-bottom:18px;font-size:.92rem">Wähle links einen Befund/Test, dann rechts das passende Krankheitsbild.</p>
+      <div class="match-layout">
+        <div class="match-col"><h4>Befund / Test</h4><div id="matchLeft"></div></div>
+        <div class="match-col"><h4>Krankheitsbild</h4><div id="matchRight"></div></div>
+      </div>
+      <div class="match-status" id="matchStatus"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">Schulter-Pathologien · Lernübersicht</div>
+  <p>Erstellt aus dem Skript „Pathologie Orthopädie“ (Kap. 8, Schulterregion) als strukturierte Lernhilfe für die physiotherapeutische Ausbildung.</p>
+  <p class="fnote">Lernzusammenfassung — ersetzt keine medizinische Diagnostik oder Behandlung. Im Zweifel immer das Originalskript prüfen.</p>
+</footer>
+
+<script>
+/* ============ CATEGORIES ============ */
+const CATS = {
+  degen:  {label:'Arthrose',           c:'#bd4a30', bg:'#f7e4dc'},
+  capsule:{label:'Kapsel & Steife',    c:'#1f3d33', bg:'#e3ece4'},
+  load:   {label:'Engpass & Reizung',  c:'#b07d1e', bg:'#f4e9d2'},
+  instab: {label:'Instabilität',       c:'#37607e', bg:'#dfe8ef'}
+};
+
+const icons = {
+  def:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>',
+  cause:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>',
+  clin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg>',
+  diag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  ther:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>',
+  prog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 7h4v4"/></svg>',
+  stage:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>'
+};
+
+const P = [
+ {id:'omarthrose', no:'8.1', cat:'degen', title:'Omarthrose', sub:'Arthrose des Glenohumeralgelenks',
+  short:'Verschleiß des Schultergelenks — selten, aber zunehmend versteifend.',
+  sections:[
+   {h:'Definition & Epidemiologie',ic:'def',blocks:[
+     {type:'text',content:'Arthrose des Schultergelenks (Glenohumeralgelenk). Deutlich seltener als Cox- oder Gonarthrose — nur etwa 3 % aller Arthrosen.'}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       '<b>Primär:</b> idiopathisch, erblich oder mechanisch',
+       '<b>Sekundär:</b> traumatisch (proximale Humerusfraktur, Schulterluxation)',
+       'Glenohumerale Instabilität','Systemisch (Rheuma)']}]},
+   {h:'Symptomatik',ic:'clin',blocks:[
+     {type:'list',content:[
+       'Diffuse Schmerzen, Bewegungsschmerz, Ruheschmerz (bes. nach Belastung)','Druckschmerz im Liegen, Krepitation','Schmerz v.a. bei <b>Rotation und Abduktion</b> — Überkopfarbeit & Schürzengriff erschwert','Innenrotationskontraktur, Kapselmuster','Kompensation über das skapulothorakale Nebengelenk','Später: vollständige Versteifung']}]},
+   {h:'Einteilung (Outerbridge)',ic:'stage',blocks:[{type:'stages',kind:'outer'}]},
+   {h:'Diagnostik & DD',ic:'diag',blocks:[
+     {type:'list',content:['Anamnese, klinische Untersuchung, Röntgen','DD: Impingement, Tendinosis calcarea (Kalk v.a. an der Supraspinatussehne), HWS-Erkrankungen']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Physiotherapie: Beweglichkeit des GH ↑, Muskelaufbau','Physikalisch: Kryotherapie, Reizstrom','Analgetisch & antiphlogistisch']},
+       {h:'Operativ',cls:'op',items:['Arthroskopisches Débridement (nur Frühstadium, kein Langzeiteffekt)','Hemiprothese (Humerus-Gelenkfläche)','TEP → <b>intakte Rotatorenmanschette nötig</b>','Inverse Prothese → bei Instabilität, mehr Vorspannung für den Deltamuskel']}]}]}
+  ],
+  merke:'Die Outerbridge-Klassifikation (Grad I–IV) beschreibt die Knorpelschädigung bis „Knochen auf Knochen". Faustregel zur Prothese: TEP nur bei intakter Rotatorenmanschette, sonst inverse Prothese.'},
+
+ {id:'acg', no:'8.2', cat:'degen', title:'ACG-Arthrose', sub:'Arthrose des Schultereckgelenks (AC-Gelenk)',
+  short:'Verschleiß des Schultereckgelenks — Osteophyten können ein Impingement auslösen.',
+  sections:[
+   {h:'Definition & Epidemiologie',ic:'def',blocks:[
+     {type:'list',content:['Arthrose des AC-Gelenks (Acromioclaviculargelenk)','Prävalenz bei Männern über 50 J. bei fast 100 %','Begünstigt durch ungleich große Gelenkpartner & vertikalen Gelenkspalt']}]},
+   {h:'Pathogenese',ic:'cause',blocks:[
+     {type:'list',content:['Beginnt mit Degeneration des Discus articularis','Osteophytenbildung','Osteophyten können Muskel & Sehne des M. supraspinatus komprimieren → <b>Impingementsymptomatik</b>']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'list',content:['NSAR','Intraartikuläre Injektion von Kortikosteroiden','Mobilisation des AC-Gelenks durch Manuelle Therapie','Physikalische Therapie']}]}
+  ],
+  merke:'Typisch der ältere Mann mit Schmerz „ganz oben über Kopf". Wichtigste Brücke: ACG-Osteophyten sind eine häufige Ursache eines (Outlet-)Impingements.'},
+
+ {id:'frozen', no:'8.3', cat:'capsule', title:'Frozen Shoulder', sub:'Adhäsive Kapsulitis · Schultersteife',
+  short:'Schmerzhafte Schrumpfung der Gelenkkapsel — aktiv und passiv eingeschränkt.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'list',content:['Synonym: adhäsive Kapsulitis (Schultersteife)','Leitsymptom: Schmerz + massive Einschränkung der <b>aktiven UND passiven</b> Beweglichkeit im GH in allen Freiheitsgraden (v.a. Abduktion & Rotation)','Fibrosierung & Schrumpfung der Gelenkkapsel, Verklebungen subakromial']}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       '<b>Primär:</b> keine sicheren Ursachen — assoziiert mit Autoimmun-/Bindegewebserkrankungen, Schilddrüse, Diabetes mellitus, Herzerkrankungen',
+       '<b>Sekundär:</b> nach Ruhigstellung in Adduktion, Trauma, Entzündung, Fraktur, Luxation, Tendinosis calcarea, Bizepssehnenläsion, Rotatorenmanschettenruptur','Frauen häufiger betroffen als Männer']}]},
+   {h:'Verlauf in 3 Phasen',ic:'stage',blocks:[{type:'stages',kind:'phases'}]},
+   {h:'Pathogenese',ic:'cause',blocks:[
+     {type:'list',content:['Langsamer Beginn; zuerst Einschränkung der Innenrotation, später aller Richtungen','Mobilitätsverlust durch Schonhaltung des Arms','Fibromatöse Verdickung der Kapsel; Veränderungen am Lig. coracohumerale & der RM']}]},
+   {h:'Diagnostik & DD',ic:'diag',blocks:[
+     {type:'list',content:['Anamnese & klinische Bewegungsprüfung','Sonographie, Röntgen, MRT meist <b>ohne Befund</b>','MRT mit Kontrastmittel: Verklebung des Recessus & verdickte Kapsel','DD: Omarthrose, Tendinosis calcarea, Impingement, HWS-Syndrom']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Ziel: schonende Mobilisierung','Physiotherapie (symptomorientiert, aktiv & passiv, MT)','NSAR / Analgetika','Haltungsschulung, Schonhaltung vermeiden']},
+       {h:'Operativ',cls:'op',items:['Erst nach min. 6 Monaten konservativ (in der 2. Phase)','Narkosemobilisation','Arthroskopische Arthrolyse mit Kapsulotomie']}]}]}
+  ],
+  merke:'Schlüsselunterschied zur Omarthrose: Bei der Frozen Shoulder ist <b>aktiv UND passiv</b> alles eingeschränkt, MRT meist ohne Befund. Verlauf: Freezing → Frozen → Thawing.'},
+
+ {id:'bursitis', no:'8.4', cat:'load', title:'Bursitis subacromialis', sub:'Entzündung des subakromialen Schleimbeutels',
+  short:'Entzündung des Schleimbeutels unter dem Schulterdach — eine der häufigsten Schulterleiden.',
+  sections:[
+   {h:'Definition & Epidemiologie',ic:'def',blocks:[
+     {type:'list',content:['Entzündung des Schleimbeutels (Bursa subacromialis)','Eine der häufigsten Schultererkrankungen','Häufig Berufe mit viel Überkopfarbeit, Alter meist 50–60 J.']}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:['Fehl-/Überbelastung (häufige endgradige Flexion)','Mechanische Irritation → Entzündung (Impingement, Schultersteife, RM-Risse)','Seltener: rheumatoide Arthritis, Gicht, Tumoren','Infektionen (z.B. nach Verletzung am Schultergelenk)']}]},
+   {h:'Pathogenese',ic:'cause',blocks:[
+     {type:'list',content:['Flexion → Mikrotraumen → Entzündung','Zellen proliferieren → vermehrt Flüssigkeit & Kollagen','Mechanische Reizung → Kalkbildung unter dem Schulterdach in den Sehnen','Kalk tritt in den Schleimbeutel ein → verstärkt die Entzündung']}]},
+   {h:'Klinik & Diagnostik',ic:'clin',blocks:[
+     {type:'list',content:['Ruhe-, Belastungs- und Nachtschmerz','Schmerz bei Abduktion zwischen ~70° und 120°','Entzündungszeichen (Rötung, Erwärmung, Schmerz), plötzlich auftretende Schmerzen','Diagnostik: Sonographie, Röntgen, MRT','DD: Impingement, RM-Ruptur, Arthrose, Arthritis']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Akut / Konservativ',cls:'cons',items:['Weitere Belastung vermeiden','Physikalische Therapie','Physiotherapie, NSAR','Punktion']},
+       {h:'Operativ',cls:'op',items:['Bursektomie (Entfernung des Schleimbeutels)']}]}]}
+  ],
+  merke:'Eng verwandt mit dem Impingement — beide zeigen einen Painful Arc und Nachtschmerz. Hier steht die <b>Entzündung der Bursa</b> mit klassischen Entzündungszeichen im Vordergrund.'},
+
+ {id:'impingement', no:'8.5', cat:'load', title:'Impingement-Syndrom', sub:'Enge des subakromialen Raumes',
+  short:'„Zusammenstoß" von Humeruskopf und Akromion — Schmerz im mittleren Bewegungsbogen.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'list',content:['Engl. „Zusammenstoß"','Enge des subakromialen Raumes → Schmerz bei Abduktion zwischen 60° und 120°','Reizung der <b>Supraspinatussehne</b> & der Bursa subacromialis durch Kontakt des Humeruskopfes mit dem Akromion','Klinische Zusammenfassung mehrerer Symptome']}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       '<b>Outlet-Impingement</b> (knöcherne Enge): ACG-Arthrose, anatomische Akromionvarianten, Humeruskopffrakturen',
+       '<b>Non-Outlet-Impingement</b> (Weichteile): Verdickung der Supraspinatussehne (repetitive Mikrotraumen), Ödeme',
+       'Risikofaktoren: Bursitis, ACG-Arthrose, subakromiale Osteophyten']}]},
+   {h:'Klinik',ic:'clin',blocks:[
+     {type:'list',content:['Aktive Abduktion zwischen 60° und 120° schmerzhaft (<b>Painful Arc</b>)','Beschwerden bei Belastung & in Ruhe','Nächtliche Schmerzen, v.a. in Seitlage auf der betroffenen Schulter']}]},
+   {h:'Diagnostik',ic:'diag',blocks:[
+     {type:'list',content:['Anamnese & Impingement-Tests','Röntgen: Akromionform, Kalkdepot, Humeruskopfhochstand (bei RM-Ruptur)','Sonographie, MRT (Bursitis, Kalk, Tendinitis, RM-Riss)']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Physiotherapie','Schmerzmittel (NSAR)']},
+       {h:'Operativ',cls:'op',items:['Bei Therapieresistenz → Erweiterung des subakromialen Raums','Arthroskopie: subakromiale Dekompression (Akromioplastik, Resektion Lig. coracoacromiale)','Entfernung von Kalkdepots bei Tendinosis calcarea']}]}]}
+  ],
+  merke:'Merke die Unterscheidung Outlet (Knochen) vs. Non-Outlet (Weichteile). Betroffen ist v.a. die <b>Supraspinatussehne</b>; Leitbefund ist der Painful Arc 60–120°.'},
+
+ {id:'luxation', no:'8.6', cat:'instab', title:'Schulterluxation', sub:'Auskugeln des Schultergelenks',
+  short:'Das am häufigsten luxierende Gelenk des Menschen — meist nach ventral.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'list',content:['Luxation = vollständige Diskontinuität der Gelenkpartner','Häufige Begleitverletzung: Kapsel-Band-Verletzungen','Das Schultergelenk ist das <b>am meisten luxierende Gelenk</b> des Menschen']}]},
+   {h:'Ätiologie',ic:'cause',blocks:[
+     {type:'list',content:[
+       '<b>Traumatisch:</b> direkte/indirekte Gewalt (z.B. Griff in den abduzierten, außenrotierten Oberarm)',
+       '<b>Posttraumatisch rezidivierend:</b> nach adäquatem Ersttrauma + Begleitverletzungen',
+       '<b>Habituell:</b> angeborene Dysplasie der Gelenkpfanne',
+       '<b>Willkürlich:</b> beliebig luxierbar und reponierbar']}]},
+   {h:'Luxationsrichtung',ic:'clin',blocks:[
+     {type:'list',content:['<b>Ventral</b> (häufigste): Sturz auf den Arm, Griff in den Wurfarm','<b>Dorsal:</b> bei Krampfanfällen oder Elektrounfällen','<b>Caudal:</b> Sturz auf den nach oben gestreckten Arm']}]},
+   {h:'Klinik',ic:'clin',blocks:[
+     {type:'list',content:['Schmerzen, fehlende Beweglichkeit','Leere Gelenkpfanne, tastbare Delle','Arm in außenrotierter, leicht abduzierter Stellung (ventrale Luxation)']}]},
+   {h:'Diagnostik',ic:'diag',blocks:[
+     {type:'list',content:[
+       '<b>DMS sofort am Unfallort</b> prüfen (Durchblutung, Motorik, Sensibilität)',
+       'Röntgen (Knochenverletzungen), MRT (Kapsel/Labrum/Band)',
+       'Begleitverletzungen: <b>N.-axillaris-Läsion</b> (~10 %), <b>Bankart-Läsion</b> (Ab-/Einriss des Labrum glenoidale), <b>Hill-Sachs-Läsion</b> (Impressionsfraktur am Humeruskopf)']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'split',content:[
+       {h:'Konservativ',cls:'cons',items:['Bei Erstluxation ohne Begleitverletzung','Reposition durch Arzt + Schmerzmittel','6 Wochen Limit: keine AR über 0°, keine Abduktion über 90°','Stabilisierende Schultermuskulatur kräftigen']},
+       {h:'Operativ',cls:'op',items:['Bei rezidivierenden Luxationen / Begleitverletzungen','Labrum-Refixation (Titan / bioresorbierbar)','Kapselstraffung, Refixation von Band-/Sehnenstrukturen']}]},
+     {type:'text',content:'Prognose nach Alter der Erstluxation: < 20 J. 65–95 % Rezidiv · 20–40 J. 60–70 % · > 40 J. nur 2–4 %.'}]}
+  ],
+  merke:'Zwei Schlüsselverletzungen merken: <b>Bankart</b> (Labrum) und <b>Hill-Sachs</b> (Humeruskopf). Je jünger die Erstluxation, desto höher das Rezidivrisiko (bis 95 %).'},
+
+ {id:'instabilitaet', no:'8.7', cat:'instab', title:'Schulterinstabilität', sub:'Humeruskopf bleibt nicht zentriert',
+  short:'Die Unfähigkeit, den Humeruskopf zentriert in der Pfanne zu halten.',
+  sections:[
+   {h:'Definition',ic:'def',blocks:[
+     {type:'text',content:'Unfähigkeit, den Humeruskopf zentriert in der Fossa glenoidalis zu halten. Ursachen sind anatomisch, biomechanisch und neurophysiologisch.'}]},
+   {h:'Stabilisatoren',ic:'cause',blocks:[
+     {type:'split',content:[
+       {h:'Statisch',cls:'cons',items:['Glenoidkonkavität','Humerale Konvexität','Glenoidtiefe (Konkavität + Knorpel + Labrum)']},
+       {h:'Dynamisch',cls:'op',items:['Rotatorenmanschette','M. deltoideus','Gelenkkapsel & glenohumerale Ligamente']}]}]},
+   {h:'Klinik',ic:'clin',blocks:[
+     {type:'list',content:['Hyperlaxität (gesteigerte Translation des Gelenks)','Muskuläre Dysfunktion, koordinative Dysbalance','Instabilitäts- & Unsicherheitsgefühl','Schnappen des Humeruskopfes','Kleinste Traumen führen zu Luxationen']}]},
+   {h:'Klinische Untersuchung',ic:'diag',blocks:[
+     {type:'list',content:['Sulkuszeichen','Apprehension-Test · Relocation-Test · Release-Test','Jerk-Test','Load & Shift']}]},
+   {h:'Therapie',ic:'ther',blocks:[
+     {type:'list',content:['Muskuläre Dysbalancen ausgleichen','Stabilisierende Schultermuskulatur kräftigen','Kräftigung & koordinatives Training der RM und der skapulastabilisierenden Muskulatur','Verbesserung von Körperwahrnehmung & Propriozeption, Korrektur unphysiologischer Bewegungsmuster']}]}
+  ],
+  merke:'Stabilität = Zusammenspiel aus statischen (Pfanne/Labrum) und dynamischen (Muskel/Kapsel) Stabilisatoren. Therapie ist überwiegend aktiv: kräftigen, koordinieren, Propriozeption schulen.'}
+];
+
+/* ============ STAGE / PHASE DATA ============ */
+const cartilageSVG = (frac)=>{
+  const bone='#d8c7a8', cart='#9fc4b4', dmg='#bd4a30';
+  let cartPath = '<rect x="6" y="14" width="68" height="16" rx="4" fill="'+cart+'"/>';
+  let extra='';
+  if(frac===0){extra='<path d="M14 18 q8 5 16 0 t16 0 t16 0" stroke="'+dmg+'" stroke-width="1.6" fill="none" opacity=".55"/>';}
+  if(frac===1){extra='<path d="M40 14 L38 30" stroke="'+dmg+'" stroke-width="2.4"/>';}
+  if(frac===2){cartPath='<path d="M6 14 H30 V30 H6 Z M44 14 H74 V30 H62 L58 22 L52 30 H44 Z" fill="'+cart+'"/>'+'<path d="M30 14 L34 30 M44 14 L40 30" stroke="'+dmg+'" stroke-width="2"/>';}
+  if(frac===3){cartPath='<path d="M6 14 H20 V30 H6 Z M60 14 H74 V30 H60 Z" fill="'+cart+'"/>'+'<path d="M20 14 L26 30 M60 14 L54 30" stroke="'+dmg+'" stroke-width="2"/><path d="M30 30 q12 -6 22 0" stroke="'+dmg+'" stroke-width="1.6" fill="none" stroke-dasharray="3 3"/>';}
+  return '<svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">'
+    +'<rect x="6" y="30" width="68" height="20" rx="4" fill="'+bone+'"/>'
+    +cartPath+extra+'</svg>';
+};
+const OUTERBRIDGE=[
+  {n:'Grad I',t:'Erweichung des Knorpels'},
+  {n:'Grad II',t:'Feine Rillen, Läsionstiefe < 50 %'},
+  {n:'Grad III',t:'Defekt bis zum Knochen, Tiefe > 50 %'},
+  {n:'Grad IV',t:'Vollständige Läsion — Knochen auf Knochen'}
+];
+const PHASE_ICONS={
+  freeze:'<g stroke="#37607e" stroke-width="2.4" stroke-linecap="round" fill="none"><path d="M24 7V41M9 15l30 18M39 15L9 33"/><path d="M24 7l-4 4M24 7l4 4M24 41l-4-4M24 41l4-4M11 15l.4 5.4M37 33l-5.4-.4M37 15l-.4 5.4M11 33l5.4-.4"/></g>',
+  frozen:'<g fill="none" stroke="#1f3d33" stroke-width="2.4"><rect x="11" y="11" width="26" height="26" rx="3"/><path d="M11 20.3h26M20.3 11v26" stroke-width="1.5" opacity=".5"/></g>',
+  thaw:'<g stroke="#b07d1e" stroke-width="2.4" stroke-linecap="round" fill="none"><circle cx="24" cy="24" r="8"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11.5 11.5l3.5 3.5M33 33l3.5 3.5M36.5 11.5L33 15M15 33l-3.5 3.5"/></g>'
+};
+const PHASES=[
+  {name:'Freezing',icon:PHASE_ICONS.freeze,dur:'ca. 10–36 Wochen',t:'Entzündung & Schmerz, Beweglichkeit ↓, Adduktions-Schonhaltung'},
+  {name:'Frozen',icon:PHASE_ICONS.frozen,dur:'ca. 4–12 Monate',t:'Teilsteife nimmt zu, Entzündung & Ruheschmerz nehmen ab'},
+  {name:'Thawing',icon:PHASE_ICONS.thaw,dur:'ca. 5 Mon – 2 Jahre',t:'Beweglichkeit kehrt sukzessive zurück, Restdefizit möglich'}
+];
+
+/* ============ RENDER OVERVIEW ============ */
+const og = document.getElementById('overviewGrid');
+P.forEach(p=>{
+  const cat=CATS[p.cat];
+  const a=document.createElement('a');
+  a.href='#'+p.id; a.className='pcard';
+  a.style.setProperty('--c',cat.c);
+  a.innerHTML=`<span class="pno">${p.no.split('.')[1]}</span>
+    <span class="ptag">${cat.label}</span>
+    <h3>${p.title}</h3>
+    <p>${p.short}</p>
+    <span class="arrow">Zum Detail →</span>`;
+  a.addEventListener('click',e=>{e.preventDefault();openAndScroll(p.id);});
+  og.appendChild(a);
+});
+
+/* ============ RENDER ACCORDION ============ */
+const acc=document.getElementById('accordion');
+function renderBlocks(blocks,c){
+  return blocks.map(b=>{
+    if(b.type==='text') return `<p class="pp">${b.content}</p>`;
+    if(b.type==='list') return `<ul class="ul">${b.content.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    if(b.type==='split') return `<div class="split">${b.content.map(col=>`<div class="split-col ${col.cls}"><h6>${col.h}</h6><ul class="ul">${col.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}</div>`;
+    if(b.type==='stages'){
+      if(b.kind==='phases'){
+        return `<div class="stages three">${PHASES.map(s=>`<div class="stage"><svg viewBox="0 0 48 48" style="height:46px;width:auto;margin-bottom:6px">${s.icon}</svg><div class="sn">${s.name}</div><div style="font-size:.72rem;font-weight:700;color:var(--steel);letter-spacing:.02em;margin:2px 0 4px">${s.dur}</div><p>${s.t}</p></div>`).join('')}</div>`;
+      }
+      return `<div class="stages">${OUTERBRIDGE.map((s,i)=>`<div class="stage">${cartilageSVG(i)}<div class="sn">${s.n}</div><p>${s.t}</p></div>`).join('')}</div>`;
+    }
+    return '';
+  }).join('');
+}
+P.forEach(p=>{
+  const cat=CATS[p.cat];
+  const item=document.createElement('div');
+  item.className='item'; item.id=p.id;
+  item.style.setProperty('--c',cat.c);
+  item.style.setProperty('--cbg',cat.bg);
+  const body = p.sections.map(s=>`
+    <div class="block">
+      <h5 style="color:${cat.c}">${icons[s.ic]||''}${s.h}</h5>
+      ${renderBlocks(s.blocks,p.id)}
+    </div>`).join('');
+  item.innerHTML=`
+    <div class="item-head" role="button" tabindex="0">
+      <span class="ino">${p.no.split('.')[1]}</span>
+      <div class="ititle"><h3>${p.title}</h3><div class="isub">${p.sub}</div></div>
+      <span class="icat">${cat.label}</span>
+      <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="item-body"><div class="item-body-in"><div class="bgrid">${body}
+      <div class="merke"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+        <p><b>Merke.</b> ${p.merke}</p></div>
+    </div></div></div>`;
+  acc.appendChild(item);
+  const head=item.querySelector('.item-head');
+  const toggle=()=>{
+    const open=item.classList.toggle('open');
+    const bodyEl=item.querySelector('.item-body');
+    bodyEl.style.maxHeight = open ? bodyEl.scrollHeight+'px' : '0';
+  };
+  head.addEventListener('click',toggle);
+  head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+});
+function openAndScroll(id){
+  const item=document.getElementById(id);
+  if(item && !item.classList.contains('open')){
+    item.classList.add('open');
+    const b=item.querySelector('.item-body'); b.style.maxHeight=b.scrollHeight+'px';
+  }
+  setTimeout(()=>item.scrollIntoView({behavior:'smooth',block:'center'}),120);
+}
+window.addEventListener('resize',()=>{
+  document.querySelectorAll('.item.open .item-body').forEach(b=>b.style.maxHeight=b.scrollHeight+'px');
+});
+
+/* ============ PAINFUL ARC FIGURES ============ */
+function arcPt(cx,cy,r,deg){const a=deg*Math.PI/180;return [cx+r*Math.sin(a), cy+r*Math.cos(a)];}
+function arcPath(cx,cy,r,d1,d2){let p='';for(let d=d1;d<=d2+0.001;d+=4){const [x,y]=arcPt(cx,cy,r,d);p+=(p?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}return p;}
+function makeShoulderFig(armDeg,zStart,zEnd,color){
+  const cx=74,cy=140,R=78,L=84;
+  const [hx,hy]=arcPt(cx,cy,L,armDeg);
+  const guide=arcPath(cx,cy,R,0,180);
+  const zone=arcPath(cx,cy,R,zStart,zEnd);
+  return `<svg viewBox="0 0 200 236" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="44" r="17" fill="#cdbfa9"/>
+    <path d="M58 66 L70 132" stroke="#cdbfa9" stroke-width="10" stroke-linecap="round"/>
+    <path d="M40 150 Q30 116 52 102 Q70 94 82 114 Q88 132 86 152 Q60 160 40 150 Z" fill="#dcd0bb"/>
+    <path d="M44 152 Q42 198 50 222 L100 222 Q92 180 86 154 Q64 162 44 152 Z" fill="#dcd0bb"/>
+    <path d="${guide}" fill="none" stroke="#d2c8b8" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+    <path d="${zone}" fill="none" stroke="${color}" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+    <line x1="${cx}" y1="${cy}" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}" stroke="#a99a82" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="${hx.toFixed(1)}" cy="${hy.toFixed(1)}" r="9" fill="#a99a82"/>
+    <circle cx="${cx}" cy="${cy}" r="11" fill="#8a7b63"/>
+    <text x="${cx}" y="230" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700" font-size="11" fill="#8a8d82">0°</text>
+    <text x="${cx+R+13}" y="144" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700" font-size="11" fill="#8a8d82">90°</text>
+    <text x="${cx}" y="56" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="700" font-size="11" fill="#8a8d82">180°</text>
+  </svg>`;
+}
+document.getElementById('arcFig1').innerHTML = makeShoulderFig(34, 0, 58, '#2c7a4b');
+document.getElementById('arcFig2').innerHTML = makeShoulderFig(90, 60, 120, '#bd4a30');
+document.getElementById('arcFig3').innerHTML = makeShoulderFig(166, 158, 180, '#b07d1e');
+
+/* ============ SHOULDER MAP ============ */
+const MAP={
+  gh:{tag:'Gelenkverschleiß',title:'Glenohumeralgelenk',loc:'Hauptgelenk: Humeruskopf ↔ Pfanne',desc:'Bewegungsschmerz bei Rotation und Abduktion, Krepitation und Innenrotationskontraktur — bis hin zur Versteifung.',chips:['Omarthrose']},
+  acg:{tag:'Schultereckgelenk',title:'AC-Gelenk',loc:'Klavikula ↔ Akromion (oben)',desc:'Druckschmerz oben und Schmerz bei hoher Abduktion. Osteophyten können ein Impingement auslösen.',chips:['ACG-Arthrose']},
+  bursa:{tag:'Subakromialer Raum',title:'Bursa subacromialis',loc:'Unter dem Schulterdach (Akromion)',desc:'Painful Arc und Nachtschmerz durch Entzündung und Enge zwischen Humeruskopf und Akromion.',chips:['Bursitis subacromialis','Impingement-Syndrom']},
+  supra:{tag:'Rotatorenmanschette',title:'Supraspinatussehne',loc:'Über dem Humeruskopf, unter dem Akromion',desc:'Reizung oder Verdickung verengt den subakromialen Raum; häufiger Ort für Kalkablagerungen (Tendinosis calcarea).',chips:['Impingement-Syndrom','Tendinosis calcarea']},
+  capsule:{tag:'Gelenkkapsel',title:'Glenohumerale Kapsel',loc:'Umhüllt das Schultergelenk',desc:'Fibrosierung und Schrumpfung schränken die Beweglichkeit aktiv UND passiv in allen Richtungen ein.',chips:['Frozen Shoulder']},
+  labrum:{tag:'Pfanne & Labrum',title:'Fossa glenoidalis / Labrum',loc:'Gelenkpfanne der Skapula',desc:'Verletzung (Bankart) oder Insuffizienz → der Humeruskopf bleibt nicht mehr zentriert.',chips:['Schulterluxation','Schulterinstabilität']}
+};
+const mapHint=document.querySelector('#mapInfo .map-hint');
+const mapContent=document.getElementById('mapContent');
+document.querySelectorAll('.hot').forEach(h=>{
+  const act=()=>{
+    document.querySelectorAll('.hot').forEach(x=>x.classList.remove('sel'));
+    h.classList.add('sel');
+    const d=MAP[h.dataset.key];
+    mapHint.style.display='none'; mapContent.style.display='block';
+    document.getElementById('miTag').textContent=d.tag;
+    document.getElementById('miTitle').textContent=d.title;
+    document.getElementById('miLoc').textContent=d.loc;
+    document.getElementById('miDesc').textContent=d.desc;
+    document.getElementById('miChips').innerHTML=d.chips.map(c=>`<span class="chip">${c}</span>`).join('');
+  };
+  h.addEventListener('click',act);
+  h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});
+});
+
+/* ============ TABS ============ */
+document.querySelectorAll('.lc-tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.lc-tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.lc-panel').forEach(x=>x.classList.remove('show'));
+    t.classList.add('active');
+    document.getElementById('panel-'+t.dataset.panel).classList.add('show');
+  });
+});
+
+/* ============ FLASHCARDS ============ */
+const FC=[
+ ['Was ist eine Omarthrose?','Arthrose des Glenohumeralgelenks — selten (~3 % aller Arthrosen)'],
+ ['Outerbridge Grad IV?','Vollständige Knorpelläsion — Knochen auf Knochen'],
+ ['Frozen Shoulder — Synonym & Kern?','Adhäsive Kapsulitis; Fibrosierung/Schrumpfung der Kapsel, aktiv + passiv eingeschränkt'],
+ ['Die 3 Phasen der Frozen Shoulder?','Freezing → Frozen → Thawing'],
+ ['Painful Arc beim Impingement?','Schmerzhafte aktive Abduktion zwischen 60° und 120°'],
+ ['Welche Sehne ist beim Impingement v.a. betroffen?','Die Supraspinatussehne (+ Bursa subacromialis)'],
+ ['Outlet vs. Non-Outlet Impingement?','Outlet = knöcherne Enge (Akromionform, ACG-Arthrose); Non-Outlet = Weichteile (Sehnenverdickung, Ödem)'],
+ ['ACG-Arthrose — typische Gruppe?','Männer > 50 J. (Prävalenz fast 100 %); Osteophyten → Impingement'],
+ ['Häufigste Luxationsrichtung der Schulter?','Ventral (z.B. Sturz auf den Arm, Griff in den Wurfarm)'],
+ ['Bankart- vs. Hill-Sachs-Läsion?','Bankart = Abriss des Labrum glenoidale; Hill-Sachs = Impressionsfraktur am Humeruskopf'],
+ ['Reluxationsrisiko bei Erstluxation < 20 J.?','65–95 % — sinkt mit dem Alter (> 40 J. nur 2–4 %)'],
+ ['Statische vs. dynamische Stabilisatoren?','Statisch = Glenoid/Labrum/Konkavität; Dynamisch = Rotatorenmanschette, M. deltoideus, Kapsel, GH-Ligamente']
+];
+const fcGrid=document.getElementById('fcGrid');
+FC.forEach(([q,a])=>{
+  const card=document.createElement('div');
+  card.className='flip';
+  card.innerHTML=`<div class="flip-in">
+    <div class="fface ffront"><div class="qlabel">Frage</div><p>${q}</p><span class="tapn">tippen ↻</span></div>
+    <div class="fface fback"><div class="qlabel">Antwort</div><p>${a}</p><span class="tapn">↻ zurück</span></div>
+  </div>`;
+  card.addEventListener('click',()=>card.classList.toggle('flipped'));
+  fcGrid.appendChild(card);
+});
+
+/* ============ QUIZ ============ */
+const QUIZ=[
+ {q:'Welches Gelenk ist das am häufigsten luxierende Gelenk des Menschen?',
+  o:[['Kniegelenk',0],['Schultergelenk',1],['Hüftgelenk',0],['Ellenbogengelenk',0]],
+  e:'Durch seine große Beweglichkeit und die kleine Pfanne luxiert das Schultergelenk am häufigsten.'},
+ {q:'Der „Painful Arc" beim Impingement liegt typischerweise bei…',
+  o:[['0–30° Abduktion',0],['60–120° Abduktion',1],['120–160° Abduktion',0],['nur bei 180°',0]],
+  e:'Zwischen 60° und 120° ist der subakromiale Raum am engsten → schmerzhafter Bogen.'},
+ {q:'Welche Sehne ist beim subakromialen Impingement am häufigsten betroffen?',
+  o:[['Bizepssehne',0],['Supraspinatussehne',1],['Subscapularissehne',0],['Infraspinatussehne',0]],
+  e:'Die Supraspinatussehne verläuft direkt unter dem Akromion und wird am häufigsten gereizt.'},
+ {q:'Outerbridge Grad IV bedeutet…',
+  o:[['Erweichung des Knorpels',0],['feine Rillen < 50 %',0],['Knochen auf Knochen (vollständige Läsion)',1],['nur Schwellung',0]],
+  e:'Grad IV = vollständige Knorpelläsion mit freiliegendem Knochen.'},
+ {q:'Welche Phase der Frozen Shoulder ist durch zunehmende Steife bei nachlassendem Schmerz gekennzeichnet?',
+  o:[['Freezing',0],['Frozen',1],['Thawing',0],['Resting',0]],
+  e:'In der „Frozen"-Phase nimmt die Teilsteife zu, während Entzündung und Ruheschmerz abnehmen.'},
+ {q:'Eine Bankart-Läsion bezeichnet…',
+  o:[['Impressionsfraktur am Humeruskopf',0],['Ab-/Einriss des Labrum glenoidale',1],['Klavikulafraktur',0],['Rotatorenmanschettenruptur',0]],
+  e:'Bankart = Labrumabriss an der Pfanne. (Die Impressionsfraktur am Humeruskopf ist die Hill-Sachs-Läsion.)'},
+ {q:'Welche Gruppe ist von ACG-Arthrose fast zu 100 % betroffen?',
+  o:[['junge Frauen',0],['Männer über 50 Jahre',1],['Kinder im Wachstum',0],['Leistungsschwimmer unter 20',0]],
+  e:'Bei über 50-jährigen Männern liegt die Prävalenz der ACG-Arthrose bei nahezu 100 %.'},
+ {q:'Welcher Nerv ist bei einer Schulterluxation in etwa 10 % der Fälle verletzt?',
+  o:[['N. radialis',0],['N. axillaris',1],['N. medianus',0],['N. ulnaris',0]],
+  e:'Der N. axillaris ist die typische Begleitverletzung (~10 %).'},
+ {q:'Welche Prothese setzt eine intakte Rotatorenmanschette voraus?',
+  o:[['inverse Prothese',0],['anatomische Schulter-TEP',1],['Hemiprothese',0],['arthroskopisches Débridement',0]],
+  e:'Die anatomische TEP braucht eine intakte RM; bei Instabilität/RM-Defekt wählt man die inverse Prothese.'},
+ {q:'Frozen Shoulder betrifft häufiger…',
+  o:[['Männer',0],['Frauen',1],['Kinder',0],['beide gleich',0]],
+  e:'Frauen sind häufiger betroffen; Assoziationen u.a. mit Diabetes und Schilddrüsenerkrankungen.'},
+ {q:'Welche Bewegung ist bei der Omarthrose besonders schmerzhaft/eingeschränkt?',
+  o:[['Faustschluss',0],['Rotation und Abduktion (Schürzengriff, Überkopf)',1],['Pronation des Unterarms',0],['Ellbogenflexion',0]],
+  e:'Rotation und Abduktion sind betroffen — Überkopfarbeit und Schürzengriff fallen schwer.'},
+ {q:'Bei einer ventralen Schulterluxation steht der Arm typischerweise…',
+  o:[['in Innenrotation + Adduktion',0],['in Außenrotation + leichter Abduktion',1],['in voller Elevation',0],['hinter dem Rücken',0]],
+  e:'Klassisch: leicht abduziert und außenrotiert, mit leerer Pfanne und tastbarer Delle.'}
+];
+let qi=0, score=0, locked=false;
+const quizCard=document.getElementById('quizCard');
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function renderQ(){
+  locked=false;
+  const item=QUIZ[qi];
+  const opts=shuffle([...item.o]);
+  const letters=['A','B','C','D'];
+  quizCard.innerHTML=`
+    <div class="quiz-top">
+      <span class="quiz-counter">Frage ${qi+1} / ${QUIZ.length}</span>
+      <span class="quiz-score">${score} richtig</span>
+    </div>
+    <div class="quiz-bar"><i style="width:${(qi/QUIZ.length)*100}%"></i></div>
+    <div class="quiz-q">${item.q}</div>
+    <div class="opts">
+      ${opts.map((o,i)=>`<button class="opt" data-correct="${o[1]}"><span class="ok">${letters[i]}</span><span>${o[0]}</span></button>`).join('')}
+    </div>
+    <div class="explain" id="explain"><b>Erklärung.</b> ${item.e}</div>
+    <div class="quiz-actions">
+      <button class="btn" id="nextBtn" disabled>${qi===QUIZ.length-1?'Ergebnis ansehen':'Weiter'} →</button>
+    </div>`;
+  quizCard.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(locked) return; locked=true;
+      const correct=btn.dataset.correct==='1';
+      if(correct){btn.classList.add('correct'); score++;}
+      else{btn.classList.add('wrong'); quizCard.querySelectorAll('.opt').forEach(b=>{if(b.dataset.correct==='1')b.classList.add('correct');});}
+      quizCard.querySelectorAll('.opt').forEach(b=>{b.classList.add('locked'); if(!b.classList.contains('correct')&&!b.classList.contains('wrong'))b.classList.add('dim');});
+      document.getElementById('explain').classList.add('show');
+      document.getElementById('nextBtn').disabled=false;
+      quizCard.querySelector('.quiz-score').textContent=score+' richtig';
+    });
+  });
+  document.getElementById('nextBtn').addEventListener('click',()=>{qi++; if(qi<QUIZ.length) renderQ(); else renderResult();});
+}
+function renderResult(){
+  const pct=Math.round(score/QUIZ.length*100);
+  const circ=2*Math.PI*60;
+  const off=circ-(pct/100)*circ;
+  let msg = pct>=85?'Stark! Die Schulter sitzt. 💪' : pct>=60?'Solide Basis — ein paar Punkte nochmal ansehen.' : 'Guter Anfang — wiederhole die Detailkarten und versuch es erneut.';
+  quizCard.innerHTML=`
+    <div class="result">
+      <svg class="rdonut" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="60" fill="none" stroke="#e8dfce" stroke-width="12"/>
+        <circle cx="70" cy="70" r="60" fill="none" stroke="#bd4a30" stroke-width="12" stroke-linecap="round"
+          stroke-dasharray="${circ}" stroke-dashoffset="${off}" transform="rotate(-90 70 70)"/>
+        <text x="70" y="66" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#22251f">${pct}%</text>
+        <text x="70" y="88" text-anchor="middle" font-family="Hanken Grotesk, system-ui, sans-serif" font-size="12" fill="#8a8d82">${score}/${QUIZ.length}</text>
+      </svg>
+      <h3>Quiz abgeschlossen</h3>
+      <p>${msg}</p>
+      <button class="btn ghost" id="restart">↺ Nochmal versuchen</button>
+    </div>`;
+  document.getElementById('restart').addEventListener('click',()=>{qi=0;score=0;renderQ();});
+}
+renderQ();
+
+/* ============ MATCH GAME ============ */
+const PAIRS=[
+ {l:'Painful Arc 60–120°',r:'Impingement-Syndrom'},
+ {l:'Outerbridge-Klassifikation',r:'Omarthrose'},
+ {l:'3 Phasen: Freezing / Frozen / Thawing',r:'Frozen Shoulder'},
+ {l:'Bankart- & Hill-Sachs-Läsion',r:'Schulterluxation'},
+ {l:'Sulkuszeichen / Apprehension-Test',r:'Schulterinstabilität'},
+ {l:'Schmerz hoch über Kopf, Druckschmerz AC',r:'ACG-Arthrose'}
+];
+const ml=document.getElementById('matchLeft'), mr=document.getElementById('matchRight'), ms=document.getElementById('matchStatus');
+let selLeft=null, solved=0;
+function buildMatch(){
+  ml.innerHTML=''; mr.innerHTML=''; selLeft=null; solved=0; ms.textContent='';
+  PAIRS.forEach((p,i)=>{
+    const a=document.createElement('div'); a.className='mitem'; a.textContent=p.l; a.dataset.i=i; ml.appendChild(a);
+  });
+  shuffle([...PAIRS.keys()]).forEach(i=>{
+    const b=document.createElement('div'); b.className='mitem'; b.textContent=PAIRS[i].r; b.dataset.i=i; mr.appendChild(b);
+  });
+  ml.querySelectorAll('.mitem').forEach(el=>el.addEventListener('click',()=>{
+    if(el.classList.contains('done'))return;
+    ml.querySelectorAll('.mitem').forEach(x=>x.classList.remove('sel'));
+    el.classList.add('sel'); selLeft=el;
+  }));
+  mr.querySelectorAll('.mitem').forEach(el=>el.addEventListener('click',()=>{
+    if(el.classList.contains('done')||!selLeft)return;
+    if(el.dataset.i===selLeft.dataset.i){
+      el.classList.add('done'); selLeft.classList.add('done'); selLeft.classList.remove('sel'); selLeft=null; solved++;
+      ms.style.color='#2c7a4b';
+      ms.textContent = solved===PAIRS.length ? '✓ Alle Zuordnungen korrekt! Sauber gemacht.' : `${solved} / ${PAIRS.length} richtig zugeordnet`;
+    }else{
+      el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),350);
+      ms.style.color='#bd4a30'; ms.textContent='Nicht ganz — versuch eine andere Zuordnung.';
+    }
+  }));
+}
+buildMatch();
+document.querySelector('[data-panel="match"]').addEventListener('click',buildMatch);
+
+/* ============ SCROLL PROGRESS + ACTIVE NAV ============ */
+const prog=document.getElementById('progress');
+const navLinks=[...document.querySelectorAll('.nav-links a')];
+const secIds=navLinks.map(a=>a.getAttribute('href').slice(1));
+function onScroll(){
+  const h=document.documentElement;
+  const sc=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  prog.style.width=(sc*100)+'%';
+  let cur=secIds[0];
+  secIds.forEach(id=>{const el=document.getElementById(id); if(el && el.getBoundingClientRect().top<160) cur=id;});
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+}
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+</script>
+<script>
+/* DEEPLINK-HASH — Pathologie aus URL-Hash öffnen, z. B. datei.html#gonarthrose */
+(function(){
+  function openFromHash(){
+    var id = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+    if(!id) return;
+    var el = document.getElementById(id);
+    if(el && el.classList.contains('item') && typeof openAndScroll === 'function'){
+      openAndScroll(id);
+    }
+  }
+  window.addEventListener('load', openFromHash);
+  window.addEventListener('hashchange', openFromHash);
+})();
+</script>
+</body>
+</html>
