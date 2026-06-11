@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akuter & chronischer Schmerz · Lernübersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PathoAtlas · Akuter & chronischer Schmerz
+   Editorialer, kapitelbasierter Lern-Hub (Modul 14, Skript Bonny 2025).
+   Premium-Brand (Fraunces + Hanken Grotesk, warmes Papier), Akzent = Plum.
+   Vier Themenwelten mit Akzent-Codierung: Grundlagen / Akut / Chronisch / Erkrankungen.
+   ============================================================ */
+:root{
+  --paper:#ece6da;--surface:#fbf8f2;--surface-2:#f4eee2;--cream:#fffdf9;
+  --ink:#201e19;--ink-soft:#55534a;--ink-faint:#79776b;
+  --line:#ddd4c4;--line-soft:#e9e1d2;
+  --plum:#834d63;--plum-2:#6e3a4e;--clay:#bd4a30;--ochre:#a9711a;--slate:#5f6b7a;--ok:#2c7a4b;--ok-bg:#e7f3ea;
+  --accent:var(--plum);
+  --shadow-sm:0 1px 2px rgba(60,44,26,.05);
+  --shadow:0 2px 6px rgba(60,44,26,.05),0 14px 30px -18px rgba(60,44,26,.24);
+  --shadow-lg:0 4px 12px rgba(60,44,26,.07),0 34px 64px -30px rgba(60,44,26,.32);
+  --r-sm:11px;--r:16px;--r-lg:22px;--pill:999px;
+  --serif:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --ease:cubic-bezier(.2,.7,.3,1);--nav-h:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px);-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;font-size:clamp(1rem,.975rem + .12vw,1.05rem);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+h1,h2,h3,h4,.brand,.fbrand{font-optical-sizing:auto}
+::selection{background:var(--plum);color:#f6eef1}
+:focus-visible{outline:2.5px solid var(--plum);outline-offset:3px}
+svg{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--plum);z-index:200;transition:width .12s linear}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.85);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1120px;margin:0 auto;min-height:var(--nav-h);padding:10px clamp(18px,5vw,40px);display:flex;align-items:center;gap:14px}
+.nav-back{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:700;color:var(--ink-soft);text-decoration:none;padding:9px 14px;border-radius:var(--pill);border:1px solid var(--line);background:var(--surface);transition:.18s var(--ease);white-space:nowrap;flex-shrink:0}
+.nav-back:hover{border-color:var(--ink-faint);color:var(--ink);background:var(--surface-2)}
+.nav-back:active{transform:translateY(1px)}
+.nav-back svg{width:15px;height:15px}
+.brand{font-family:var(--serif);font-weight:600;font-size:1.04rem;letter-spacing:-.015em;display:flex;align-items:center;gap:10px;white-space:nowrap;text-decoration:none;color:inherit}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--plum);box-shadow:0 0 0 4px rgba(131,77,99,.16)}
+.nav-links{display:flex;gap:3px;margin-left:auto}
+.nav-links a{font-size:.83rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:8px 13px;border-radius:var(--pill);transition:.16s var(--ease);white-space:nowrap}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a.active{background:var(--plum);color:#f4ecef}
+
+/* HERO */
+header.hero{position:relative;overflow:hidden;color:#f2e9ec;
+  background:radial-gradient(130% 115% at 92% -22%,rgba(189,74,48,.26),transparent 52%),linear-gradient(157deg,#6e3a4e,#4a2735 60%,#2f1c26);border-bottom:1px solid #1f1119}
+header.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
+.hero-in{max-width:1120px;margin:0 auto;padding:clamp(52px,8vw,84px) clamp(20px,5vw,40px) clamp(56px,8vw,86px);position:relative;z-index:2;display:grid;grid-template-columns:1.32fr .8fr;gap:clamp(28px,5vw,54px);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#d8b3c0;margin-bottom:20px}
+.eyebrow::before{content:"";width:24px;height:1.5px;background:currentColor;display:inline-block;opacity:.7}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,1.6rem + 3.4vw,4.2rem);line-height:1.03;letter-spacing:-.03em;text-wrap:balance}
+.hero h1 em{font-style:italic;font-weight:500;color:#eaa78d}
+.hero p.lead{margin-top:22px;font-size:clamp(1.02rem,.98rem + .3vw,1.14rem);max-width:34rem;color:#e0cdd5;line-height:1.62}
+.hero-meta{margin-top:clamp(28px,4vw,38px);display:flex;gap:clamp(20px,4vw,36px);flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column;position:relative}
+.hero-meta div + div{padding-left:clamp(20px,4vw,36px)}
+.hero-meta div + div::before{content:"";position:absolute;left:0;top:6px;bottom:4px;width:1px;background:rgba(255,255,255,.14)}
+.hero-meta b{font-family:var(--serif);font-size:clamp(1.6rem,1.4rem + 1vw,2.1rem);font-weight:600;line-height:1;color:#f7eef1}
+.hero-meta span{font-size:.78rem;color:#c5a4b0;margin-top:7px;letter-spacing:.02em}
+.hero-art{max-width:320px;width:100%;margin-left:auto}
+
+/* SECTION / CHAPTER */
+section.chapter{padding:clamp(52px,8vw,86px) 0}
+section.chapter + section.chapter{border-top:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:clamp(26px,4vw,40px)}
+.sec-num{font-family:var(--serif);font-size:.95rem;font-weight:600;color:#fff;background:var(--c);width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;margin-top:2px}
+.sec-kicker{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:4px}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,1.3rem + 1.7vw,2.5rem);letter-spacing:-.022em;line-height:1.07;text-wrap:balance}
+.sec-head .sec-intro{color:var(--ink-soft);font-size:1.02rem;max-width:60ch;margin-top:10px;line-height:1.55}
+.sec-head .sec-intro b{color:var(--ink);font-weight:700}
+
+/* ACCORDION */
+.acc{display:flex;flex-direction:column;gap:13px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.item:hover{border-color:var(--line-soft);box-shadow:var(--shadow-sm)}
+.item.open{box-shadow:var(--shadow-lg);border-color:var(--c)}
+.item-head{display:flex;align-items:center;gap:18px;padding:19px 24px;cursor:pointer;user-select:none}
+.item-head .ino{font-family:var(--serif);font-size:1.02rem;font-weight:600;color:#fff;background:var(--c);min-width:42px;height:42px;border-radius:var(--r-sm);display:grid;place-items:center;flex-shrink:0}
+.item-head .ititle{flex:1;min-width:0}
+.item-head h3{font-family:var(--serif);font-size:1.26rem;font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.item-head .isub{font-size:.85rem;color:var(--ink-faint);margin-top:2px}
+.item-head .icat{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);background:var(--cbg);padding:6px 11px;border-radius:var(--pill);white-space:nowrap}
+.item-head .caret{width:24px;height:24px;flex-shrink:0;color:var(--ink-faint);transition:transform .3s var(--ease)}
+.item.open .caret{transform:rotate(180deg);color:var(--c)}
+.item-body{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+.item-body-in{padding:4px 24px 26px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2px 34px}
+.block{padding:17px 0;border-top:1px solid var(--line-soft)}
+.block.full{grid-column:1/-1}
+.block h5{font-size:.71rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--c);margin-bottom:10px}
+.pp{font-size:.94rem;color:var(--ink-soft);max-width:64ch}
+.pp b{color:var(--ink);font-weight:700}
+.ul{list-style:none}
+.ul li{font-size:.92rem;color:var(--ink-soft);padding-left:19px;position:relative;margin-bottom:7px;line-height:1.5}
+.ul li::before{content:"";position:absolute;left:1px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--c);opacity:.75}
+.ul li b{color:var(--ink);font-weight:700}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split-col h6{font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.split-col h6::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.merke{grid-column:1/-1;margin-top:14px;background:var(--cbg);border:1px solid var(--c);border-left:4px solid var(--c);border-radius:var(--r-sm);padding:15px 19px;display:flex;gap:13px;align-items:flex-start}
+.merke svg{width:20px;height:20px;color:var(--c);flex-shrink:0;margin-top:1px}
+.merke p{font-size:.91rem;color:var(--ink-soft);margin:0;max-width:none}
+.merke b{color:var(--ink);font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.tags span{font-size:.74rem;font-weight:600;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);padding:5px 11px;border-radius:var(--pill)}
+
+/* LERNCHECK / Probeklausur band */
+.exam-band{margin-top:clamp(24px,4vw,40px)}
+.exam-card{display:flex;align-items:center;gap:26px;text-decoration:none;color:#f3ece0;background:radial-gradient(120% 150% at 90% -25%,rgba(189,74,48,.4),transparent 55%),linear-gradient(150deg,#6f4a22,#34230f);border-radius:var(--r-lg);padding:32px 36px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);transition:transform .22s,box-shadow .22s}
+.exam-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -22px rgba(60,44,26,.5)}
+.exam-icon{width:70px;height:70px;border-radius:18px;background:rgba(240,200,150,.16);border:1px solid rgba(240,200,150,.4);display:grid;place-items:center;flex-shrink:0;color:#f0c98f}
+.exam-icon svg{width:36px;height:36px}
+.exam-text{flex:1;min-width:0}
+.exam-text .ek{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#dcc59c}
+.exam-text h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.02em;margin:6px 0 6px;color:#f6efe3}
+.exam-text p{font-size:.93rem;color:#e3d8c4;max-width:46rem;line-height:1.5}
+.exam-go{margin-top:15px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;color:#f6d9bb;background:rgba(240,200,150,.14);border:1px solid rgba(240,200,150,.32);padding:10px 20px;border-radius:var(--pill);transition:gap .2s}
+.exam-card:hover .exam-go{gap:14px}.exam-go svg{width:16px;height:16px}
+
+/* FOOTER */
+footer{padding:clamp(44px,6vw,58px) 26px;text-align:center;background:linear-gradient(180deg,#4a2735,#2a1620);color:#cdbac3;margin-top:24px}
+footer .fbrand{font-family:var(--serif);color:#f2e9ec;font-size:1.28rem;font-weight:600;margin-bottom:10px;display:inline-flex;align-items:center;gap:9px}
+footer .fbrand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--plum);display:inline-block;box-shadow:0 0 0 4px rgba(131,77,99,.3)}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.55}
+footer .fnote{font-size:.76rem;color:#9d8893;margin-top:16px;font-style:italic}
+
+@media(max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:28px}
+  .hero-art{max-width:240px;margin:0 auto;order:-1}
+  .split{grid-template-columns:1fr}
+  .exam-card{flex-direction:column;text-align:center;align-items:center;padding:30px 22px}
+  .nav-in{flex-wrap:wrap;row-gap:10px}
+  .nav-links{order:3;flex-basis:100%;margin-left:0;gap:7px;overflow-x:auto;padding-bottom:3px;scrollbar-width:none;scroll-snap-type:x proximity}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{flex:0 0 auto;background:var(--surface);border:1px solid var(--line);scroll-snap-align:start}
+}
+@media(max-width:560px){
+  .item-head{padding:16px;gap:13px}.item-head .icat{display:none}
+  .nav-back .nbtxt{display:none}.nav-back{padding:9px 11px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .item:hover,.exam-card:hover,.nav-back:active{transform:none}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav><div class="nav-in">
+  <a href="../../index.html" class="nav-back" title="Zur Startseite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span class="nbtxt">Fachbereiche</span></a>
+  <a class="brand" href="../../index.html"><span class="dot"></span> Schmerz · Pathologien</a>
+  <div class="nav-links" id="navLinks"></div>
+</div></nav>
+
+<header class="hero"><div class="hero-in">
+  <div>
+    <span class="eyebrow">Modul 14 · Systemübergreifende Gesundheitsstörung</span>
+    <h1>Akuter &amp; chronischer <em>Schmerz</em></h1>
+    <p class="lead">Von der Schmerzphysiologie über die Chronifizierung bis zur biopsychosozialen Versorgung chronisch kranker Menschen. Vier Themenwelten, klinisch strukturiert.</p>
+    <div class="hero-meta">
+      <div><b>4</b><span>Themenwelten</span></div>
+      <div><b>7</b><span>Krankheitsbilder</span></div>
+      <div><b id="topicCount">20</b><span>Lernthemen</span></div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 240 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto" aria-hidden="true">
+      <g stroke="#e8a48c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".9">
+        <path d="M120 16 C116 58 124 92 120 132 C116 172 124 214 120 286"/>
+        <path d="M120 44 C100 56 92 74 96 90 M120 44 C140 56 148 74 144 90"/>
+        <path d="M120 86 C98 100 86 122 92 142 M120 86 C142 100 154 122 148 142"/>
+        <path d="M120 130 C96 146 82 172 90 194 M120 130 C144 146 158 172 150 194"/>
+        <path d="M120 178 C100 194 90 220 98 242 M120 178 C140 194 150 220 142 242"/>
+      </g>
+      <g fill="#f0c2af"><circle cx="120" cy="44" r="4.5"/><circle cx="120" cy="86" r="4.5"/><circle cx="120" cy="130" r="4.5"/><circle cx="120" cy="178" r="4.5"/></g>
+      <circle cx="120" cy="16" r="6" fill="#e8a48c"/>
+      <g stroke="#cf9fb0" stroke-width="1.4" stroke-dasharray="2 6" opacity=".55"><path d="M150 130 C180 132 196 150 198 176"/><path d="M90 194 C60 198 46 218 46 242"/></g>
+    </svg>
+  </div>
+</div></header>
+
+<main id="chapters"></main>
+
+<footer>
+  <div class="fbrand">Akuter &amp; chronischer Schmerz</div>
+  <p>Strukturierte Lernhilfe aus dem Skript „PMH Chronische Erkrankungen | Akuter Schmerz | Chronische Schmerzerkrankung" (Bonny, Mai 2025), Modul 14.</p>
+  <p class="fnote">Lernzusammenfassung, ersetzt keine medizinische Diagnostik oder Behandlung. Im Zweifel das Originalskript prüfen.</p>
+</footer>
+
+<script>
+/* ============ ICONS ============ */
+const caret='<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
+const bulb='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>';
+
+/* ============ DATENMODELL ============
+   chapter: {id,no,kicker,title,intro,c,cbg, topics:[ {id,t,sub,tag, blocks:[...]} ]}
+   block:   {type:'list'|'text'|'split'|'merke', ...}
+   ============================================================ */
+const CHAPTERS=[
+{id:'grundlagen',no:'01',kicker:'Themenwelt 1',title:'Grundlagen des Schmerzes',c:'#5f6b7a',cbg:'#e7eaee',
+ intro:'Was Schmerz ist, wie er entsteht und welche Arten unterschieden werden. Das physiologische Fundament für alles Weitere.',
+ topics:[
+  {id:'def',t:'Was ist Schmerz?',sub:'Definition nach IASP',tag:'Definition',blocks:[
+    {type:'text',content:'<b>IASP:</b> ein unangenehmes Sinnes- und Gefühlserlebnis, das mit tatsächlicher oder potenzieller Gewebeschädigung verknüpft ist oder mit Begriffen einer solchen beschrieben wird. Schmerz ist <b>subjektiv</b> und wird biopsychosozial geprägt.'},
+    {type:'list',h:'Sechs IASP-Grundsätze (2020)',content:['Schmerz ist eine <b>individuelle</b>, biopsychosozial beeinflusste Erfahrung','Schmerz und <b>Nozizeption</b> sind verschiedene Phänomene','Das Konzept Schmerz wird im Laufe des Lebens <b>erlernt</b>','Die Schmerzangabe einer Person ist zu respektieren','Schmerz kann Wohlbefinden und Teilhabe behindern','Schmerz wird nicht nur verbal geäußert']},
+    {type:'list',h:'Fünf Komponenten',content:['<b>sensorisch</b> (Ort, Dauer, Intensität, Art)','<b>affektiv</b> (Leiden, unlustbetonte Emotion)','<b>vegetativ</b> (Sympathikus; bei hoher Intensität Umkehr → Parasympathikus)','<b>motorisch</b> (Schutzreflex, Schonhaltung)','<b>kognitiv</b> (Bewertung, Vergleich mit Erfahrungen)']}]},
+  {id:'nozizeption',t:'Nozizeption',sub:'Aufnahme noxischer Reize',tag:'Physiologie',blocks:[
+    {type:'text',content:'<b>Nozizeption</b> = Aufnahme und Verarbeitung noxischer (mechanischer, thermischer, chemischer) Reize durch <b>hochschwellige</b> Nozizeptoren. Die Schmerzschwelle ist topografisch unterschiedlich.'},
+    {type:'text',content:'Der <b>nozizeptive Schmerz</b> entsteht am nicht-neuralen Gewebe durch Aktivierung der Nozizeptoren. Das ist eine <b>physiologische</b>, überlebenswichtige Reaktion und Symptom einer Erkrankung.'}]},
+  {id:'arten',t:'Schmerzarten',sub:'Hyperalgesie, Allodynie, neuropathisch …',tag:'Begriffe',blocks:[
+    {type:'list',h:'Über-/Unterempfindlichkeit',content:['<b>Hyperalgesie</b>: verstärkter Schmerz auf schmerzhaften Reiz (primär = am Ort/peripher, sekundär = angrenzend/spinal)','<b>Hyperästhesie</b>: gesenkte Reizschwelle der Nozizeptoren','<b>Allodynie</b>: Schmerz durch normalerweise nicht schmerzhaften Reiz','<b>Hyperpathie</b>: überschießende Reaktion bei repetitiven Reizen','<b>Kausalgie</b>: brennender Dauerschmerz nach Nervenläsion + vegetative/trophische Störungen','<b>Hypoalgesie</b>: verminderte Schmerzreaktion']},
+    {type:'split',content:[
+      {h:'Nozizeptiver Schmerz',items:['Realer/drohender Schaden am <b>nicht-neuralen</b> Gewebe','physiologisch','akut (kurz) vs. pathologisch (lang, Ruheschmerz)']},
+      {h:'Neuropathischer Schmerz',items:['Läsion/Erkrankung des <b>somatosensorischen</b> Systems','keine Diagnose, klinische Darstellung','brennend, einschießend (Hyperalgesie/Allodynie)','4 Kriterien: plausible Läsion, plausibles Areal, path. Sensibilitätsbefund, nachweisbar']}]}]},
+  {id:'physio',t:'Schmerzphysiologie',sub:'Vom Reiz bis zum Kortex',tag:'Bahnen',blocks:[
+    {type:'split',content:[
+      {h:'A-Delta-Fasern',items:['myelinisiert, ~2,5–30 m/s','erster/heller akuter Schmerz + Temperatur']},
+      {h:'C-Fasern',items:['unmyelinisiert, &lt; 2,5 m/s','dumpfer/viszeraler Schmerz']}]},
+    {type:'list',h:'Verarbeitung',content:['<b>Transduktion</b> (Reiz → Rezeptorpotenzial) → <b>Transformation</b> (Aktionspotenzial)','<b>Substanz P</b> (Neuropeptid, „P" = Pain): Vasodilatation, ↑ Permeabilität, Nozizeptor-Sensibilisierung, Mastzell-Degranulation','Weg: Hinterhorn (Lamina I/II) → <b>Tractus spinothalamicus</b> → Thalamus → Kortex (Bewusstwerden/Bewertung)']},
+    {type:'list',h:'Modulation & Konvergenz',content:['<b>Gate-Control</b> (Melzack & Wall): Mechanoafferenzen aktivieren hemmende Interneurone der Substantia gelatinosa → „Tor schließt"','<b>Head-Zonen</b>: viszerale + somatische Afferenzen konvergieren im selben Segment → projizierter Schmerz (z. B. Herzinfarkt → Arm/Kiefer/Nacken)','<b>TLR 4</b>: adrenalin-getriggerte Entzündung, Teil des <b>Schmerzgedächtnisses</b> bei Chronifizierung']},
+    {type:'merke',content:'Schmerz ≠ Nozizeption. Nozizeption ist die neuronale Reizverarbeitung, Schmerz das bewusste, biopsychosozial geprägte Erleben im Kortex.'}]}
+ ]},
+{id:'akut',no:'02',kicker:'Themenwelt 2',title:'Akuter Schmerz',c:'#bd4a30',cbg:'#f7e4dc',
+ intro:'Der schützende, kurz dauernde Schmerz und der kritische Übergang zur Chronifizierung. Hier wird die Weiche gestellt.',
+ topics:[
+  {id:'akut-def',t:'Akuter Schmerz',sub:'Schutz, < 6–12 Wochen',tag:'Definition',blocks:[
+    {type:'list',content:['Schützende Reaktion <b>vor</b> einer Schädigung; Dauer <b>&lt; 6–12 Wochen</b> (6–12 Wochen = <b>subakut</b>)','Gute Prognose, <b>Schmerzlinderung</b> steht im Fokus und ist schnell erreichbar','Zwei Reaktionen: <b>somatomotorisch</b> + <b>vegetativ</b>','PMH: Funktion unterstützen, Ursache behandeln, schnelle Alltags-/Sportintegration']},
+    {type:'merke',content:'Bewegungsangst und Dramatisierung des Schmerzes früh unterbinden. Durch Beratung, Aufklärung und Motivation der Chronifizierung entgegenwirken.'}]},
+  {id:'multimodal',t:'Multimodale Therapie',sub:'nicht-traumatischer akuter Schmerz',tag:'Therapie',blocks:[
+    {type:'list',h:'Vier Eckpfeiler',content:['<b>Edukation</b> (Umgang mit Schmerz, biopsychosoziales Modell, Entspannung/Stress)','<b>Körperliche Aktivität</b> (belastungsorientiert, z. B. Graded Activity)','<b>Maßnahmen am Arbeitsplatz</b> (Ergonomie, Haltungsmuster)','<b>Passive Hands-On</b> (MT, Massage, MLD, PNF, Elektro-/Thermotherapie)']},
+    {type:'text',content:'Erst die <b>Kombination</b> wirkt signifikant. Einzelmaßnahmen haben kaum Effekt auf die Schmerzreduktion. Stärkung der Patientenressourcen ist zentral.'}]},
+  {id:'peace',t:'PEACE & LOVE',sub:'traumatisch bedingter akuter Schmerz',tag:'Regel',blocks:[
+    {type:'split',content:[
+      {h:'PEACE (Akutphase)',items:['<b>P</b>rotection (Entlastung 1–3 Tage)','<b>E</b>levation','<b>A</b>void anti-inflammatories (hohe Dosen/Eis)','<b>C</b>ompression','<b>E</b>ducate']},
+      {h:'LOVE (danach)',items:['<b>L</b>oad (dosierte Belastung)','<b>O</b>ptimism','<b>V</b>ascularisation (frühe Aktivität)','<b>E</b>xercise (Mobilität, Kraft, Propriozeption)']}]}]},
+  {id:'uebergang',t:'Übergang akut → chronisch',sub:'Chronifizierung verstehen',tag:'Schlüssel',blocks:[
+    {type:'list',h:'Neurobiologische Mechanismen',content:['<b>Schmerzantizipation</b> (Erwartung erhöhter Reaktion)','erhöhte <b>Ruhemuskelaktivität</b>','<b>Herabsetzen</b> der körperlichen Aktivität (Angstverhalten)','→ Reorganisation der Repräsentationsfelder im sensorischen/motorischen Kortex']},
+    {type:'text',content:'<b>FAB-Modell</b> (Fear-Avoidance, Lethem): zwei Wege auf Schmerz, <b>aktive Bewältigung</b> (Aktivität fortgesetzt) vs. <b>Vermeidung</b> (Angst → Vermeidung → Teufelskreis aus Schmerz, Angst, funktioneller Verschlechterung).'},
+    {type:'list',h:'Weitere Faktoren',content:['<b>Sensibilisierung</b>: zentral (spinal) und peripher (Mediatoren: Bradykinin, Prostaglandin E2, Histamin, Serotonin)','<b>Kinesiophobie</b> (Vlaeyen): irrationale Bewegungsangst, maladaptiv, zentraler Chronifizierungs-Risikofaktor','<b>Flaggen</b>: Yellow (Depressivität, Distress, Katastrophisieren, Schonverhalten), Blue/Black (Arbeit: Schwerstarbeit, Monotonie, Konflikt/Mobbing, lange AU)']},
+    {type:'merke',content:'Sprache kann Bewegungsangst fördern. Negativ geprägte Aussagen über die Diagnose, übertriebene Diagnostik und passive Therapiekonzepte begünstigen die Chronifizierung.'}]}
+ ]},
+{id:'chronisch',no:'03',kicker:'Themenwelt 3',title:'Chronischer Schmerz',c:'#834d63',cbg:'#efe1e7',
+ intro:'Der noziplastische Schmerz entsteht im ZNS. Nicht Schmerzlinderung, sondern Schmerzbewältigung und das Reduzieren der Bewegungsvermeidung stehen im Zentrum.',
+ topics:[
+  {id:'chr-def',t:'Chronischer Schmerz',sub:'noziplastisch · biopsychosozial',tag:'Definition',blocks:[
+    {type:'text',content:'Schmerz, der über ~6 Wochen bis 3 Monate und <b>darüber hinaus</b> andauert. <b>Noziplastisch</b> (IASP/Kosek): durch <b>veränderte Nozizeption</b> bedingt, ohne Nachweis von Gewebeschädigung und ohne Läsion des somatosensorischen Systems.'},
+    {type:'list',h:'Kosek-Kriterien',content:['Schmerz chronisch (&gt; 3 Monate) & regional, ohne erklärenden nozizeptiven/neuropathischen Schmerz','Vorgeschichte von Schmerzempfindlichkeit (Berührung, Druck, Bewegung, Temperatur)','weitere Empfindungsstörungen (Geräusch-/Licht-/Geruchsempfindlichkeit, Schlafstörung, Fatigue, kognitive Probleme)','evozierte Allodynie. (Kriterium 1+4 → möglich; alle 4 → eindeutig)']},
+    {type:'merke',content:'Chronischer Schmerz entsteht im <b>ZNS</b> und sollte dort behandelt werden, nicht in der Peripherie. Biomedizinische Modelle (nur Struktur) greifen zu kurz.'}]},
+  {id:'pmh',t:'PMH chronischer Schmerzpatient',sub:'Graded Activity',tag:'Therapie',blocks:[
+    {type:'text',content:'Primäres Ziel ist <b>Schmerzbewältigung</b> + Reduktion der <b>Bewegungsvermeidung</b>, nicht Schmerzlinderung. Goldstandard: <b>multimodal & interdisziplinär</b> (psychologisch, medizinisch, physiotherapeutisch). Überwiegend <b>Hands-Off</b> (Edukation, aktive Therapie, Empowerment).'},
+    {type:'list',h:'Graded Activity (4 Phasen)',content:['<b>Orientierung</b>: Bestandsaufnahme, Problemanalyse, Edukation, Motivation','<b>Aufbau</b>: Aktivität wählen, <b>Basislinie</b> bestimmen (Schmerzkontingent, mehrfach messen)','<b>Behandlung</b>: Start mit <b>75 %</b> der Basislinie, dann <b>zeitkontingent</b> steigern (nicht schmerzkontingent)','<b>Generalisierung</b>: Übertragung in den Alltag, Selbstständigkeit']}]},
+  {id:'ansaetze',t:'Aktuelle Therapieansätze',sub:'PHODA · Graded Exposure · CFT',tag:'Methoden',blocks:[
+    {type:'list',content:['<b>PHODA</b> (Photograph Series of Daily Activities): Bilder ordnen schädlich erlebte Bewegungen hierarchisch; misst/verfolgt schmerzbezogene Angst','<b>Graded Exposure</b>: hierarchische Angsthierarchie (0–100), stufenweise Konfrontation mit angstbesetzten Bewegungen, Abbau negativer Überzeugungen','<b>CFT</b> (O’Sullivan): „making sense of pain" (Edukation/Entkatastrophisierung), „adapt healthy lifestyle" (Schlaf, Bewegung, Ernährung), „develop effective pain strategies" (Stressmanagement, Routinen)']}]},
+  {id:'assess',t:'Assessment & Kommunikation',sub:'Motivieren, nicht ängstigen',tag:'Klinik',blocks:[
+    {type:'list',content:['<b>Assessments</b> zum Schmerz auswählen und fallbezogen anwenden (Intensität, Beeinträchtigung, Angst-Vermeidung, Chronifizierungsgrad)','<b>Kommunikation</b>: Nocebo vermeiden (keine bedrohlichen Aussagen über Struktur/Diagnose), Placebo nutzen (realistische Zuversicht, Empowerment)','<b>Motivational Interviewing</b> (Miller & Rollnick): patientenzentriert Veränderungsmotivation aufbauen','<b>ACT</b> (Acceptance and Commitment Therapy): Akzeptanz + werteorientiertes Handeln trotz Schmerz']}]}
+ ]},
+{id:'erkrankungen',no:'04',kicker:'Themenwelt 4',title:'Chronische Erkrankungen',c:'#a9711a',cbg:'#f4e9d2',
+ intro:'Sieben systemübergreifende Krankheitsbilder, bei denen Schmerz und chronische Beeinträchtigung im Vordergrund stehen. Einheitlich strukturiert.',
+ topics:[
+  {id:'crps',t:'CRPS',sub:'Complex Regional Pain Syndrome',tag:'Krankheitsbild',blocks:[
+    {type:'text',content:'Schmerzsyndrom nach <b>Trauma einer Extremität</b> (meist distal), bei dem die Symptomatik (Sensorik, Motorik, vegetativ, Trophik) <b>unphysiologisch stark</b> und nicht mehr auf die Traumafolge zurückzuführen ist; Symptome typ. <b>außerhalb</b> eines Nervengebiets.'},
+    {type:'list',h:'Klassifikation & Diagnostik',content:['Hauttemperatur als Marker: ~70 % warm/entzündlich, ~30 % <b>kalt-livide</b> = schlechtere Prognose','klinische Diagnose (IASP-Kriterien): anhaltender Schmerz + Symptome aus Hyperalgesie/Temperatur/Schwitzen-Ödem/Beweglichkeit-Trophik; keine andere Erklärung']},
+    {type:'list',h:'Therapie',content:['multimodal & multidisziplinär, früh; Funktion herstellen, Kontrakturprophylaxe','<b>MLD</b> bei Ödem; <b>sympathikusdämpfende</b> Mobilisation C8–L2','<b>Spiegeltherapie</b>, <b>Graded Motor Imagery</b> (hohe Evidenz, Moseley), <b>Graded Exposure</b>']}]},
+  {id:'rueckenschmerz',t:'Chronischer Rückenschmerz',sub:'Kreuzschmerz, > 12 Wochen',tag:'Krankheitsbild',blocks:[
+    {type:'text',content:'Schmerz im LWS-Bereich (unterhalb Rippenbogen, oberhalb Gesäßfalte) über <b>&gt; 12 Wochen</b>, mit/ohne Ausstrahlung. <b>Unspezifischer Kreuzschmerz</b> = häufigste muskuloskelettale Erkrankung in Deutschland. Biopsychosoziale Faktoren beachten.'},
+    {type:'list',h:'Graduierung (von Korff) & Diagnostik',content:['Grad 0–IV nach Schmerzintensität und schmerzbedingter Beeinträchtigung','Diagnostik: <b>Red Flags</b> ausschließen; SLR/<b>Lasègue</b> (30°), Myotom-Schwäche, Fingerbodenabstand (&gt; 25 cm) → lumbale Radikulopathie']},
+    {type:'list',h:'Therapie',content:['<b>Multimodal</b> (beste Evidenz), Therapie am ZNS','hoher Anteil <b>Hands-Off</b>, Eigenverantwortung/Selbstbestimmtheit','<b>Graded Activity</b> zur Steigerung des Alltagsniveaus']}]},
+  {id:'fibromyalgie',t:'Fibromyalgie (FMS)',sub:'chronisches generalisiertes Schmerzsyndrom',tag:'Krankheitsbild',blocks:[
+    {type:'list',h:'Kernsymptome (~97 %)',content:['<b>chronische generalisierte Schmerzen</b> in mehreren Körperregionen','<b>Schlafstörungen</b> + körperliche/geistige <b>Fatigue</b>','vegetative Symptome; keine pathologischen Strukturveränderungen']},
+    {type:'list',h:'Diagnostik (ACR 2010)',content:['<b>WPI &gt; 7 und SSS &ge; 5</b> ODER <b>WPI 3–6 und SSS &ge; 9</b>','Symptome seit &ge; 3 Monaten, keine andere Erklärung','WPI (0–19) = Anzahl schmerzhafter Areale; SSS (max. 12) = Schwere Fatigue/Schlaf/Kognition/vegetativ']},
+    {type:'text',content:'<b>Therapie:</b> nicht heilbar, <b>Schmerzfreiheit ist kein realistisches Ziel</b>. Aufklärung/Empowerment, belastungsdosiertes Kraft-/Ausdauertraining, Balneo-/Hydrotherapie, meditative Bewegung (Yoga/Pilates), KVT; bei schwerer Ausprägung multimodal (S3-Leitlinie).'},
+    {type:'merke',content:'PT-Intervention ist laut S3-Leitlinie der wichtigste Baustein. Ziel: Funktion, Lebensqualität und Teilhabe verbessern, nicht Schmerzfreiheit.'}]},
+  {id:'osteoporose',t:'Osteoporose',sub:'Skeletterkrankung',tag:'Krankheitsbild',blocks:[
+    {type:'text',content:'Systemische Skeletterkrankung mit <b>verminderter Knochenmasse</b> und <b>mikroarchitektonischer</b> Verschlechterung → erhöhte Fragilität/Frakturneigung. <b>Primär</b> (juvenil, postmenopausal, senil) vs. <b>sekundär</b> (endokrin, metabolisch, medikamentös, onkologisch).'},
+    {type:'list',h:'PT-Fokus & Assessments',content:['Diagnose ärztlich (Knochendichte); PT-Fokus: <b>Sturzangst</b>, Frakturreduktion, Sturzneigung','Sturzrisiko/Performance: <b>TUG</b>, 1-Bein-Stand, Functional Reach, <b>Tinetti</b>, Dynamic Gait Index, FES-1, SPPB']},
+    {type:'text',content:'<b>Therapie (Watson 2018, RCT):</b> hochintensives, progressives Widerstands-/Impacttraining (Deadlift, Overhead-Press, Back-Squat; <b>5×5 &gt; 80 % 1RM</b>, 2×/Woche, 8 Monate) verbessert Knochendichte und Funktion → eher Nutzen als Frakturgefahr.'}]},
+  {id:'cfs',t:'CFS / ME',sub:'Chronisches Fatigue-Syndrom',tag:'Krankheitsbild',blocks:[
+    {type:'text',content:'Schwer verlaufende Erkrankung mit <b>Fatigue</b> als Leitsymptom plus körperlicher/neurokognitiver Symptome. Trigger häufig <b>Epstein-Barr-Virus</b>; vermutet werden gestörte Immunregulation und anhaltende T-Zell-Aktivierung. ME ist ausgeprägter, eigene Kriterien.'},
+    {type:'list',h:'Diagnostik',content:['<b>Kanadische Kriterien</b> (Fragebogen: Erschöpfung/PEM, Schlaf, Schmerz, neurologisch-kognitiv, autonom, neuroendokrin, immunologisch)','Dauer &ge; 6 Monate (Abgrenzung zur postinfektiösen Fatigue)','<b>Fatigue Severity Scale (FSS)</b>: 9 Aussagen 1–7, Mittelwert &gt; 4 = erhöhte Fatigue']},
+    {type:'list',h:'Therapie',content:['<b>KVT</b> + aktive Physiotherapie → gute Verbesserung von Funktion & Autonomie','<b>Pacing</b> / vorsichtiges Graded Activity, Rückschläge (PEM) vermeiden','<b>APQ-28</b> zur Selbstüberprüfung des Aktivitäts-Pacings']}]},
+  {id:'demenz',t:'Demenz',sub:'Syndrom kortikaler Funktionsstörung',tag:'Krankheitsbild',blocks:[
+    {type:'text',content:'<b>ICD-10:</b> Syndrom als Folge einer meist chronisch-fortschreitenden Hirnerkrankung mit Störung höherer kortikaler Funktionen (Gedächtnis, Orientierung, Sprache, Urteil) über &ge; 6 Monate. Formen: <b>Alzheimer</b>, vaskulär, frontotemporal, bei Morbus Parkinson.'},
+    {type:'list',h:'PT: Sturzrisiko-Assessments',content:['<b>Timed up & go</b>, <b>Tinetti/POMA</b> (Gleichgewicht + Gang), <b>Berg-Balance-Scale</b> (14 Items)','<b>Handkraftmessung</b> (Dynamometer) als Korrelat der Gesamtmuskelkraft']},
+    {type:'list',h:'Therapie',content:['oft <b>Nebendiagnose</b> in der Geriatrie; Erhalt körperlicher Fähigkeiten im Fokus','regelmäßige <b>moderate</b> Bewegung, schlichte, sichere, gleichbleibende Umgebung','<b>kurze, direkte, positive</b> Anweisungen; wenige, häufig wiederholte Übungen; Angehörige anleiten']}]},
+  {id:'diabetes',t:'Diabetes Mellitus',sub:'mit Polyneuropathie',tag:'Krankheitsbild',blocks:[
+    {type:'list',h:'Vier Typen (ADA)',content:['<b>Typ 1</b> (autoimmune Beta-Zell-Destruktion, absoluter Insulinmangel)','<b>Typ 2</b> (progressiver Sekretionsverlust / Insulinresistenz)','andere spezifische Typen (genetisch, Pankreas, medikamentös)','<b>Gestationsdiabetes</b>']},
+    {type:'text',content:'<b>Folgeerkrankungen:</b> Retinopathie, Nephropathie, diabetischer Fuß und <b>Polyneuropathie (PNP)</b> = generalisierte Erkrankung des peripheren Nervensystems (chronisch, distal-symmetrisch-sensibel).'},
+    {type:'list',h:'PNP-Symptome & PT',content:['<b>sensibel</b> (Parästhesien, Thermo-/Hyp-/Hyperalgesie, schmerzlose Wunden), <b>motorisch</b> (Krämpfe, Schwäche), <b>autonom</b> (Ödeme, Ulkus, Blasenstörung)','PT-Diagnostik: Sensibilitätsprüfung, Gang-/Sturzrisiko (<b>Romberg</b>, Strichgang)','aktive Trainingstherapie (Gang, Koordination, Gleichgewicht)']}]}
+ ]}
+];
+
+/* ============ RENDER ============ */
+let topicTotal=0;
+const main=document.getElementById('chapters');
+const navLinks=document.getElementById('navLinks');
+
+function renderBlocks(blocks){
+  return blocks.map(b=>{
+    if(b.type==='text') return '<div class="block full"><p class="pp">'+b.content+'</p></div>';
+    if(b.type==='list') return '<div class="block'+(b.h?'':' full')+'">'+(b.h?'<h5>'+b.h+'</h5>':'')+'<ul class="ul">'+b.content.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>';
+    if(b.type==='split') return '<div class="block full"><div class="split">'+b.content.map(c=>'<div class="split-col"><h6>'+c.h+'</h6><ul class="ul">'+c.items.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>').join('')+'</div></div>';
+    if(b.type==='merke') return '<div class="merke">'+bulb+'<p><b>Merke.</b> '+b.content+'</p></div>';
+    return '';
+  }).join('');
+}
+
+CHAPTERS.forEach(ch=>{
+  const sec=document.createElement('section');
+  sec.className='chapter'; sec.id=ch.id; sec.style.setProperty('--c',ch.c); sec.style.setProperty('--cbg',ch.cbg);
+  let items='';
+  ch.topics.forEach((tp,i)=>{
+    topicTotal++;
+    items+=
+      '<div class="item" style="--c:'+ch.c+';--cbg:'+ch.cbg+'" id="'+ch.id+'-'+tp.id+'">'
+      +'<div class="item-head" role="button" tabindex="0">'
+      +'<span class="ino">'+(i+1)+'</span>'
+      +'<div class="ititle"><h3>'+tp.t+'</h3><div class="isub">'+tp.sub+'</div></div>'
+      +'<span class="icat">'+tp.tag+'</span>'+caret
+      +'</div>'
+      +'<div class="item-body"><div class="item-body-in"><div class="bgrid">'+renderBlocks(tp.blocks)+'</div></div></div>'
+      +'</div>';
+  });
+  sec.innerHTML=
+    '<div class="wrap"><div class="sec-head">'
+    +'<span class="sec-num">'+ch.no+'</span>'
+    +'<div><div class="sec-kicker">'+ch.kicker+'</div><h2>'+ch.title+'</h2><p class="sec-intro">'+ch.intro+'</p></div>'
+    +'</div><div class="acc">'+items+'</div></div>';
+  main.appendChild(sec);
+  // nav link
+  const a=document.createElement('a'); a.href='#'+ch.id; a.textContent=ch.title.replace('Grundlagen des Schmerzes','Grundlagen').replace('Chronische Erkrankungen','Erkrankungen'); navLinks.appendChild(a);
+});
+
+/* Probeklausur-Band ans Ende von Themenwelt 4 */
+(function(){
+  const band=document.createElement('div'); band.className='exam-band wrap';
+  band.innerHTML='<a class="exam-card" href="../../klausuren/Klausur_Chronischer_und_akuter_Schmerz.html" aria-label="Probeklausur Schmerz starten">'
+    +'<div class="exam-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>'
+    +'<div class="exam-text"><span class="ek">Lerncheck · Prüfungssimulation</span><h3>Probeklausur „Chronischer & akuter Schmerz"</h3><p>Wende das Gelernte an: offene Klausur mit Zeitlimit und Selbstkorrektur. Bei jedem Start eine neue, zufällige Variante.</p><span class="exam-go">Probeklausur starten <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div></a>';
+  document.getElementById('erkrankungen').querySelector('.wrap').appendChild(band);
+})();
+
+document.getElementById('topicCount').textContent=topicTotal;
+
+/* ============ ACCORDION ============ */
+document.querySelectorAll('.item').forEach(item=>{
+  const head=item.querySelector('.item-head'), body=item.querySelector('.item-body');
+  const toggle=()=>{const open=item.classList.toggle('open');body.style.maxHeight=open?body.scrollHeight+'px':'0';};
+  head.addEventListener('click',toggle);
+  head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+});
+window.addEventListener('resize',()=>{document.querySelectorAll('.item.open .item-body').forEach(b=>b.style.maxHeight=b.scrollHeight+'px');});
+
+/* ============ PROGRESS + SCROLLSPY ============ */
+const prog=document.getElementById('progress');
+const spyA=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';
+  let cur='';
+  document.querySelectorAll('section.chapter').forEach(s=>{if(s.getBoundingClientRect().top<=120)cur=s.id;});
+  spyA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>

@@ -126,6 +126,28 @@ body{font-family:'Hanken Grotesk',sans-serif;background:var(--paper);color:var(-
 .exam-badge{position:absolute;top:20px;right:22px;z-index:2;font-size:.66rem;font-weight:800;letter-spacing:.12em;color:#34230f;background:#e8b98c;padding:5px 12px;border-radius:999px}
 .exam-card:focus-visible{outline:2.5px solid #e8b98c;outline-offset:3px}
 
+/* ---------- Schmerz-Fachbereich band ---------- */
+.schmerz-band{max-width:1180px;margin:0 auto;padding:18px 34px 0}
+.schmerz-card{display:flex;align-items:center;gap:28px;text-decoration:none;color:#f4ecef;
+  background:radial-gradient(120% 150% at 90% -25%,rgba(189,74,48,.32),transparent 55%),linear-gradient(150deg,#6e3a4e,#2f1c26);
+  border-radius:24px;padding:34px 38px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);
+  transition:transform .22s,box-shadow .22s}
+.schmerz-card::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='ns'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ns)' opacity='0.05'/%3E%3C/svg%3E")}
+.schmerz-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -22px rgba(34,37,31,.5)}
+.schmerz-icon{width:74px;height:74px;border-radius:20px;background:rgba(232,170,190,.16);border:1px solid rgba(232,170,190,.4);display:grid;place-items:center;flex-shrink:0;color:#ecb6c6;position:relative;z-index:2}
+.schmerz-icon svg{width:38px;height:38px}
+.schmerz-text{flex:1;min-width:0;position:relative;z-index:2}
+.schmerz-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#d6a9b8}
+.schmerz-text h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.02em;margin:6px 0 8px;color:#f7eef1}
+.schmerz-text p{font-size:.95rem;color:#e6d3da;max-width:46rem;line-height:1.5}
+.schmerz-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.schmerz-chips span{font-size:.74rem;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:5px 11px;border-radius:999px;color:rgba(255,255,255,.92)}
+.schmerz-go{margin-top:18px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;color:#f4cdd9;background:rgba(232,170,190,.14);border:1px solid rgba(232,170,190,.32);padding:10px 20px;border-radius:11px;transition:gap .2s}
+.schmerz-card:hover .schmerz-go{gap:14px}
+.schmerz-go svg{width:16px;height:16px}
+.schmerz-card:focus-visible{outline:2.5px solid #e8b0c2;outline-offset:3px}
+
 /* ---------- footer ---------- */
 footer{text-align:center;padding:44px 26px 54px;color:var(--ink-faint)}
 footer .fmark{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--ink-soft);margin-bottom:8px}
@@ -142,6 +164,9 @@ footer .fnote{font-size:.74rem;margin-top:14px;font-style:italic;opacity:.85}
   .exam-band{padding:16px 18px 0}
   .exam-card{flex-direction:column;text-align:center;align-items:center;padding:32px 24px}
   .exam-badge{top:16px;right:16px}
+  .schmerz-band{padding:16px 18px 0}
+  .schmerz-card{flex-direction:column;text-align:center;align-items:center;padding:32px 24px}
+  .schmerz-chips{justify-content:center}
 }
 /* __A11Y_HARMONIZED__ */
 /* ---- a11y + Politur (konsistent mit den Lernuebersichten) ---- */
@@ -169,6 +194,21 @@ a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:fo
 </section>
 
 <div class="doors" id="doors"></div>
+
+<section class="schmerz-band">
+  <a class="schmerz-card" href="fachgebiete/schmerz/schmerz.html" aria-label="Akuter und chronischer Schmerz öffnen">
+    <div class="schmerz-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+    </div>
+    <div class="schmerz-text">
+      <span class="schmerz-eyebrow">Querschnittsthema · Systemübergreifend</span>
+      <h2>Akuter &amp; chronischer Schmerz</h2>
+      <p>Schmerzphysiologie, akute und chronische Schmerzverarbeitung sowie die Versorgung chronisch kranker Menschen. Biopsychosozial gedacht, klinisch strukturiert.</p>
+      <div class="schmerz-chips"><span>Grundlagen</span><span>Akuter Schmerz</span><span>Chronischer Schmerz</span><span>Chronische Erkrankungen</span></div>
+      <span class="schmerz-go">Schmerz öffnen <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </div>
+  </a>
+</section>
 
 <section class="exam-band">
   <a class="exam-card" href="klausuren/probeklausuren.html" aria-label="Probeklausuren öffnen">
