@@ -40,7 +40,8 @@
       "Bash(cp /tmp/taste-skill/skills/taste-skill/SKILL.md .claude/skills/design-taste-frontend/SKILL.md)",
       "Bash(sed -n '1,4p' .claude/skills/design-taste-frontend/SKILL.md)",
       "Bash(grep -v '\\\\.txt$')",
-      "Bash(grep -v '^taste-skill$')"
+      "Bash(grep -v '^taste-skill$')",
+      "Bash(awk '{print $5, $NF}')"
     ]
   }
 }
