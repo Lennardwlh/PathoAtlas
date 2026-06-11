@@ -23,6 +23,7 @@ Design-Regeln:
 - Neue Elemente müssen sich aus vorhandenen Elementen ableiten.
 - Mobile Ansicht immer berücksichtigen.
 Code-Regeln:
+- Keine Backup-Dateien, keine _backup_*-Ordner und keine automatischen Sicherungskopien erstellen — Git ist Versionsverwaltung und Backup. Backup-Dateien/-Ordner (z. B. backups/) bei Suche, Analyse und Änderung vollständig ignorieren; ausschließlich aktive Projektdateien bearbeiten.
 - Nur notwendige Dateien ändern.
 - Keine unnötigen Refactorings.
 - Keine doppelten CSS-Blöcke erzeugen, wenn vorhandene Klassen reichen.

@@ -32,7 +32,15 @@
       "Bash(python3 /tmp/pyramid.py)",
       "Bash(python3 /tmp/reorg_rewrite.py)",
       "Bash(mv ortho.html bonus_quiz.html huefte_lernuebersicht.html knie_lernuebersicht.html fuss_lernuebersicht.html schulter_lernuebersicht.html ellenbogen_lernuebersicht.html hand_lernuebersicht.html wirbelsaeule_lernuebersicht.html fachgebiete/orthopaedie/)",
-      "Bash(mv neuro.html neuro_bonus_quiz.html zerebrovaskulaer_lernuebersicht.html neurodegenerativ_lernuebersicht.html entzuendlich_infektioes_lernuebersicht.html anfaelle_trauma_lernuebersicht.html rueckenmark_peripher_lernuebersicht.html grundlagen_lernuebersicht.html fachgebiete/neurologie/)"
+      "Bash(mv neuro.html neuro_bonus_quiz.html zerebrovaskulaer_lernuebersicht.html neurodegenerativ_lernuebersicht.html entzuendlich_infektioes_lernuebersicht.html anfaelle_trauma_lernuebersicht.html rueckenmark_peripher_lernuebersicht.html grundlagen_lernuebersicht.html fachgebiete/neurologie/)",
+      "Bash(xargs -0 rm -rf)",
+      "Bash(grep -v '/$\\\\|\\\\.html$\\\\|\\\\.md$')",
+      "Bash(grep '/$')",
+      "Bash(mkdir -p .claude/skills/design-taste-frontend)",
+      "Bash(cp /tmp/taste-skill/skills/taste-skill/SKILL.md .claude/skills/design-taste-frontend/SKILL.md)",
+      "Bash(sed -n '1,4p' .claude/skills/design-taste-frontend/SKILL.md)",
+      "Bash(grep -v '\\\\.txt$')",
+      "Bash(grep -v '^taste-skill$')"
     ]
   }
 }

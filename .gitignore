@@ -1,0 +1,6 @@
+# Keine Backups im Projekt — Git ist Versionsverwaltung & Backup.
+# Etwaige versehentlich erzeugte Sicherungskopien werden ignoriert.
+_backup_*
+backups/
+*.bak
+*~
