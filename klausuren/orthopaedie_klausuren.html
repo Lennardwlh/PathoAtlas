@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orthopädieklausuren · Pathologie-Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA;--surface:#FBF8F2;--surface-2:#F3EDE2;--ink:#22251f;--ink-soft:#5c6056;--ink-faint:#8a8d82;
+  --line:#d9d0c1;--line-soft:#e6ddce;--clay:#bd4a30;--clay-2:#a73d27;--ochre:#b07d1e;--cream:#fffdf8;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);--r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Hanken Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--clay);color:#fff}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.84);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1080px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:18px}
+.home-link{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);white-space:nowrap}
+.home-link:hover{background:var(--surface-2);color:var(--ink);border-color:var(--ink-faint)}
+.brand{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap;text-decoration:none;color:inherit;margin-left:auto}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+/* HERO */
+header.hero{background:radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.34),transparent 55%),radial-gradient(90% 80% at 6% 110%,rgba(176,125,30,.34),transparent 55%),linear-gradient(160deg,#6f4a22,#34230f 72%);color:#f3ece0;position:relative;overflow:hidden;border-bottom:1px solid #1d1206}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+.hero-in{max-width:1080px;margin:0 auto;padding:60px 26px 60px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#dcc59c;margin-bottom:20px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#dcc59c;display:inline-block}
+.hero h1{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:clamp(2.3rem,5.2vw,3.9rem);line-height:1.02;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#f0c98f}
+.hero p.lead{margin-top:20px;font-size:1.06rem;max-width:38rem;color:#e3d8c4}
+.hero-meta{margin-top:28px;display:flex;gap:28px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',ui-serif,Georgia,serif;font-size:1.8rem;font-weight:600;line-height:1;color:#f6efe3}
+.hero-meta span{font-size:.76rem;color:#cbb892;margin-top:4px;letter-spacing:.03em}
+/* RANDOM BAR */
+.randombar{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--clay);border-radius:var(--r);box-shadow:var(--shadow);padding:24px 26px;margin-top:-30px;position:relative;z-index:5;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.randombar .rt{flex:1;min-width:240px}
+.randombar h2{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.randombar p{font-size:.92rem;color:var(--ink-soft);margin-top:6px;max-width:46rem}
+.randombtn{font-family:'Hanken Grotesk';font-weight:800;font-size:1.02rem;color:#fff;background:var(--clay);border:none;cursor:pointer;padding:16px 28px;border-radius:13px;display:inline-flex;align-items:center;gap:12px;transition:transform .18s,filter .18s,box-shadow .18s;box-shadow:0 10px 22px -10px rgba(189,74,48,.6)}
+.randombtn:hover{transform:translateY(-3px);filter:brightness(1.06)}
+.randombtn:active{transform:translateY(0)}
+.randombtn svg{width:22px;height:22px}
+.randombtn:focus-visible{outline:2.5px solid var(--ochre);outline-offset:3px}
+/* SECTION + EXAM CARDS */
+section{padding:48px 0 56px}
+.sec-head{margin-bottom:24px}
+.sec-head h2{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.02em}
+.sec-head p{color:var(--ink-soft);margin-top:6px;max-width:46rem}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.exam{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px 24px 22px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.exam::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--clay),var(--ochre))}
+.exam:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--ochre)}
+.exam .eno{font-family:'Fraunces',ui-serif,Georgia,serif;font-size:.95rem;font-weight:600;color:#fff;background:var(--clay);width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:15px}
+.exam h3{font-family:'Fraunces',ui-serif,Georgia,serif;font-weight:600;font-size:1.24rem;letter-spacing:-.01em;line-height:1.15}
+.exam .edesc{font-size:.9rem;color:var(--ink-soft);margin-top:8px}
+.exam .etags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.exam .etags span{font-size:.72rem;font-weight:600;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);padding:4px 9px;border-radius:999px}
+.exam .emeta{display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
+.exam .emeta div{display:flex;flex-direction:column}
+.exam .emeta b{font-size:.9rem;font-weight:800;color:var(--ink)}
+.exam .emeta span{font-size:.7rem;color:var(--ink-faint);letter-spacing:.03em}
+.exam .ego{margin-top:16px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.88rem;color:#fff;background:var(--clay);padding:10px 18px;border-radius:11px;width:fit-content;transition:gap .2s,filter .2s}
+.exam:hover .ego{gap:13px;filter:brightness(1.05)}
+.exam .ego svg{width:15px;height:15px}
+.hint{margin-top:22px;display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--surface-2);border:1px dashed var(--line);border-radius:13px;color:var(--ink-soft);font-size:.9rem}
+.hint svg{width:20px;height:20px;color:var(--ochre);flex-shrink:0}
+/* FOOTER */
+footer{padding:48px 26px 56px;text-align:center;background:#34230f;color:#cbb892;margin-top:24px}
+footer .fbrand{font-family:'Fraunces',ui-serif,Georgia,serif;color:#f3ece0;font-size:1.25rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.85rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.76rem;color:#9a875f;margin-top:16px;font-style:italic}
+@media(max-width:560px){.wrap,.nav-in,.hero-in{padding-left:18px;padding-right:18px}.randombar{margin-top:-18px}}
+a:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav><div class="nav-in">
+  <a href="probeklausuren.html" class="home-link" title="Zu den Probeklausuren">← Probeklausuren</a>
+  <a class="brand" href="../index.html"><span class="dot"></span> Orthopädieklausuren</a>
+</div></nav>
+
+<header class="hero"><div class="hero-in">
+  <span class="eyebrow">Prüfungssimulation · Orthopädie</span>
+  <h1>Orthopädie<em>klausuren</em></h1>
+  <p class="lead">Acht Krankheitsbilder, ein Format: jede Klausur hat den <b>gleichen Umfang</b> (7 Aufgaben, 32 Punkte, 20 Minuten) und dieselbe Gliederung — bis hin zu den <b>manuellen Testungen</b>. Wähle gezielt eine Pathologie oder lass den Zufall entscheiden.</p>
+  <div class="hero-meta">
+    <div><b>8</b><span>Klausuren</span></div>
+    <div><b>20 Min</b><span>je Klausur</span></div>
+    <div><b>7</b><span>Aufgaben je</span></div>
+    <div><b>32 P</b><span>Punkte je</span></div>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="randombar">
+    <div class="rt">
+      <h2>🎲 Zufällige Klausur</h2>
+      <p>Damit du auf <b>jede</b> Pathologie vorbereitet bist: Per Klick wird eine der acht Klausuren zufällig gezogen — du weißt vorher nicht, welche drankommt.</p>
+    </div>
+    <button class="randombtn" id="randomBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/></svg>
+      Zufällige Klausur starten
+    </button>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <div class="sec-head">
+    <h2>Klausur frei wählen</h2>
+    <p>Alle acht Klausuren im Überblick — jede prüft eine Pathologie entlang derselben Gliederung: Definition, Ätiologie, Symptomatik, Diagnostik, manuelle Testungen, Therapie, Transfer.</p>
+  </div>
+  <div class="exam-grid" id="examGrid"></div>
+  <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.5"/></svg> Alle Klausuren laufen offline im Browser; dein Fortschritt bleibt lokal auf deinem Gerät.</div>
+</div></section>
+
+<footer>
+  <div class="fbrand">Orthopädieklausuren · Pathologie-Atlas</div>
+  <p>Acht orthopädische Probeklausuren mit einheitlichem Format als Prüfungsvorbereitung. Inhalte aus den Lernübersichten des PathoAtlas; manuelle Tests nach klinischem Standard.</p>
+  <p class="fnote">Kein Server · Keine Datenbank · Lokal im Browser · Fortschritt nur im eigenen Browser gespeichert.</p>
+</footer>
+
+<script>
+const ORTHO=[
+  {no:'01',title:'Gonarthrose',file:'klausur_gonarthrose.html',region:'Knie',tag2:'Degenerativ',
+   desc:'Degenerative Kniegelenkarthrose: Anlaufschmerz, Kapselmuster, Achsenbezug.'},
+  {no:'02',title:'Instabilität im Lumbalbereich',file:'klausur_lumbale-instabilitaet.html',region:'Wirbelsäule',tag2:'Instabilität',
+   desc:'Segmentale Instabilität der LWS: Funktionsaufnahmen, aktive Stabilisierung.'},
+  {no:'03',title:'Bursitis trochanterica',file:'klausur_bursitis-trochanterica.html',region:'Hüfte',tag2:'Standardwissen',
+   desc:'Greater Trochanteric Pain Syndrome: lateraler Hüftschmerz, Glutealsehnen.'},
+  {no:'04',title:'Impingement-Syndrom',file:'klausur_impingement-syndrom.html',region:'Schulter',tag2:'Belastung',
+   desc:'Subakromiales Impingement: Painful Arc, Outlet/Non-Outlet.'},
+  {no:'05',title:'Radikulopathie (HWS)',file:'klausur_radikulopathie-hws.html',region:'HWS',tag2:'Nervenwurzel',
+   desc:'Zervikales Wurzelsyndrom: radikulär vs. pseudoradikulär, Spurling, ULTT.'},
+  {no:'06',title:'Karpaltunnelsyndrom',file:'klausur_karpaltunnelsyndrom.html',region:'Hand',tag2:'Nervenengpass',
+   desc:'Engpass des N. medianus: nächtliche Parästhesien, Tinel & Phalen.'},
+  {no:'07',title:'Epicondylitis lateralis',file:'klausur_epicondylitis-lateralis.html',region:'Ellenbogen',tag2:'Sehne',
+   desc:'„Tennisarm“: Insertionstendinopathie, Cozen-, Mill-, Maudsley-Test.'},
+  {no:'08',title:'Tendinitis der Achillessehne',file:'klausur_achillodynie.html',region:'Fuß',tag2:'Sehne',
+   desc:'Achillodynie: spindelförmige Verdickung, Cave Rupturgefahr.'}
+];
+
+const goIcon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+const grid=document.getElementById('examGrid');
+ORTHO.forEach(e=>{
+  const a=document.createElement('a');
+  a.className='exam'; a.href=e.file;
+  a.innerHTML='<span class="eno">'+e.no+'</span><h3>'+e.title+'</h3><p class="edesc">'+e.desc+'</p>'
+    +'<div class="etags"><span>'+e.region+'</span><span>'+e.tag2+'</span></div>'
+    +'<div class="emeta"><div><b>20 Min</b><span>Dauer</span></div><div><b>7 Aufgaben</b><span>Umfang</span></div><div><b>32 P</b><span>Punkte</span></div></div>'
+    +'<span class="ego">Klausur starten '+goIcon+'</span>';
+  grid.appendChild(a);
+});
+
+/* Zufalls-Klausur */
+document.getElementById('randomBtn').addEventListener('click',function(){
+  const pick=ORTHO[Math.floor(Math.random()*ORTHO.length)];
+  window.location.href=pick.file;
+});
+
+/* progress bar */
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';},{passive:true});
+</script>
+</body>
+</html>

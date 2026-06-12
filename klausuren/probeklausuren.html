@@ -120,44 +120,10 @@ const EXAMS = [
     dauer:'60 Min', aufgaben:'13 Aufgaben', punkte:'~50'
   },
   {
-    no:'02', title:'Gonarthrose', file:'klausur_gonarthrose.html',
-    desc:'Degenerative Kniegelenkarthrose, abgefragt entlang der Krankheits-Gliederung: Definition, Einteilung, Ätiologie, Symptomatik, Diagnostik, Therapie.',
-    tags:['Knie','Degenerativ'], dauer:'20 Min', aufgaben:'7 Aufgaben', punkte:'30 P', poolLabel:'Punkte'
-  },
-  {
-    no:'03', title:'Instabilität im Lumbalbereich', file:'klausur_lumbale-instabilitaet.html',
-    desc:'Segmentale Instabilität der LWS: Definition, Ätiologie, Diagnostik (Funktionsaufnahmen) und Therapie der aktiven Stabilisierung.',
-    tags:['Wirbelsäule','Instabilität'], dauer:'20 Min', aufgaben:'5 Aufgaben', punkte:'21 P', poolLabel:'Punkte'
-  },
-  {
-    no:'04', title:'Bursitis trochanterica', file:'klausur_bursitis-trochanterica.html',
-    desc:'Greater Trochanteric Pain Syndrome: Definition, Ätiologie, Klinik, Diagnostik und Therapie. Inhalt aus Standard-Lehrbuchwissen (keine PathoAtlas-Seite) — bitte gegen dein Skript prüfen.',
-    tags:['Hüfte','Standardwissen'], dauer:'20 Min', aufgaben:'6 Aufgaben', punkte:'27 P', poolLabel:'Punkte'
-  },
-  {
-    no:'05', title:'Impingement-Syndrom', file:'klausur_impingement-syndrom.html',
-    desc:'Subakromiales Impingement: Definition, Outlet/Non-Outlet, Painful Arc, Diagnostik und Therapie.',
-    tags:['Schulter','Belastung'], dauer:'20 Min', aufgaben:'6 Aufgaben', punkte:'26 P', poolLabel:'Punkte'
-  },
-  {
-    no:'06', title:'Radikulopathie (HWS)', file:'klausur_radikulopathie-hws.html',
-    desc:'Wurzelsyndrom mit HWS-Bezug: Radikulopathie vs. Referred Pain, Abgrenzung radikulär/pseudoradikulär, Pathogenese.',
-    tags:['HWS','Nervenwurzel'], dauer:'20 Min', aufgaben:'5 Aufgaben', punkte:'21 P', poolLabel:'Punkte'
-  },
-  {
-    no:'07', title:'Karpaltunnelsyndrom', file:'klausur_karpaltunnelsyndrom.html',
-    desc:'Engpass des N. medianus: Definition, Epidemiologie, Ätiologie, Klinik, Tests (Tinel/Phalen) und Therapie.',
-    tags:['Hand','Nervenengpass'], dauer:'20 Min', aufgaben:'7 Aufgaben', punkte:'30 P', poolLabel:'Punkte'
-  },
-  {
-    no:'08', title:'Epicondylitis lateralis', file:'klausur_epicondylitis-lateralis.html',
-    desc:'„Tennisarm“: Definition, Ätiologie, Klinik, Provokationstests (Cozen/Mill), Therapie und Prognose.',
-    tags:['Ellenbogen','Sehne'], dauer:'20 Min', aufgaben:'7 Aufgaben', punkte:'29 P', poolLabel:'Punkte'
-  },
-  {
-    no:'09', title:'Tendinitis der Achillessehne', file:'klausur_achillodynie.html',
-    desc:'Achillodynie: Definition, Ätiologie, Pathogenese (Mikrotraumen, Rupturgefahr), Symptomatik und Therapie.',
-    tags:['Fuß','Sehne'], dauer:'20 Min', aufgaben:'6 Aufgaben', punkte:'25 P', poolLabel:'Punkte'
+    no:'02', title:'Orthopädieklausuren', file:'orthopaedie_klausuren.html',
+    desc:'Acht orthopädische Krankheitsbilder (Gonarthrose, Instabilität LWS, Bursitis trochanterica, Impingement, Radikulopathie HWS, Karpaltunnel, Epicondylitis, Achillodynie). Einheitliches Format, jede Klausur gleich aufgebaut. Frei wählbar oder per Zufalls-Knopf.',
+    tags:['8 Klausuren','Frei wählbar','Zufalls-Modus'],
+    dauer:'20 Min', aufgaben:'7 Aufgaben je', punkte:'32 P je', poolLabel:'Punkte', goLabel:'Klausuren öffnen'
   }
 ];
 
@@ -169,7 +135,7 @@ EXAMS.forEach(e=>{
   a.innerHTML='<span class="eno">'+e.no+'</span><h3>'+e.title+'</h3><p class="edesc">'+e.desc+'</p>'
     +'<div class="etags">'+e.tags.map(t=>'<span>'+t+'</span>').join('')+'</div>'
     +'<div class="emeta"><div><b>'+e.dauer+'</b><span>Dauer</span></div><div><b>'+e.aufgaben+'</b><span>Umfang</span></div><div><b>'+e.punkte+'</b><span>'+(e.poolLabel||'Fragenpool')+'</span></div></div>'
-    +'<span class="ego">Klausur starten '+goIcon+'</span>';
+    +'<span class="ego">'+(e.goLabel||'Klausur starten')+' '+goIcon+'</span>';
   grid.appendChild(a);
 });
 document.getElementById('examCount').textContent=EXAMS.length;

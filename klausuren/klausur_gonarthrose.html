@@ -175,14 +175,14 @@ footer .fnote{font-size:.75rem;color:#9d927c;margin-top:16px;font-style:italic}
 <nav>
   <div class="nav-in">
     <a class="brand" href="../index.html" style="text-decoration:none;color:inherit"><span class="dot"></span> Knie · Probeklausur</a>
-    <div class="nav-links"><a href="probeklausuren.html">← Probeklausuren</a><a href="#hinweise">Start</a><a href="#abschnitt-A">Klausur</a><a href="#abschluss" class="nav-cta">Korrigieren</a><span class="nav-timer" id="navTimer">20:00</span></div>
+    <div class="nav-links"><a href="orthopaedie_klausuren.html">← Orthopädieklausuren</a><a href="#hinweise">Start</a><a href="#abschnitt-A">Klausur</a><a href="#abschluss" class="nav-cta">Korrigieren</a><span class="nav-timer" id="navTimer">20:00</span></div>
   </div>
 </nav>
 
-<header class="hero"><div class="hero-in"><div><span class="eyebrow">Kapitel 5.2 · Degenerative Kniegelenkarthrose</span><h1>Gon<em>arthrose</em></h1><p class="lead">Probeklausur zur Gonarthrose: Definition, Einteilung, Ätiologie, Symptomatik, Diagnostik und Therapie — entlang der Gliederung der Knie-Lernübersicht. Schreiben, korrigieren, Note ziehen.</p><div class="hero-meta"><div><b>20</b><span>Minuten</span></div><div><b id="heroPts">100</b><span>Punkte</span></div><div><b>7</b><span>Aufgaben</span></div><div><b>1</b><span>Krankheitsbild</span></div></div></div><div class="hero-art"><div style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(4rem,11vw,7.5rem);color:#e8a48c;opacity:.5;text-align:center;line-height:1;letter-spacing:-.02em">5.2</div></div></div></header>
+<header class="hero"><div class="hero-in"><div><span class="eyebrow">Kapitel 5.2 · Degenerative Kniegelenkarthrose</span><h1>Gon<em>arthrose</em></h1><p class="lead">Probeklausur zu Gonarthrose: Definition, Ätiologie, Symptomatik, Diagnostik, <b>manuelle Testungen</b>, Therapie und Transfer. Entlang der Knie-Lernübersicht. Einheitlicher Umfang: 7 Aufgaben, 32 Punkte, 20 Minuten.</p><div class="hero-meta"><div><b>20</b><span>Minuten</span></div><div><b id="heroPts">100</b><span>Punkte</span></div><div><b>7</b><span>Aufgaben</span></div><div><b>1</b><span>Krankheitsbild</span></div></div></div><div class="hero-art"><div style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(4rem,11vw,7.5rem);color:#e8a48c;opacity:.5;text-align:center;line-height:1;letter-spacing:-.02em">5.2</div></div></div></header>
 
 <!-- HINWEISE -->
-<section id="hinweise" style="padding-top:48px"><div class="wrap"><div class="panel"><h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span> Bearbeitungshinweise</h3><p>Offene Probeklausur zu <b>Gonarthrose</b>: <b>7 Aufgaben, 20 Minuten</b>. Die Aufgaben folgen der Gliederung des Krankheitsbildes (Definition, Einteilung, Ätiologie, Symptomatik, Diagnostik, Therapie, Transfer). Beantworte jede Aufgabe im Textfeld, starte den Timer (20 Min) und klicke am Ende auf <b>„Klausur abschließen &amp; korrigieren“</b>: dann erscheint zu jeder Aufgabe der <b>Erwartungshorizont</b>; trage deine erreichten Punkte selbst ein, die Gesamtnote wird automatisch berechnet. Bezug: Knie-Lernübersicht (Krankheitsbild 5.2).</p><div class="toolbar"><span class="tl-timer" id="timer">20:00</span><button class="btn" id="startBtn" onclick="toggleTimer()">▶ Timer starten</button><button class="btn ghost" onclick="resetTimer()">Zurücksetzen</button></div></div></div></section>
+<section id="hinweise" style="padding-top:48px"><div class="wrap"><div class="panel"><h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span> Bearbeitungshinweise</h3><p>Offene Probeklausur zu <b>Gonarthrose</b>: <b>7 Aufgaben, 32 Punkte, 20 Minuten</b> (alle Orthopädieklausuren haben denselben Umfang). Die Aufgaben folgen der Gliederung des Krankheitsbildes (Definition, Ätiologie, Symptomatik, Diagnostik, Manuelle Testungen, Therapie, Transfer). Beantworte jede Aufgabe im Textfeld, starte den Timer (20 Min) und klicke am Ende auf <b>„Klausur abschließen &amp; korrigieren“</b>: dann erscheint zu jeder Aufgabe der <b>Erwartungshorizont</b>; trage deine erreichten Punkte selbst ein, die Gesamtnote wird automatisch berechnet. Bezug: Knie-Lernübersicht (5.2). Die <b>manuellen Tests</b> folgen der klinischen Standard-Testung (teils über den Seitentext hinaus).</p><div class="toolbar"><span class="tl-timer" id="timer">20:00</span><button class="btn" id="startBtn" onclick="toggleTimer()">▶ Timer starten</button><button class="btn ghost" onclick="resetTimer()">Zurücksetzen</button></div></div></div></section>
 
 <main id="exam"></main>
 
@@ -217,31 +217,31 @@ footer .fnote{font-size:.75rem;color:#9d927c;margin-top:16px;font-style:italic}
 /* ============ KLAUSURDATEN ============ */
 const SECCOL={A:'#bd4a30',B:'#b07d1e',C:'#37607e'};
 const klausur=[
- {id:'A', name:'Gonarthrose', col:'#7a3a1a',
-  src:'Quelle: Knie-Lernübersicht (5.2) · abgefragt entlang der Gliederung des Krankheitsbildes',
+ {id:'A', name:`Gonarthrose`, col:'#7a3a1a',
+  src:`Quelle: Knie-Lernübersicht (5.2) · einheitliche Gliederung`,
   slots:[
-   {role:'Definition', pts:3, pool:[{topic:'def', titel:'Definition',
-    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Definieren Sie die <b>Gonarthrose</b>.</p>`,
-    erw:`<ul><li><span class="pt">3 P —</span> Primär <b>nicht-entzündliche, irreversible, degenerative</b> Gelenkerkrankung des Kniegelenks über Jahre, bedingt durch ein <b>Missverhältnis zwischen Belastung und Belastbarkeit</b>. Medial, lateral und/oder femoropatellar betroffen.</li></ul>`}]},
-   {role:'Einteilung', pts:4, pool:[{topic:'einteilung', titel:'Lokalisationsformen',
-    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Nennen und erklären Sie die <b>vier lokalisationsbezogenen Formen</b> der Gonarthrose.</p>`,
-    erw:`<ul><li><span class="pt">4 P —</span> <b>Retropatellararthrose</b> (Fläche hinter der Patella, erhöhter Anpressdruck), <b>mediale Gonarthrose</b> (meist Folge eines Genu varum), <b>laterale Gonarthrose</b> (meist Folge eines Genu valgum), <b>Pangonarthrose</b> (alle drei Anteile: Femur, Tibia, Patellarückfläche).</li></ul>`}]},
-   {role:'Ätiologie', pts:4, pool:[{topic:'aet', titel:'Primär vs. sekundär',
-    body:`<ol><li>Grenzen Sie primäre und sekundäre Gonarthrose ab <span class="sp">(2 P)</span></li><li>Nennen Sie drei Ursachen der sekundären Form <span class="sp">(2 P)</span></li></ol>`,
-    erw:`<ul><li><span class="pt">2 P —</span> <b>Primär:</b> idiopathische Knorpelminderwertigkeit (ohne fassbare Ursache). <b>Sekundär:</b> Folge einer bekannten Ursache.</li><li><span class="pt">2 P —</span> Achsendeformität, Trauma, Infektion, mechanische Überlastung, Z. n. Meniskektomie, Osteochondrosis dissecans (drei nennen).</li></ul>`}]},
-   {role:'Symptomatik', pts:5, pool:[{topic:'sympt', titel:'Klinik',
-    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Beschreiben Sie <b>fünf typische Symptome bzw. Befunde</b> der Gonarthrose.</p>`,
-    erw:`<ul><li><span class="pt">5 P —</span> <b>Anlaufschmerz</b> &amp; Steifigkeit nach Ruhe (später Ruheschmerz); rezidivierender <b>Erguss</b>/Schwellungsneigung, Bakerzyste; Druckschmerz Gelenkspalt, <b>Krepitation</b>, Verschiebeschmerz Patella; <b>Quadrizepsatrophie</b> und zunehmende Deformierung; Bewegungseinschränkung im <b>Kapselmuster (Flexion &gt; Extension)</b>.</li></ul>`}]},
-   {role:'Diagnostik', pts:4, pool:[{topic:'diag', titel:'Diagnostik',
-    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Welche diagnostischen Schritte sichern die Gonarthrose?</p>`,
-    erw:`<ul><li><span class="pt">4 P —</span> <b>Anamnese &amp; Klinik</b>; <b>Röntgen in 3 Ebenen im Stand</b> (Beurteilung der Beinachse); ergänzend <b>MRT</b> (Menisken) und <b>Gelenkpunktion</b> bei Erguss (selten).</li></ul>`}]},
-   {role:'Therapie', pts:6, pool:[{topic:'ther', titel:'Konservativ vs. operativ',
-    body:`<ol><li>Nennen Sie vier konservative Maßnahmen <span class="sp">(3 P)</span></li><li>Nennen Sie drei operative Optionen <span class="sp">(3 P)</span></li></ol>`,
-    erw:`<ul><li><span class="pt">3 P —</span> <b>Konservativ:</b> Physiotherapie (Kraft, Mobilität, Fitness ↑), NSAR/Infiltration/physikalische Therapie, <b>Gewichtsreduktion</b>, Schuhranderhöhung (außen bei Varum, innen bei Valgum)/Fersenpuffer.</li><li><span class="pt">3 P —</span> <b>Operativ:</b> Shaving/Arthroskopie, <b>Umstellungsosteotomie</b> (unilateral), Schlittenprothese (unilateral), <b>Knie-TEP</b>.</li></ul>`}]},
-   {role:'Transfer', pts:4, pool:[{topic:'transfer', titel:'Leitbefunde &amp; Achse',
-    scenario:'Eine 64-jährige Patientin klagt über Anlaufschmerz nach Ruhe und belastungsabhängige Knieschmerzen; im Stand zeigt sich ein O-Bein.',
-    body:`<ol><li>Wie heißt das klassische „Arthrose-Trio“? <span class="sp">(2 P)</span></li><li>Welche Gonarthrose-Form ist beim Genu varum zu erwarten und warum? <span class="sp">(2 P)</span></li></ol>`,
-    erw:`<ul><li><span class="pt">2 P —</span> <b>Anlaufschmerz + Krepitation + Kapselmuster</b> (Flexion stärker eingeschränkt als Extension).</li><li><span class="pt">2 P —</span> <b>Mediale</b> Gonarthrose: Das Genu varum (O-Bein) verlagert die Traglinie nach medial → mediale Kompression → medialer Knorpelverschleiß.</li></ul>`}]}
+   {role:'Definition', pts:4, pool:[{topic:'def', titel:`Definition`,
+     body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Definieren Sie die <b>Gonarthrose</b> und nennen Sie die drei möglichen Kompartimente.</p>`,
+     erw:`<ul><li><span class="pt">4 P —</span> Primär <b>nicht-entzündliche, irreversible, degenerative</b> Gelenkerkrankung über Jahre durch ein <b>Missverhältnis von Belastung und Belastbarkeit</b>. Betroffen: <b>medial, lateral und/oder femoropatellar</b> (Pangonarthrose = alle drei).</li></ul>`}]},
+   {role:'Ätiologie', pts:4, pool:[{topic:'aet', titel:`Primär vs. sekundär`,
+     body:`<ol><li>Grenzen Sie primäre und sekundäre Gonarthrose ab <span class="sp">(2 P)</span></li><li>Drei Ursachen der sekundären Form <span class="sp">(2 P)</span></li></ol>`,
+     erw:`<ul><li><span class="pt">2 P —</span> <b>Primär:</b> idiopathische Knorpelminderwertigkeit. <b>Sekundär:</b> Folge einer bekannten Ursache.</li><li><span class="pt">2 P —</span> Achsendeformität (Varum/Valgum), Trauma, Infektion, Z. n. Meniskektomie, Osteochondrosis dissecans (drei nennen).</li></ul>`}]},
+   {role:'Symptomatik', pts:5, pool:[{topic:'sympt', titel:`Klinisches Bild`,
+     body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Beschreiben Sie <b>fünf typische Symptome bzw. Befunde</b>.</p>`,
+     erw:`<ul><li><span class="pt">5 P —</span> <b>Anlaufschmerz</b> &amp; Steifigkeit nach Ruhe (später Ruheschmerz); rezidivierender <b>Erguss</b>/Bakerzyste; Druckschmerz Gelenkspalt, <b>Krepitation</b>; <b>Quadrizepsatrophie</b>/Deformierung; Bewegungseinschränkung im <b>Kapselmuster (Flexion &gt; Extension)</b>.</li></ul>`}]},
+   {role:'Diagnostik', pts:4, pool:[{topic:'diag', titel:`Apparative Diagnostik`,
+     body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Welche apparativen Schritte sichern die Gonarthrose?</p>`,
+     erw:`<ul><li><span class="pt">4 P —</span> Anamnese &amp; Klinik; <b>Röntgen in 3 Ebenen im Stand</b> (Beinachse: Gelenkspaltverschmälerung, Osteophyten, subchondrale Sklerose); ergänzend <b>MRT</b> (Menisken) und <b>Gelenkpunktion</b> bei Erguss (selten).</li></ul>`}]},
+   {role:'Manuelle Testungen', pts:5, pool:[{topic:'tests', titel:`Klinische Tests`,
+     body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Welche <b>manuellen/klinischen Tests</b> wenden Sie bei Verdacht auf Gonarthrose an?</p>`,
+     erw:`<ul><li><span class="pt">5 P —</span> <b>Palpation des Gelenkspalts</b> (Druckschmerz), Prüfung der <b>Krepitation</b> bei Flexion/Extension, <b>Patella-Verschiebeschmerz</b> bzw. Zohlen-Zeichen (femoropatellar), Prüfung des <b>Kapselmusters</b> (Flexion &gt; Extension); zur Differenzierung <b>Meniskustests</b> (McMurray, Steinmann).</li></ul>`}]},
+   {role:'Therapie', pts:6, pool:[{topic:'ther', titel:`Konservativ vs. operativ`,
+     body:`<ol><li>Vier konservative Maßnahmen <span class="sp">(3 P)</span></li><li>Drei operative Optionen <span class="sp">(3 P)</span></li></ol>`,
+     erw:`<ul><li><span class="pt">3 P —</span> <b>Konservativ:</b> Physiotherapie (Kraft, Mobilität, Fitness ↑), NSAR/Infiltration/physikalisch, <b>Gewichtsreduktion</b>, Schuhranderhöhung (außen bei Varum, innen bei Valgum).</li><li><span class="pt">3 P —</span> <b>Operativ:</b> Shaving/Arthroskopie, <b>Umstellungsosteotomie</b>, Schlittenprothese, <b>Knie-TEP</b>.</li></ul>`}]},
+   {role:'Transfer', pts:4, pool:[{topic:'transfer', titel:`Leitbefunde &amp; Achse`,
+     scenario:`Eine 64-jährige Patientin hat Anlaufschmerz nach Ruhe und belastungsabhängige Knieschmerzen; im Stand zeigt sich ein O-Bein.`,
+     body:`<ol><li>Wie heißt das klassische „Arthrose-Trio“? <span class="sp">(2 P)</span></li><li>Welche Form folgt einem Genu varum und warum? <span class="sp">(2 P)</span></li></ol>`,
+     erw:`<ul><li><span class="pt">2 P —</span> <b>Anlaufschmerz + Krepitation + Kapselmuster</b> (Flexion stärker eingeschränkt als Extension).</li><li><span class="pt">2 P —</span> <b>Mediale</b> Gonarthrose: Das O-Bein verlagert die Traglinie nach medial → mediale Überlastung/Verschleiß.</li></ul>`}]}
   ]}
 ];
 
