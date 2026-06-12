@@ -17,6 +17,9 @@
   /* Neurologie = Blau */
   --neuro:#1b3a5c;--neuro-2:#274f78;--neuro-glow:rgba(39,79,120,.42);
   --neuro-d1:#23507e;--neuro-d2:#13283f;
+  /* Schmerz = Beere/Plum */
+  --schmerz:#6e3a4e;--schmerz-2:#834d63;--schmerz-glow:rgba(189,74,48,.40);
+  --schmerz-d1:#7a4256;--schmerz-d2:#2f1c26;
   --shadow:0 2px 6px rgba(60,44,26,.05),0 14px 30px -18px rgba(60,44,26,.24);
   --shadow-lg:0 4px 12px rgba(60,44,26,.07),0 34px 64px -30px rgba(60,44,26,.32);
 }
@@ -38,34 +41,41 @@ body{font-family:'Hanken Grotesk',sans-serif;background:var(--paper);color:var(-
 .intro h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.0;letter-spacing:-.03em;color:var(--ink)}
 .intro h1 .a{font-style:italic;color:var(--ortho-2)}
 .intro h1 .b{font-style:italic;color:var(--neuro-2)}
+.intro h1 .c{font-style:italic;color:var(--schmerz-2)}
 .intro p{margin-top:22px;font-size:1.12rem;color:var(--ink-soft);max-width:32rem;margin-left:auto;margin-right:auto}
 .intro .scroll-cue{margin-top:30px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:inline-flex;flex-direction:column;align-items:center;gap:8px}
 .intro .scroll-cue svg{width:20px;height:20px;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
 /* ---------- split doors ---------- */
-.doors{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:560px;margin-top:30px;isolation:isolate}
-/* the diagonal seam */
-.doors::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,transparent,var(--clay),transparent);transform:translateX(-50%) skewX(-9deg);z-index:5;opacity:.6}
+.doors{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;min-height:560px;margin-top:30px;isolation:isolate}
+/* the two diagonal seams */
+.doors::before,.doors::after{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--clay),transparent);transform:translateX(-50%) skewX(-9deg);z-index:5;opacity:.6}
+.doors::before{left:33.333%}
+.doors::after{left:66.667%}
 .door{position:relative;overflow:hidden;text-decoration:none;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 46px 54px;min-height:560px;transition:flex-basis .5s;isolation:isolate}
 .door .bg{position:absolute;inset:0;z-index:-2}
 .door .noise{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
 /* clip each door along the diagonal so the seam is angled */
 .door.ortho{clip-path:polygon(0 0, 100% 0, calc(100% - 60px) 100%, 0 100%)}
-.door.neuro{clip-path:polygon(60px 0, 100% 0, 100% 100%, 0 100%);margin-left:-60px;padding-left:92px}
+.door.neuro{clip-path:polygon(60px 0, 100% 0, calc(100% - 60px) 100%, 0 100%);margin-left:-60px;padding-left:92px}
+.door.schmerz{clip-path:polygon(60px 0, 100% 0, 100% 100%, 0 100%);margin-left:-60px;padding-left:92px}
 .door.ortho .bg{background:radial-gradient(120% 90% at 20% 0%,var(--ortho-glow),transparent 55%),linear-gradient(155deg,var(--ortho-d1),var(--ortho-d2) 78%)}
 .door.neuro .bg{background:radial-gradient(120% 90% at 80% 0%,var(--neuro-glow),transparent 55%),linear-gradient(205deg,var(--neuro-d1),var(--neuro-d2) 78%)}
+.door.schmerz .bg{background:radial-gradient(120% 90% at 80% 0%,var(--schmerz-glow),transparent 55%),linear-gradient(205deg,var(--schmerz-d1),var(--schmerz-d2) 78%)}
 
 /* big faint illustration */
 .door .art{position:absolute;z-index:-1;opacity:.16;pointer-events:none}
 .door.ortho .art{right:-40px;top:40px;width:340px}
 .door.neuro .art{left:-30px;top:30px;width:340px}
+.door.schmerz .art{left:-26px;top:34px;width:300px}
 .door .art svg{width:100%;height:auto}
 
 /* big index number */
 .door .idx{position:absolute;top:40px;font-family:'Fraunces',serif;font-weight:500;font-size:5.5rem;line-height:1;opacity:.18;color:#fff}
 .door.ortho .idx{left:46px}
 .door.neuro .idx{right:46px}
+.door.schmerz .idx{right:46px}
 
 .door .tag{font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.82;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .door .tag .dot{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
@@ -80,6 +90,7 @@ body{font-family:'Hanken Grotesk',sans-serif;background:var(--paper);color:var(-
 .door:hover .enter{background:#fff;border-color:#fff}
 .door.ortho:hover .enter{color:var(--ortho)}
 .door.neuro:hover .enter{color:var(--neuro)}
+.door.schmerz:hover .enter{color:var(--schmerz)}
 .door:hover .enter svg{transform:translateX(5px)}
 .door:hover .art{opacity:.24;transition:opacity .5s}
 .door .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
@@ -126,28 +137,6 @@ body{font-family:'Hanken Grotesk',sans-serif;background:var(--paper);color:var(-
 .exam-badge{position:absolute;top:20px;right:22px;z-index:2;font-size:.66rem;font-weight:800;letter-spacing:.12em;color:#34230f;background:#e8b98c;padding:5px 12px;border-radius:999px}
 .exam-card:focus-visible{outline:2.5px solid #e8b98c;outline-offset:3px}
 
-/* ---------- Schmerz-Fachbereich band ---------- */
-.schmerz-band{max-width:1180px;margin:0 auto;padding:18px 34px 0}
-.schmerz-card{display:flex;align-items:center;gap:28px;text-decoration:none;color:#f4ecef;
-  background:radial-gradient(120% 150% at 90% -25%,rgba(189,74,48,.32),transparent 55%),linear-gradient(150deg,#6e3a4e,#2f1c26);
-  border-radius:24px;padding:34px 38px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);
-  transition:transform .22s,box-shadow .22s}
-.schmerz-card::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='ns'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ns)' opacity='0.05'/%3E%3C/svg%3E")}
-.schmerz-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -22px rgba(34,37,31,.5)}
-.schmerz-icon{width:74px;height:74px;border-radius:20px;background:rgba(232,170,190,.16);border:1px solid rgba(232,170,190,.4);display:grid;place-items:center;flex-shrink:0;color:#ecb6c6;position:relative;z-index:2}
-.schmerz-icon svg{width:38px;height:38px}
-.schmerz-text{flex:1;min-width:0;position:relative;z-index:2}
-.schmerz-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#d6a9b8}
-.schmerz-text h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.02em;margin:6px 0 8px;color:#f7eef1}
-.schmerz-text p{font-size:.95rem;color:#e6d3da;max-width:46rem;line-height:1.5}
-.schmerz-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
-.schmerz-chips span{font-size:.74rem;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:5px 11px;border-radius:999px;color:rgba(255,255,255,.92)}
-.schmerz-go{margin-top:18px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;color:#f4cdd9;background:rgba(232,170,190,.14);border:1px solid rgba(232,170,190,.32);padding:10px 20px;border-radius:11px;transition:gap .2s}
-.schmerz-card:hover .schmerz-go{gap:14px}
-.schmerz-go svg{width:16px;height:16px}
-.schmerz-card:focus-visible{outline:2.5px solid #e8b0c2;outline-offset:3px}
-
 /* ---------- footer ---------- */
 footer{text-align:center;padding:44px 26px 54px;color:var(--ink-faint)}
 footer .fmark{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--ink-soft);margin-bottom:8px}
@@ -156,7 +145,7 @@ footer .fnote{font-size:.74rem;margin-top:14px;font-style:italic;opacity:.85}
 
 @media(max-width:920px){
   .doors{grid-template-columns:1fr;min-height:0;gap:18px;padding:0 18px}
-  .doors::before{display:none}
+  .doors::before,.doors::after{display:none}
   .door{min-height:420px;border-radius:24px;clip-path:none!important;margin-left:0!important;box-shadow:var(--shadow-lg)}
   .door .idx{font-size:4rem}
   .topbar{padding:16px 20px}
@@ -164,9 +153,6 @@ footer .fnote{font-size:.74rem;margin-top:14px;font-style:italic;opacity:.85}
   .exam-band{padding:16px 18px 0}
   .exam-card{flex-direction:column;text-align:center;align-items:center;padding:32px 24px}
   .exam-badge{top:16px;right:16px}
-  .schmerz-band{padding:16px 18px 0}
-  .schmerz-card{flex-direction:column;text-align:center;align-items:center;padding:32px 24px}
-  .schmerz-chips{justify-content:center}
 }
 /* __A11Y_HARMONIZED__ */
 /* ---- a11y + Politur (konsistent mit den Lernuebersichten) ---- */
@@ -186,7 +172,7 @@ a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:fo
 
 <section class="intro">
   <span class="eyebrow">Interaktive Lernübersichten</span>
-  <h1>Zwei Welten der <span class="a">Bewegung</span> &amp; des <span class="b">Nervensystems</span>.</h1>
+  <h1>Drei Welten: <span class="a">Bewegung</span>, <span class="b">Nervensystem</span> &amp; <span class="c">Schmerz</span>.</h1>
   <p>Wähle deinen Fachbereich. Jede Welt bündelt interaktive Lernübersichten mit Visualisierungen, Detailkarten und Lernchecks.</p>
   <div class="scroll-cue">Fachbereich wählen
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -194,21 +180,6 @@ a:focus-visible,button:focus-visible,[role="button"]:focus-visible,[tabindex]:fo
 </section>
 
 <div class="doors" id="doors"></div>
-
-<section class="schmerz-band">
-  <a class="schmerz-card" href="fachgebiete/schmerz/schmerz.html" aria-label="Akuter und chronischer Schmerz öffnen">
-    <div class="schmerz-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
-    </div>
-    <div class="schmerz-text">
-      <span class="schmerz-eyebrow">Querschnittsthema · Systemübergreifend</span>
-      <h2>Akuter &amp; chronischer Schmerz</h2>
-      <p>Schmerzphysiologie, akute und chronische Schmerzverarbeitung sowie die Versorgung chronisch kranker Menschen. Biopsychosozial gedacht, klinisch strukturiert.</p>
-      <div class="schmerz-chips"><span>Grundlagen</span><span>Akuter Schmerz</span><span>Chronischer Schmerz</span><span>Chronische Erkrankungen</span></div>
-      <span class="schmerz-go">Schmerz öffnen <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-    </div>
-  </a>
-</section>
 
 <section class="exam-band">
   <a class="exam-card" href="klausuren/probeklausuren.html" aria-label="Probeklausuren öffnen">
@@ -254,6 +225,14 @@ const AREAS = [
     topics:6, cases:24,
     chips:['Zerebrovaskulär','Neurodegenerativ','Entzündlich','Anfälle & Trauma','Rückenmark','Grundlagen'],
     art:'neuro'
+  },
+  {
+    key:'schmerz', name:'Schmerz', tag:'Querschnittsthema',
+    href:'fachgebiete/schmerz/schmerz.html',             // Schmerz-Startseite
+    blurb:'Schmerzphysiologie, akute und chronische Schmerzverarbeitung und die Versorgung chronisch kranker Menschen.',
+    topics:4, cases:7, tLabel:'Themenwelten',
+    chips:['Grundlagen','Akuter Schmerz','Chronischer Schmerz','Chronische Erkrankungen'],
+    art:'schmerz'
   }
 ];
 
@@ -281,6 +260,14 @@ const ART = {
     <path d="M44 96 C42 60 76 36 118 34 C150 32 182 44 192 76 C200 104 188 128 162 138 C150 150 130 152 116 146 C104 152 84 150 74 140 C54 142 40 124 44 104 Z"/>
     <path d="M70 78 C84 72 90 86 80 94 M120 64 C134 64 136 80 124 86 M150 86 C164 88 166 102 154 108 M100 108 C114 104 118 118 106 124"/>
     <g fill="rgba(255,255,255,.16)" stroke="none"><circle cx="92" cy="92" r="5"/><circle cx="140" cy="80" r="4.5"/><circle cx="120" cy="116" r="4"/></g>
+  </svg>`,
+  schmerz:`<svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 14 C96 54 104 86 100 124 C96 162 104 200 100 268"/>
+    <path d="M100 40 C82 52 74 70 78 86 M100 40 C118 52 126 70 122 86"/>
+    <path d="M100 80 C80 94 68 116 74 136 M100 80 C120 94 132 116 126 136"/>
+    <path d="M100 122 C78 138 64 164 72 186 M100 122 C122 138 136 164 128 186"/>
+    <path d="M100 168 C82 184 72 210 80 232 M100 168 C118 184 128 210 120 232"/>
+    <g fill="rgba(255,255,255,.16)" stroke="none"><circle cx="100" cy="40" r="5"/><circle cx="100" cy="80" r="5"/><circle cx="100" cy="122" r="5"/><circle cx="100" cy="168" r="5"/></g>
   </svg>`
 };
 
@@ -305,7 +292,7 @@ AREAS.forEach((a,i)=>{
     +'<h2>'+a.name+'</h2>'
     +'<p>'+a.blurb+'</p>'
     +'<div class="chips">'+a.chips.map(c=>'<span>'+c+'</span>').join('')+'</div>'
-    +'<div class="stats"><div><b>'+a.topics+'</b><span>Lernübersichten</span></div><div><b>'+a.cases+'</b><span>Krankheitsbilder</span></div></div>'
+    +'<div class="stats"><div><b>'+a.topics+'</b><span>'+(a.tLabel||'Lernübersichten')+'</span></div><div><b>'+a.cases+'</b><span>Krankheitsbilder</span></div></div>'
     +'<span class="enter">'+a.name+' öffnen '+enterIcon+'</span>';
   doors.appendChild(el);
 });
