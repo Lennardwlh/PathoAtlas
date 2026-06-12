@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Probeklausur · Instabilität im Lumbalbereich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECE6DA; --surface:#FBF8F2; --surface-2:#F3EDE2; --cream:#fffdf8;
+  --ink:#22251f; --ink-soft:#5c6056; --ink-faint:#8a8d82;
+  --line:#d9d0c1; --line-soft:#e6ddce;
+  --pine:#7a3a1a; --pine-2:#9a5520;
+  --clay:#bd4a30; --clay-2:#a73d27;
+  --ochre:#b07d1e; --steel:#37607e; --moss:#5b7d3a;
+  --good:#a8741a; --good-bg:#f6edd6;
+  --shadow:0 1px 2px rgba(34,37,31,.04),0 8px 24px -12px rgba(34,37,31,.18);
+  --shadow-lg:0 2px 4px rgba(34,37,31,.05),0 24px 48px -20px rgba(34,37,31,.28);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--pine);color:#f4efe4}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--clay);z-index:200;transition:width .1s linear}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(236,230,218,.84);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1080px;margin:0 auto;padding:12px 26px;display:flex;align-items:center;gap:18px}
+.brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(189,74,48,.16)}
+.nav-links{display:flex;gap:3px;margin-left:auto;flex-wrap:wrap;align-items:center}
+.nav-links a{font-size:.82rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 12px;border-radius:9px;transition:.18s;white-space:nowrap}
+.nav-links a:hover{background:var(--surface-2);color:var(--ink)}
+.nav-links a.active{background:var(--pine);color:#f0ebde}
+.nav-timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:.95rem;color:var(--pine);background:var(--surface);border:1px solid var(--line);padding:5px 11px;border-radius:9px;letter-spacing:.5px}
+.nav-timer.run{color:var(--good);border-color:var(--good)} .nav-timer.low{color:var(--clay);border-color:var(--clay)}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+
+/* HERO */
+header.hero{background:
+  radial-gradient(120% 90% at 88% -10%,rgba(189,74,48,.30),transparent 55%),
+  radial-gradient(90% 80% at 6% 110%,rgba(176,125,30,.30),transparent 55%),
+  linear-gradient(160deg,#6f4a22,#34230f 72%);
+  color:#efe9dc;position:relative;overflow:hidden;border-bottom:1px solid #1d1206}
+header.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+.hero-in{max-width:1080px;margin:0 auto;padding:64px 26px 66px;position:relative;z-index:2;display:grid;grid-template-columns:1.3fr .7fr;gap:36px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9b69b;margin-bottom:20px}
+.eyebrow::before{content:"";width:26px;height:1px;background:#c9b69b;display:inline-block}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.3rem,5vw,3.8rem);line-height:1.03;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;color:#e8a48c}
+.hero p.lead{margin-top:20px;font-size:1.05rem;max-width:32rem;color:#d6cfbf}
+.hero-meta{margin-top:28px;display:flex;gap:30px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Fraunces',serif;font-size:1.85rem;font-weight:600;line-height:1;color:#f3eee2}
+.hero-meta span{font-size:.76rem;color:#b3a890;margin-top:5px;letter-spacing:.03em}
+.hero-art svg{width:100%;height:auto;max-width:260px;margin:0 auto;display:block}
+
+/* SECTIONS */
+section{padding:58px 0;border-bottom:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:30px;flex-wrap:wrap}
+.sec-num{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:#fff;background:var(--c,var(--clay));width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex-shrink:0}
+.sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,3.2vw,2.3rem);letter-spacing:-.02em;line-height:1.05}
+.sec-head .sh-meta{margin-left:auto;text-align:right;display:flex;flex-direction:column;gap:2px}
+.sec-head .sh-pts{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;color:var(--c,var(--clay))}
+.sec-head .sh-cnt{font-size:.78rem;color:var(--ink-faint);font-weight:600}
+.sec-head p.sh-src{flex-basis:100%;color:var(--ink-faint);font-size:.84rem;margin-top:-6px}
+
+/* PANELS */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;box-shadow:var(--shadow);margin-bottom:16px}
+.panel h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.panel h3 .ic{width:30px;height:30px;border-radius:9px;background:var(--pine);color:#efe9dc;display:grid;place-items:center;flex-shrink:0}
+.panel h3 .ic svg{width:17px;height:17px}
+.panel p{color:var(--ink-soft);font-size:.95rem;margin-bottom:8px}
+.lo-list{list-style:none;display:grid;gap:8px;margin-top:6px}
+.lo-list li{font-size:.9rem;color:var(--ink-soft);padding-left:24px;position:relative;line-height:1.45}
+.lo-list li::before{content:"";position:absolute;left:2px;top:.5em;width:9px;height:9px;border-radius:3px;background:var(--ochre)}
+.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.tl-timer{font-family:'Fraunces',serif;font-variant-numeric:tabular-nums;font-weight:600;font-size:2rem;letter-spacing:1px;color:var(--pine)}
+.tl-timer.run{color:var(--good)} .tl-timer.low{color:var(--clay)}
+
+/* BUTTONS */
+.btn{font-family:'Hanken Grotesk';font-size:.9rem;font-weight:700;padding:11px 22px;border-radius:11px;border:none;background:var(--pine);color:#eee6d7;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:9px}
+.btn:hover{background:var(--pine-2);transform:translateY(-2px)}
+.btn.clay{background:var(--clay)} .btn.clay:hover{background:var(--clay-2)}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--pine);background:var(--surface-2)}
+.btn.big{padding:16px 34px;font-size:1.05rem}
+
+/* QUESTION CARD */
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.qcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--clay))}
+.q-top{display:flex;align-items:center;gap:14px;padding:20px 24px 8px}
+.q-num{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#fff;background:var(--c,var(--clay));min-width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.q-titlewrap{flex:1;min-width:0}
+.q-type{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c,var(--clay))}
+.q-title{font-family:'Fraunces',serif;font-size:1.18rem;font-weight:600;line-height:1.15;letter-spacing:-.01em}
+.q-pts{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);padding:5px 13px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+.q-body{padding:6px 24px 18px}
+.q-body .scenario{background:var(--surface-2);border-radius:12px;padding:13px 16px;font-size:.92rem;color:var(--ink-soft);margin-bottom:12px;border-left:3px solid var(--c,var(--clay))}
+.q-body .scenario b{color:var(--ink)}
+.q-body ol{margin:4px 0 6px;padding-left:20px}
+.q-body ol li{margin:8px 0;font-size:.96rem;color:var(--ink)}
+.q-body ol li .sp{font-size:.8rem;font-weight:700;color:var(--ink-faint);white-space:nowrap}
+textarea{width:100%;min-height:108px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-family:inherit;font-size:.97rem;color:var(--ink);background:var(--cream);line-height:1.55;margin-top:6px}
+textarea:focus{outline:none;border-color:var(--c,var(--pine));box-shadow:0 0 0 3px rgba(168,116,26,.14)}
+
+/* ERWARTUNGSHORIZONT */
+.erw{display:none;border-top:1px solid var(--line-soft);background:var(--good-bg);padding:18px 24px 20px}
+.erw.show{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.erw h4{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--good);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.erw h4 svg{width:16px;height:16px}
+.erw ul{list-style:none;display:grid;gap:7px}
+.erw li{font-size:.92rem;color:var(--ink-soft);padding-left:18px;position:relative;line-height:1.5}
+.erw li::before{content:"";position:absolute;left:1px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--good);opacity:.7}
+.erw li b{color:var(--ink);font-weight:700}
+.erw .pt{display:inline-block;font-weight:800;color:var(--good);font-size:.82rem;margin-right:3px}
+.score{display:none;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line-soft);padding:14px 24px;background:var(--surface)}
+.score.show{display:flex}
+.score label{font-size:.88rem;font-weight:700;color:var(--ink-soft)}
+.score input{width:70px;border:1.5px solid var(--line);border-radius:10px;padding:9px;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;text-align:center;background:var(--cream);color:var(--ink)}
+.score input:focus{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px rgba(189,74,48,.12)}
+.score .of{font-size:.9rem;color:var(--ink-faint);font-weight:600}
+
+/* NOTENSCHLÜSSEL */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin-top:14px}
+table.nk{border-collapse:collapse;width:100%;background:var(--surface);font-size:.88rem}
+table.nk th,table.nk td{text-align:center;padding:10px 14px;border-bottom:1px solid var(--line-soft)}
+table.nk thead th{background:var(--pine);color:#eee6d7;font-weight:600;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase}
+table.nk tbody tr:last-child td{border-bottom:none}
+table.nk tbody tr:hover{background:var(--surface-2)}
+table.nk td b{font-family:'Fraunces',serif;color:var(--ink)}
+
+/* RESULT BAR */
+.resultbar{position:fixed;left:0;right:0;bottom:0;background:rgba(251,248,242,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -6px 24px -10px rgba(34,37,31,.25);padding:13px 26px;z-index:120;display:none}
+.resultbar .inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.resultbar .nums{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.resultbar .rb{display:flex;flex-direction:column}
+.resultbar .rb b{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;line-height:1;color:var(--pine);font-variant-numeric:tabular-nums}
+.resultbar .rb span{font-size:.72rem;color:var(--ink-faint);font-weight:600;margin-top:3px;letter-spacing:.03em}
+.resultbar .grade b{padding:3px 16px;border-radius:10px;color:#fff;background:var(--ink-faint)}
+.resultbar .grade b.pass{background:var(--good)} .resultbar .grade b.fail{background:var(--clay)}
+
+footer{padding:46px 26px 120px;text-align:center;background:var(--pine);color:#cdc2ad}
+footer .fbrand{font-family:'Fraunces',serif;color:#efe9dc;font-size:1.25rem;font-weight:600;margin-bottom:10px}
+footer p{font-size:.84rem;max-width:46rem;margin:0 auto 6px;line-height:1.5}
+footer .fnote{font-size:.75rem;color:#9d927c;margin-top:16px;font-style:italic}
+
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr;gap:26px} .hero-art{display:none}
+  .nav-links a:not(.nav-cta){display:none} .nav-timer{margin-left:auto}
+}
+@media(max-width:520px){
+  .wrap,.nav-in,.hero-in{padding-left:18px;padding-right:18px}
+  .q-top{padding:16px 16px 6px;gap:11px} .q-body{padding:6px 16px 16px}
+  .erw,.score{padding-left:16px;padding-right:16px}
+}
+@media print{
+  #progress,nav,.resultbar,.toolbar,.btn,textarea{display:none!important}
+  body{background:#fff} .erw,.score{display:block!important} .qcard,.panel{box-shadow:none}
+  header.hero{color:#000;background:#fff}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="../index.html" style="text-decoration:none;color:inherit"><span class="dot"></span> Wirbelsäule · Probeklausur</a>
+    <div class="nav-links"><a href="probeklausuren.html">← Probeklausuren</a><a href="#hinweise">Start</a><a href="#abschnitt-A">Klausur</a><a href="#abschluss" class="nav-cta">Korrigieren</a><span class="nav-timer" id="navTimer">20:00</span></div>
+  </div>
+</nav>
+
+<header class="hero"><div class="hero-in"><div><span class="eyebrow">Kapitel 7.5 · Segmentale Instabilität</span><h1>Instabilität im <em>Lumbalbereich</em></h1><p class="lead">Probeklausur zur segmentalen Instabilität der LWS: Definition, Ätiologie, Diagnostik und Therapie — entlang der Gliederung der Wirbelsäulen-Lernübersicht. Schreiben, korrigieren, Note ziehen.</p><div class="hero-meta"><div><b>20</b><span>Minuten</span></div><div><b id="heroPts">100</b><span>Punkte</span></div><div><b>5</b><span>Aufgaben</span></div><div><b>1</b><span>Krankheitsbild</span></div></div></div><div class="hero-art"><div style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(4rem,11vw,7.5rem);color:#e8a48c;opacity:.5;text-align:center;line-height:1;letter-spacing:-.02em">7.5</div></div></div></header>
+
+<!-- HINWEISE -->
+<section id="hinweise" style="padding-top:48px"><div class="wrap"><div class="panel"><h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span> Bearbeitungshinweise</h3><p>Offene Probeklausur zu <b>Instabilität im Lumbalbereich</b>: <b>5 Aufgaben, 20 Minuten</b>. Die Aufgaben folgen der Gliederung des Krankheitsbildes (Definition, Ätiologie, Diagnostik, Therapie, Transfer). Beantworte jede Aufgabe im Textfeld, starte den Timer (20 Min) und klicke am Ende auf <b>„Klausur abschließen &amp; korrigieren“</b>: dann erscheint zu jeder Aufgabe der <b>Erwartungshorizont</b>; trage deine erreichten Punkte selbst ein, die Gesamtnote wird automatisch berechnet. Bezug: Wirbelsäulen-Lernübersicht (Segmentale Instabilität, 7.5).</p><div class="toolbar"><span class="tl-timer" id="timer">20:00</span><button class="btn" id="startBtn" onclick="toggleTimer()">▶ Timer starten</button><button class="btn ghost" onclick="resetTimer()">Zurücksetzen</button></div></div></div></section>
+
+<main id="exam"></main>
+
+<!-- ABSCHLUSS -->
+<section id="abschluss" style="border-bottom:none">
+  <div class="wrap" style="text-align:center">
+    <button class="btn clay big" id="correctBtn" onclick="korrigieren()">✓ Klausur abschließen &amp; korrigieren</button>
+    <p style="color:var(--ink-faint);font-size:.85rem;margin-top:14px">Danach erscheinen alle Erwartungshorizonte und die Punkteingabe.</p>
+    <div class="panel" style="margin-top:24px;text-align:left">
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg></span> Notenschlüssel (<span id="nkTotalLabel">100</span> Punkte)</h3>
+      <div class="tablewrap">
+        <table class="nk"><thead><tr><th>Punkte</th><th>Prozent</th><th>Note</th></tr></thead><tbody id="nkBody"></tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="fbrand">Probeklausur · Instabilität im Lumbalbereich</div><p>Erstellt aus der Wirbelsäulen-Lernübersicht des PathoAtlas (Segmentale Instabilität, 7.5) als Prüfungsvorbereitung.</p><p class="fnote">Lern- und Übungshilfe; die Erwartungshorizonte sind Orientierung, in der echten Prüfung zählt die eigenständige, fachlich korrekte Formulierung.</p></footer>
+
+<div class="resultbar" id="resultbar">
+  <div class="inner">
+    <div class="nums">
+      <div class="rb"><b><span id="sumPts">0</span> / <span id="gesamtLabel">100</span></b><span>PUNKTE</span></div>
+      <div class="rb"><b><span id="sumPct">0</span>%</b><span>ERREICHT</span></div>
+      <div class="rb grade"><b id="gradeBox">–</b><span>NOTE</span></div>
+    </div>
+    <button class="btn ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ nach oben</button>
+  </div>
+</div>
+
+<script>
+/* ============ KLAUSURDATEN ============ */
+const SECCOL={A:'#bd4a30',B:'#b07d1e',C:'#37607e'};
+const klausur=[
+ {id:'A', name:'Instabilität im Lumbalbereich', col:'#37607e',
+  src:'Quelle: Wirbelsäulen-Lernübersicht (7.5, Segmentale Instabilität) · abgefragt entlang der Gliederung',
+  slots:[
+   {role:'Definition', pts:4, pool:[{topic:'def', titel:'Segmentale Instabilität',
+    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Definieren Sie die <b>segmentale Instabilität</b> und ordnen Sie sie ein.</p>`,
+    erw:`<ul><li><span class="pt">4 P —</span> <b>Vermehrte segmentale Beweglichkeit</b> eines Bewegungssegments als Folge degenerativer WS-Erkrankung. Betroffen v. a. <b>LWS und HWS</b>. „Zu viel Beweglichkeit im Segment“.</li></ul>`}]},
+   {role:'Ätiologie', pts:4, pool:[{topic:'aet', titel:'Ätiologie',
+    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Erklären Sie, wie es im Verlauf einer Degeneration zur lumbalen Instabilität kommt.</p>`,
+    erw:`<ul><li><span class="pt">4 P —</span> Im Verlauf degenerativer WS-Erkrankung: <b>Höhenverlust der Bandscheibe</b> + <b>instabile Facettengelenke</b> → vermehrte segmentale Beweglichkeit → lokale, <b>pseudoradikuläre und radikuläre</b> Schmerzen.</li></ul>`}]},
+   {role:'Diagnostik', pts:5, pool:[{topic:'diag', titel:'Diagnostik',
+    body:`<ol><li>Welcher Röntgen-Befund fällt im Standardbild auf? <span class="sp">(2 P)</span></li><li>Welche Spezialaufnahme sichert die Diagnose und warum? <span class="sp">(3 P)</span></li></ol>`,
+    erw:`<ul><li><span class="pt">2 P —</span> Röntgen: <b>Höhenabnahme</b> des betroffenen Zwischenwirbelraums.</li><li><span class="pt">3 P —</span> <b>Funktionsaufnahmen in Flexion/Extension</b>: Sie machen die <b>vermehrte segmentale Beweglichkeit</b> (das Gleiten/Übermass an Bewegung) sichtbar und sichern so die Diagnose.</li></ul>`}]},
+   {role:'Therapie', pts:4, pool:[{topic:'ther', titel:'Therapie',
+    body:`<p style="font-size:.96rem;color:var(--ink);margin:4px 0 8px">Welche Therapieprinzipien gelten bei der segmentalen Instabilität?</p>`,
+    erw:`<ul><li><span class="pt">4 P —</span> Konservativ: <b>Muskelkräftigung als aktive Stabilisierung</b> (Rumpf-/Segmentstabilität) sowie <b>Schmerzbehandlung</b>.</li></ul>`}]},
+   {role:'Transfer', pts:4, pool:[{topic:'transfer', titel:'Pseudoradikulär vs. radikulär',
+    scenario:'Ein Patient berichtet über belastungsabhängige LWS-Schmerzen, die teils ins Bein ausstrahlen; bildgebend kein klares Wurzelkompressions-Korrelat.',
+    body:`<ol><li>Warum kann eine segmentale Instabilität sowohl pseudoradikuläre als auch radikuläre Schmerzen erzeugen? <span class="sp">(2 P)</span></li><li>Warum ist passive Stabilisierung allein nicht zielführend? <span class="sp">(2 P)</span></li></ol>`,
+    erw:`<ul><li><span class="pt">2 P —</span> Die vermehrte Beweglichkeit reizt lokal (pseudoradikulär) und kann bei Höhenverlust/Foramenenge auch die <b>Nervenwurzel</b> mechanisch reizen (radikulär).</li><li><span class="pt">2 P —</span> Das Problem ist ein <b>aktives Stabilitätsdefizit</b>; nur aktive Kräftigung (autochthone/Rumpfmuskulatur) ersetzt die fehlende segmentale Kontrolle.</li></ul>`}]}
+  ]}
+];
+
+const noten=[
+ {min:95,note:'1,0'},{min:90,note:'1,3'},{min:85,note:'1,7'},{min:80,note:'2,0'},
+ {min:75,note:'2,3'},{min:70,note:'2,7'},{min:65,note:'3,0'},{min:60,note:'3,3'},
+ {min:55,note:'3,7'},{min:50,note:'4,0'},{min:0,note:'5,0 (n. b.)'}
+];
+let GESAMT=0; /* dynamisch: Summe der gezogenen Aufgaben */
+
+/* ============ RENDER ============ */
+const examEl=document.getElementById('exam');
+const checkSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>';
+function __shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+/* Pyramide: pro Slot 1 zufaellige Frage; kein Thema doppelt je Abschnitt; Punkte fix -> immer 100. */
+let __qn=0;
+klausur.forEach(sec=>{
+  const used={};
+  const picked=sec.slots.map(slot=>{
+    let cands=slot.pool.filter(q=>!used[q.topic]);
+    if(!cands.length) cands=slot.pool.slice();
+    const q=__shuffle(cands)[0];
+    used[q.topic]=1;
+    return {q:q, pts:slot.pts, role:slot.role};
+  });
+  const secPts=picked.reduce((a,p)=>a+p.pts,0);
+  GESAMT+=secPts;
+  const s=document.createElement('section');
+  s.id='abschnitt-'+sec.id; s.style.setProperty('--c',sec.col);
+  let cards='';
+  picked.forEach(p=>{
+    const __n=++__qn; const f=p.q;
+    cards+=`
+    <div class="qcard" style="--c:${sec.col}" id="q-${__n}">
+      <div class="q-top">
+        <span class="q-num">${__n}</span>
+        <div class="q-titlewrap"><div class="q-type">${p.role}</div><div class="q-title">${f.titel}</div></div>
+        <span class="q-pts">${p.pts} P</span>
+      </div>
+      <div class="q-body">
+        ${f.scenario?`<div class="scenario">📋 ${f.scenario}</div>`:''}
+        ${f.body}
+        <textarea placeholder="Deine Antwort …" aria-label="Antwort Aufgabe ${__n}"></textarea>
+      </div>
+      <div class="erw" id="erw-${__n}">
+        <h4>${checkSvg} Erwartungshorizont · Aufgabe ${__n}</h4><ul>${f.erw.replace(/^<ul>|<\/ul>$/g,'')}</ul>
+      </div>
+      <div class="score" id="score-${__n}">
+        <label>Selbstbewertung:</label>
+        <input type="number" min="0" max="${p.pts}" step="0.5" value="0" data-max="${p.pts}" oninput="recalc()" aria-label="Punkte ${__n}">
+        <span class="of">von ${p.pts} P</span>
+      </div>
+    </div>`;
+  });
+  s.innerHTML=`
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">${sec.id}</span>
+        <h2>${sec.name}</h2>
+        <div class="sh-meta"><span class="sh-pts">${secPts} Punkte</span><span class="sh-cnt">${picked.length} Aufgaben</span></div>
+        <p class="sh-src">${sec.src}</p>
+      </div>
+      ${cards}
+    </div>`;
+  examEl.appendChild(s);
+});
+[['heroPts',GESAMT],['nkTotalLabel',GESAMT],['gesamtLabel',GESAMT]].forEach(p=>{var el=document.getElementById(p[0]); if(el) el.textContent=p[1];});
+
+/* Notenschlüssel */
+(function(){
+  let rows='';
+  for(let i=0;i<noten.length;i++){
+    const pctLo=noten[i].min, pctHi=i===0?100:noten[i-1].min-1;
+    const ptLo=(pctLo*GESAMT/100), ptHi=(pctHi*GESAMT/100);
+    const ptR=i===0?`${ptLo.toFixed(0)}–${GESAMT}`:`${ptLo.toFixed(0)}–${ptHi.toFixed(0)}`;
+    const pctR=i===0?`${pctLo}–100`:`${pctLo}–${pctHi}`;
+    rows+=`<tr><td>${ptR}</td><td>${pctR}&nbsp;%</td><td><b>${noten[i].note}</b></td></tr>`;
+  }
+  document.getElementById('nkBody').innerHTML=rows;
+})();
+
+/* ============ KORREKTUR ============ */
+let corrected=false;
+function korrigieren(){
+  corrected=true;
+  document.querySelectorAll('.erw').forEach(e=>e.classList.add('show'));
+  document.querySelectorAll('.score').forEach(s=>s.classList.add('show'));
+  document.getElementById('resultbar').style.display='block';
+  document.getElementById('correctBtn').textContent='✓ korrigiert — Punkte eintragen';
+  if(running) toggleTimer();
+  recalc();
+  document.getElementById('q-1').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function recalc(){
+  if(!corrected)return;
+  let sum=0;
+  document.querySelectorAll('.score input').forEach(inp=>{
+    let v=parseFloat(inp.value)||0, mx=parseFloat(inp.dataset.max);
+    if(v<0){v=0;inp.value=0} if(v>mx){v=mx;inp.value=mx} sum+=v;
+  });
+  const pct=Math.round(sum/GESAMT*1000)/10;
+  document.getElementById('sumPts').textContent=Math.round(sum*10)/10;
+  document.getElementById('sumPct').textContent=pct;
+  let note='5,0 (n. b.)';
+  for(const n of noten){ if(pct>=n.min){note=n.note;break;} }
+  const gb=document.getElementById('gradeBox');
+  gb.textContent=note; gb.className=(pct>=50)?'pass':'fail';
+}
+
+/* ============ TIMER ============ */
+let total=20*60, running=false, tick=null;
+const tEl=document.getElementById('timer'), navEl=document.getElementById('navTimer'), sBtn=document.getElementById('startBtn');
+function fmt(s){const m=Math.floor(s/60),x=s%60;return `${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}`;}
+function paint(){const t=fmt(total);tEl.textContent=t;navEl.textContent=t;}
+function toggleTimer(){
+  running=!running;
+  if(running){
+    sBtn.textContent='⏸ Pause'; tEl.classList.add('run'); navEl.classList.add('run');
+    tick=setInterval(()=>{
+      total--; paint();
+      if(total<=300){tEl.classList.add('low');navEl.classList.add('low');}
+      if(total<=0){clearInterval(tick);running=false;sBtn.textContent='Zeit abgelaufen';total=0;paint();}
+    },1000);
+  }else{ sBtn.textContent='▶ Weiter'; clearInterval(tick); tEl.classList.remove('run'); navEl.classList.remove('run'); }
+}
+function resetTimer(){clearInterval(tick);running=false;total=20*60;
+  tEl.className='tl-timer';navEl.className='nav-timer';sBtn.textContent='▶ Timer starten';paint();}
+
+/* ============ PROGRESS BAR + SCROLLSPY ============ */
+const prog=document.getElementById('progress');
+const navAs=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight);
+  prog.style.width=(sc*100)+'%';
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(se=>{
+    if(se.getBoundingClientRect().top<=120) cur=se.id;
+  });
+  navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>
